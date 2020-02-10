@@ -15,8 +15,8 @@ class CreateRelationTemanTable extends Migration
     {
         Schema::create('relation_teman', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('is_favorite');
-            $table->boolean('status');
+            $table->boolean('is_favorite')->default(0);
+            $table->integer('status')->default(0);
             $table->unsignedBigInteger('id_mahasiswa_one');
             $table->foreign('id_mahasiswa_one')->references('id')->on('mahasiswa');
             $table->unsignedBigInteger('id_mahasiswa_two');

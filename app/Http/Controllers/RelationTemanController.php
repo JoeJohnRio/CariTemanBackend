@@ -10,15 +10,52 @@ use App\Mahasiswa;
 class RelationTemanController extends Controller{
 
     
-public function index($id){
+public function showFavorite($id){
     return RelationTeman::where('id_mahasiswa_one', $id)->where('status', 1)->Get();
 }
 
-public function showFavoriteFriend($id){
-    return RelationTeman::where('id_mahasiswa_one', $id)->where('status', 1)->where('is_favorite',1)->Get();
+public function addFriend($id_one, $id_two){
+        $relation = new RelationTeman();
+        $relation->id_mahasiswa_one = $id_one;
+        $relation->id_mahasiswa_two = $id_two;
+        $relation->status = 2;
+        $relation->save();
+    
+    return RelationTeman::where('id_mahasiswa_one', $id_one)->where(
+    [
+        ['status', '>=', '1']
+    ])->Get();
 }
 
-public function makeFavoriteFriend($id){
-    
+public function showFavoriteFriend($id){
+    return RelationTeman::where('id_mahasiswa_one', $id)->where('is_favorite',1)->Get();
 }
+
+public function toogleFavoriteFriend($id_one, $id_two){
+    if(!RelationTeman::where('id_mahasiswa_one', $id_one)->where('id_mahasiswa_two',$id_two)
+    ->where('is_favorite', 0)->Get()->isEmpty()){    
+        $relation = RelationTeman::where('id_mahasiswa_one', $id_one)->where('id_mahasiswa_two',$id_two)->first();
+        $relation->is_favorite = 1;
+        $relation->save();
+    }
+    elseif(!RelationTeman::where('id_mahasiswa_one', $id_one)->where('id_mahasiswa_two',$id_two)
+    ->where('is_favorite', 1)->Get()->isEmpty()){
+        $relation = RelationTeman::where('id_mahasiswa_one', $id_one)->where('id_mahasiswa_two',$id_two)->first();
+        $relation->is_favorite = 0;
+        $relation->save();
+    }
+    elseif(!RelationTeman::where('id_mahasiswa_one', $id_one)->where('id_mahasiswa_two',$id_two)
+    ->where('is_favorite', 0)->where('status', 0)->Get()->isEmpty()){
+        RelationTeman::where('id_mahasiswa_one', $id_one)->where('id_mahasiswa_two',$id_two)->delete();
+    }
+    else{
+        $relation = new RelationTeman();
+        $relation->id_mahasiswa_one = $id_one;
+        $relation->id_mahasiswa_two = $id_two;
+        $relation->is_favorite = 1;
+        $relation->save();
+    }
+    return RelationTeman::where('id_mahasiswa_one', $id_one)->where('id_mahasiswa_two',$id_two)
+    ->where('is_favorite', 1)->Get();
+    }
 }
