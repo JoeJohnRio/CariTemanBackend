@@ -4,25 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Controllers;
 use Illuminate\Http\request;
-use App\Fakultas;
+use App\RelationTeman;
+use App\Mahasiswa;
 
 class RelationTemanController extends Controller{
 
     
-public function index(){
-    return 
+public function index($id){
+    return RelationTeman::where('id_mahasiswa_one', $id)->where('status', 1)->Get();
 }
 
-public function showProgramStudiById($id){
-    return ProgramStudi::find($id);
+public function showFavoriteFriend($id){
+    return RelationTeman::where('id_mahasiswa_one', $id)->where('status', 1)->where('is_favorite',1)->Get();
 }
 
-public function showKeminatanById($id){
-    return Keminatan::find($id);
+public function makeFavoriteFriend($id){
+    
 }
-
-
-
-
-
 }

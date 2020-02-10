@@ -32,6 +32,11 @@ Route::get('mahasiswa', 'MahasiswaController@mahasiswa');
 Route::get('mahasiswaall', 'MahasiswaController@mahasiswaAuth')->middleware('jwt.verify');
 Route::get('user', 'AuthController@getUserenticatedUser')->middleware('jwt.verify');
 
+//Relationship Controller
+Route::get('relationteman/{id}', 'RelationTemanController@index');
+Route::get('relationteman/favorite/{id}', 'RelationTemanController@showFavoriteFriend');
+
+
 //Fakultas Controller
 Route::get('fakultas', 'FakultasController@index');
 Route::get('fakultas/programstudi/{id}', 'FakultasController@showProgramStudiById');
