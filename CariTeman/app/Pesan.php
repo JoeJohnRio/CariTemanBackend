@@ -1,0 +1,13 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Pesan extends Model
+{
+    protected $table = 'pesan';
+
+    protected $fillable = ['isi_pesan', 'waktu_terkirim', 'id_penerima_kelompok', 'id_mahasiswa_pengirim',
+    'id_mahasiswa_penerima'];
+}
