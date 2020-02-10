@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Mahasiswa;
+use App\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -12,10 +12,11 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
+
     public function __construct(){
-        config()->set( 'auth.defaults.guard', 'mahasiswa');
+        config()->set( 'auth.defaults.guard', 'admin');
     }
-    
+
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -34,29 +35,17 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:mahasiswa',
-            'nim' => 'required|string|max:15|unique:mahasiswa',
+            'email' => 'required|string|email|max:255|unique:admin',
             'password' => 'required|string|min:6|confirmed',
-            'foto_ktm' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'foto_profil' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'preferensi' => 'required|integer',
-            'tahun_mulai' => 'required|integer'
         ]);
 
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        $user = Mahasiswa::create([
-            'name' => $request->get('name'),
+        $user = Admin::create([
             'email' => $request->get('email'),
-            'nim' => $request->get('nim'),
             'password' => Hash::make($request->get('password')),
-            'foto_ktm' => $request->file('foto_ktm'),
-            // 'foto_ktm' => 'SSSSS',
-            'preferensi' => $request->get('preferensi'),
-            'tahun_mulai' => $request->get('tahun_mulai')
         ]);
 
         $token = JWTAuth::fromUser($user);
@@ -88,8 +77,8 @@ class AuthController extends Controller
 
         return response()->json(compact('user'));
     }
+
     public function test()
-    
     {
         return response()->json(auth()->user());
     }

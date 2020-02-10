@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -36,15 +36,25 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+        // 'web' => [
+        //     'driver' => 'session',
+        //     'provider' => 'users',
+        // ],
 
         'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
+            'driver' => 'jwt',
+            'provider' => 'mahasiswa',
             'hash' => false,
+        ],
+
+        'mahasiswa' => [
+            'driver' => 'jwt',
+            'provider' => 'mahasiswa',
+        ],
+
+        'admin' => [
+            'driver' => 'jwt',
+            'provider' => 'admin',
         ],
     ],
 
@@ -66,9 +76,13 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'mahasiswa' => [
             'driver' => 'eloquent',
             'model' => App\Mahasiswa::class,
+        ],
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
         ],
 
         // 'users' => [

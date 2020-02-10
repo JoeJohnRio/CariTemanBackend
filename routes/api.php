@@ -27,13 +27,15 @@ Route::get('mahasiswa/{id}', 'MahasiswaController@mahasiswaKe');
 Route::post('register', 'AuthController@register');
 Route::post('login', 'AuthController@login');
 Route::get('mahasiswa', 'MahasiswaController@mahasiswa');
+Route::get('test', 'AuthController@test');
+
 
 //Mahasiswa Controller
 Route::get('mahasiswaall', 'MahasiswaController@mahasiswaAuth')->middleware('jwt.verify');
 Route::get('user', 'AuthController@getUserenticatedUser')->middleware('jwt.verify');
 
 //Relationship Controller
-Route::get('relationteman/{id}', 'RelationTemanController@showFavorite');
+Route::get('relationteman/{id}', 'RelationTemanController@showFavorite')->middleware('jwt.verify');
 Route::get('relationteman/favorite/{id}', 'RelationTemanController@showFavoriteFriend');
 Route::put('relationteman/favorite/{id_one}/make/{id_two}', 'RelationTemanController@toogleFavoriteFriend');
 Route::post('relationteman/friend/{id_one}/add/{id_two}', 'RelationTemanController@addFriend');
@@ -42,3 +44,8 @@ Route::post('relationteman/friend/{id_one}/add/{id_two}', 'RelationTemanControll
 Route::get('fakultas', 'FakultasController@index');
 Route::get('fakultas/programstudi/{id}', 'FakultasController@showProgramStudiById');
 Route::get('fakultas/programstudi/keminatan/{id}', 'FakultasController@showKeminatanById');
+
+
+Route::post('admin/login', 'Admin\AuthController@login');
+Route::post('admin/register', 'Admin\AuthController@register');
+Route::get('admin/test', 'Admin\AuthController@test');
