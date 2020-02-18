@@ -11,4 +11,14 @@ class Keminatan extends Model
     protected $fillable = [
         'name', 'id_program_studi'
     ];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

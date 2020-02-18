@@ -11,4 +11,14 @@ class ProgramStudi extends Model
     protected $fillable = [
         'name', 'id_fakultas'
     ];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

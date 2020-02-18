@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class relationTemanSeeder extends Seeder
+class RelationTemanTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -34,5 +34,5 @@ class relationTemanSeeder extends Seeder
                 ]            
                 ]);
     }
-}
+    }
 }

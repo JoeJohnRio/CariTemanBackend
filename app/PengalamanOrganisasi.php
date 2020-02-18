@@ -10,4 +10,14 @@ class PengalamanOrganisasi extends Model
 
     protected $fillable = ['nama_organisasi', 'deskripsi', 
     'tanggal_mulai', 'tanggal_selesai', 'id_mahasiswa', 'id_jabatan'];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

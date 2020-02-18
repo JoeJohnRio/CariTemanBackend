@@ -11,4 +11,14 @@ class Jabatan extends Model
     protected $fillable = [
         'nama_jabatan'
     ];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

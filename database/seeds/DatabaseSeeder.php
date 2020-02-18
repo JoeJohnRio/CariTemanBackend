@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FakultasSeeder::class);
         $this->call(ProgramStudiSeeder::class);
         $this->call(KeminatanSeeder::class);
-        $this->call(relationTemanSeeder::class);
+        $this->call(RelationTemanTableSeeder::class);
+        $this->call(HistoryLihatProfilSeeder::class);
     }
 }

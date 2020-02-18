@@ -12,10 +12,10 @@ class RelationTemanController extends Controller
 
     public function __construct(){
         config()->set('auth.defaults.guard', 'mahasiswa');
-        // $this->middleware('jwt.verify');
+        $this->middleware('jwt.verify');
     }
 
-    public function showFavorite($id)
+    public function showFriend($id)
     {
         return RelationTeman::where('id_mahasiswa_one', $id)->where('status', 1)->get();
     }

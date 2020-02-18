@@ -11,4 +11,14 @@ class Fakultas extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }
