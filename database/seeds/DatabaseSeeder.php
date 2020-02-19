@@ -1,5 +1,6 @@
 <?php
 
+use App\RelationBidangKerja;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,5 +18,12 @@ class DatabaseSeeder extends Seeder
         $this->call(KeminatanSeeder::class);
         $this->call(RelationTemanTableSeeder::class);
         $this->call(HistoryLihatProfilSeeder::class);
+        $this->call(BidangKerjaSeeder::class);
+        $this->call(LokasiPklSeeder::class);
+        $this->call(TempatPklSeeder::class);
+        $this->call(HistoryLihatTempatPklSeeder::class);
+        $this->call(PengalamanLombaSeeder::class);
+        $this->call(PengalamanOrganisasiSeeder::class);
+        $this->call(RelationBidangKerjaSeeder::class);
     }
 }

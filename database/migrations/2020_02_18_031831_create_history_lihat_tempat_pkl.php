@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePengalamanLombaTable extends Migration
+class CreateHistoryLihatTempatPkl extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreatePengalamanLombaTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengalaman_lomba', function (Blueprint $table) {
+        Schema::create('history_lihat_tempat_pkl', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama_kompetisi');
-            $table->string('deskripsi');
             $table->unsignedBigInteger('id_mahasiswa');
             $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa');
-            $table->date('tanggal');
+            $table->unsignedBigInteger('id_tempat_pkl');
+            $table->foreign('id_tempat_pkl')->references('id')->on('tempat_pkl');
             $table->timestamps();
         });
     }
@@ -31,6 +30,8 @@ class CreatePengalamanLombaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengalaman_lomba');
+        Schema::table('history_lihat_tempat_pkl', function (Blueprint $table) {
+            //
+        });
     }
 }

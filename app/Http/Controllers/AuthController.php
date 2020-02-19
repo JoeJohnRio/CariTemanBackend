@@ -12,10 +12,6 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
-    public function __construct(){
-        config()->set( 'auth.defaults.guard', 'mahasiswa');
-    }
-    
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');

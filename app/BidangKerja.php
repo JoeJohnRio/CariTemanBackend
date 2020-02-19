@@ -1,16 +1,16 @@
 <?php
 
 namespace App;
-
-use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Kelompok extends Model
+use Illuminate\Database\Eloquent\Model;
+
+class BidangKerja extends Model
 {
-    protected $table = 'kelompok';
+    protected $table = 'bidang_kerja';
 
     protected $fillable = [
-        'jumlah_kelompok', 'tipe_kelompok', 'nama_kelompok'
+        'nama_bidang_kerja'
     ];
 
     public function getJWTIdentifier()

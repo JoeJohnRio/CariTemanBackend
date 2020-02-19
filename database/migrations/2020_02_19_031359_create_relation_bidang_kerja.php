@@ -4,22 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTempatPkl extends Migration
+class CreateRelationBidangKerja extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('tempat_pkl', function (Blueprint $table) {
+    public function up(){
+        Schema::create('relation_bidang_kerja', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama_perusahaan');
-            $table->unsignedBigInteger('id_lokasi_pkl');
-            $table->foreign('id_lokasi_pkl')->references('id')->on('lokasi_pkl');
+            $table->unsignedBigInteger('id_mahasiswa')->nullable();
+            $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa');
             $table->unsignedBigInteger('id_bidang_kerja');
             $table->foreign('id_bidang_kerja')->references('id')->on('bidang_kerja');
+            $table->unsignedBigInteger('id_tempat_pkl')->nullable();
+            $table->foreign('id_tempat_pkl')->references('id')->on('tempat_pkl');
             $table->timestamps();
         });
     }
@@ -31,6 +31,7 @@ class CreateTempatPkl extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tempat_pkl');
+        Schema::table('relation_bidang_kerja', function (Blueprint $table) {
+        });
     }
 }

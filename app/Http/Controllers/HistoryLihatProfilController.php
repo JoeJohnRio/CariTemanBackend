@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\HistoryLihatProfil;
 use App\Mahasiswa;
+use App\TempatPkl;
 use Illuminate\Database\Eloquent\Concerns\HasRelationships;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
@@ -22,7 +23,7 @@ class HistoryLihatProfilController extends Controller
         $history = HistoryLihatProfil::with('mahasiswa_two_lomba')->where('id_mahasiswa_one', auth()->user()->id)->
         orderBy('created_at','desc')->get()->where('mahasiswa_two_lomba', '!=', NULL);
 
-        return $this->paginate($history, $perPage = 5, $page = null, $options = []);
+        return $this->paginate($history, $perPage = 10, $page = null, $options = []);
     }
     
     public function showHistoryLihatProfilDashboardLomba(){
@@ -36,7 +37,7 @@ class HistoryLihatProfilController extends Controller
         $history = HistoryLihatProfil::with('mahasiswa_two_pkl')->where('id_mahasiswa_one', auth()->user()->id)->
         orderBy('created_at','desc')->get()->where('mahasiswa_two_pkl', '!=', NULL);
 
-        return $this->paginate($history, $perPage = 5, $page = null, $options = []);
+        return $this->paginate($history, $perPage = 10, $page = null, $options = []);
     }
     
     public function showHistoryLihatProfilDashboardPkl()

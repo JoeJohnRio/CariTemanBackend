@@ -3,18 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class TempatPkl extends Model
+class RelationBidangKerja extends Model
 {
-    protected $table = 'tempat_pkl';
+    protected $table = 'relation_bidang_kerja';
 
-    protected $fillable = ['nama_perusahaan', 'id_bidang_kerja', 'id_lokasi_pkl'];
-    
-    public function lokasi_pkl(){
-        return $this->belongsTo('App\LokasiPkl', 'id_lokasi_pkl');
-    }
-    
+    protected $fillable = ['id_mahasiswa', 'id_bidang_kerja', 'id_tempat_pkl'];
+
     public function bidang_kerja(){
         return $this->belongsTo('App\BidangKerja', 'id_bidang_kerja');
     }

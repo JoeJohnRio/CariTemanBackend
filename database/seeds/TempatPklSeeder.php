@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class TempatPklSeeder extends Seeder
 {
@@ -13,9 +14,9 @@ class TempatPklSeeder extends Seeder
     {
         for($i = 1; $i <= 50; $i++){
     		DB::table('tempat_pkl')->insert([
-    			'nama_perusahaan' => $faker->name,
-    			'bidang_kerja' => $faker->unique()->safeEmail,
-    			'nama_kota' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', //secret
+    			'nama_perusahaan' => "Tempat Pkl $i",
+    			'id_lokasi_pkl' => mt_rand(1,50),
+    			'id_bidang_kerja' => mt_rand(1,50), //secret
     		]);
     	}
     }

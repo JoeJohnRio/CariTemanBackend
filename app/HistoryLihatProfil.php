@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class HistoryLihatProfil extends Model
 {
@@ -15,6 +16,9 @@ class HistoryLihatProfil extends Model
     }
     public function mahasiswa_two_lomba(){
         return $this->belongsTo('App\Mahasiswa', 'id_mahasiswa_two')->where('preferensi', 1);
+    }
+    public function tempat_pkl(){
+        return $this->belongsTo('App\TempatPkl', 'tempat_pkl');
     }
 
     public function getJWTIdentifier()

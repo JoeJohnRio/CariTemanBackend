@@ -51,6 +51,24 @@ Route::get('history/lihatprofil/dashboard/pkl/', 'HistoryLihatProfilController@s
 Route::get('history/lihatprofil/dashboard/lomba/', 'HistoryLihatProfilController@showHistoryLihatProfilDashboardLomba');
 Route::get('history/lihatprofil/save/{id}', 'HistoryLihatProfilController@saveHistoryLihatProfil');
 
+//HistoryLihatTempatPklController
+Route::get('history/lihattempatpkl/dashboard', 'HistoryLihatTempatPklController@showHistoryLihatDashboardTempatPkl');
+Route::get('history/lihattempatpkl/', 'HistoryLihatTempatPklController@showHistoryLihatTempatPkl');
+Route::get('history/lihattempatpkl/save/{id}', 'HistoryLihatTempatPklController@saveHistoryLihatProfil');
+
+//TempatPkl
+Route::get('tempatpkl/bidangkerja', 'TempatPklController@getBidangKerja');
+Route::get('tempatpkl/lokasipkl', 'TempatPklController@getLokasiPkl');
+Route::get('tempatpkl/', 'TempatPklController@getTempatPkl');
+
+//Pengalaman
+Route::get('pengalaman/lomba', 'PengalamanController@getPengalamanLomba');
+Route::post('pengalaman/lomba/', 'PengalamanController@savePengalamanLomba');
+Route::put('pengalaman/lomba/{id}', 'PengalamanController@modifyPengalamanLomba');
+Route::get('pengalaman/organisasi', 'PengalamanController@getPengalamanOrganisasi');
+Route::post('pengalaman/organisasi', 'PengalamanController@savePengalamanOrganisasi');
+Route::put('pengalaman/organisasi/{id}', 'PengalamanController@modifyPengalamanOrganisasi');
+
 
 Route::post('admin/login', 'Admin\AuthController@login');
 Route::post('admin/register', 'Admin\AuthController@register');
