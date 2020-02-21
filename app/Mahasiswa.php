@@ -15,7 +15,7 @@ class Mahasiswa extends Authenticatable implements JWTSubject
 
     protected $fillable = [
         'is_verified', 'password', 'name', 'email', 'foto_ktm', 'foto_profil', 'nim', 'tahun_mulai', 'preferensi', 
-    'id_fakultas', 'id_program_studi', 'id_keminatan'
+    'id_fakultas', 'id_program_studi', 'id_keminatan', 'jenis_kelamin'
     ];
 
     protected $hidden = [

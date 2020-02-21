@@ -20,7 +20,11 @@ class MahasiswaSeeder extends Seeder
     			'email' => 'joel@joel.joel',
     			'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', //secret
     			'foto_ktm' => 'https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg',
-    			'preferensi' => 0,
+				'preferensi' => 0,
+				'id_fakultas' => 1,
+				'id_program_studi' => 1,
+				'id_keminatan' => 1,
+				'jenis_kelamin' => 0,
     			'tahun_mulai' => 2017,
     			'nim' => 165150201111157,
 			]]);
@@ -31,6 +35,10 @@ class MahasiswaSeeder extends Seeder
     			'email' => $faker->unique()->safeEmail,
     			'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', //secret
     			'foto_ktm' => 'https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg',
+				'jenis_kelamin' => $faker->numberBetween(0,1),
+				'id_fakultas' => $faker->numberBetween(1,5),
+				'id_program_studi' => $faker->numberBetween(1,11),
+				'id_keminatan' => $faker->numberBetween(1,12),
 				'preferensi' => $faker->numberBetween(0,1),
     			'tahun_mulai' => $faker->numberBetween(2016,2020),
     			'nim' => $faker->numberBetween(165150201111000, 165150201111200),

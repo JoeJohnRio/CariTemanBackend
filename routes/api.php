@@ -17,7 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('mahasiswa', 'MahasiswaController@index');
+//MahasiswaStarterPack
+Route::get('mahasiswa', 'MahasiswaController@index');
 // Route::post('mahasiswa','MahasiswaController@create');
 // Route::put('mahasiswa/{id}','MahasiswaController@update');
 Route::delete('mahasiswa/{id}','MahasiswaController@delete');
@@ -26,7 +27,7 @@ Route::get('mahasiswa/{id}', 'MahasiswaController@mahasiswaKe');
 //Auth Controller
 Route::post('register', 'AuthController@register');
 Route::post('login', 'AuthController@login');
-Route::get('mahasiswa', 'MahasiswaController@mahasiswa');
+// Route::get('mahasiswa', 'MahasiswaController@mahasiswa');
 Route::get('test', 'AuthController@test');
 
 //Mahasiswa Controller
@@ -68,6 +69,9 @@ Route::put('pengalaman/lomba/{id}', 'PengalamanController@modifyPengalamanLomba'
 Route::get('pengalaman/organisasi', 'PengalamanController@getPengalamanOrganisasi');
 Route::post('pengalaman/organisasi', 'PengalamanController@savePengalamanOrganisasi');
 Route::put('pengalaman/organisasi/{id}', 'PengalamanController@modifyPengalamanOrganisasi');
+
+//Search
+Route::post('search/mahasiswa/pkl', 'SearchController@searchMahasiswa');
 
 
 Route::post('admin/login', 'Admin\AuthController@login');

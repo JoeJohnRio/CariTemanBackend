@@ -29,11 +29,11 @@ class MahasiswaController extends Controller
         return "Data berhasil masuk";
     }
 
-    public function mahasiswa()
-    {
-        $data = "Data All Book";
-        return response()->json($data, 200);
-    }
+    // public function mahasiswa()
+    // {
+    //     $data = "Data All Book";
+    //     return response()->json($data, 200);
+    // }
 
     public function mahasiswaAuth()
     {

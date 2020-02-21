@@ -50,7 +50,7 @@ class AuthController extends Controller
             'nim' => $request->get('nim'),
             'password' => Hash::make($request->get('password')),
             'foto_ktm' => $request->file('foto_ktm'),
-            // 'foto_ktm' => 'SSSSS',
+            'jenis_kelamin' => $request->get('jenis_kelamin'),
             'preferensi' => $request->get('preferensi'),
             'tahun_mulai' => $request->get('tahun_mulai')
         ]);
