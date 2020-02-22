@@ -19,6 +19,7 @@ class CreateRelationKelompok extends Migration
             $table->foreign('id_kelompok')->references('id')->on('kelompok');
             $table->unsignedBigInteger('id_mahasiswa');
             $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

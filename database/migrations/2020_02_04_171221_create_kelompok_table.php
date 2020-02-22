@@ -16,8 +16,9 @@ class CreateKelompokTable extends Migration
         Schema::create('kelompok', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_kelompok');
-            $table->integer('jumlah_kelompok');
+            $table->integer('jumlah_anggota');
             $table->integer('tipe_kelompok');
+            $table->string('foto_kelompok');
             $table->timestamps();
         });
     }

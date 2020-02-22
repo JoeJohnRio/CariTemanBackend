@@ -73,6 +73,15 @@ Route::put('pengalaman/organisasi/{id}', 'PengalamanController@modifyPengalamanO
 //Search
 Route::post('search/mahasiswa/pkl', 'SearchController@searchMahasiswa');
 
+//Kelompok
+Route::get('kelompok/show', 'KelompokController@showKelompok');
+Route::post('kelompok/invite', 'KelompokController@inviteAnggota');
+Route::post('kelompok/make', 'KelompokController@makeKelompok');
+Route::post('kelompok/pending', 'KelompokController@showPendingMember');
+Route::post('kelompok/confirm', 'KelompokController@confirmAnggotaKelompok');
+Route::post('kelompok/delete', 'KelompokController@deleteAnggota');
+Route::post('kelompok/updateinfo', 'KelompokController@updateKelompokInfo');
+
 
 Route::post('admin/login', 'Admin\AuthController@login');
 Route::post('admin/register', 'Admin\AuthController@register');
