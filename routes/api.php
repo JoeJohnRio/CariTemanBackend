@@ -82,6 +82,9 @@ Route::post('kelompok/confirm', 'KelompokController@confirmAnggotaKelompok');
 Route::post('kelompok/delete', 'KelompokController@deleteAnggota');
 Route::post('kelompok/updateinfo', 'KelompokController@updateKelompokInfo');
 
+//Chat
+Route::post('chat/', 'ChatController@store')->name('chat.store');;
+Route::post('chat/join', 'ChatController@join')->name('chat.join');;
 
 Route::post('admin/login', 'Admin\AuthController@login');
 Route::post('admin/register', 'Admin\AuthController@register');

@@ -30,4 +30,14 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'firebase' => [
+        'api_key' => 'AIzaSyAmH9jx7FtcVu0VqBaL2lhsXp4AoSA',
+        'auth_domain' => 'androidproject-e7879.firebaseapp.com',
+        'database_url' => 'https://androidproject-e7879.firebaseio.com',
+        'secret' => 'M68F9gzoz3I8yO6swYZ7jEHtzBeKqPftykRsxp9Y',
+        'storage_bucket' => 'androidproject-e7879.appspot.com',
+        'project_id' => 'androidproject-e7879',
+        'messaging_sender_id' => '750203652235'
+    ]
+
 ];
