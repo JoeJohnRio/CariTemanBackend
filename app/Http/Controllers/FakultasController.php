@@ -24,11 +24,11 @@ class FakultasController extends Controller
 
     public function showProgramStudiById($id)
     {
-        return ProgramStudi::where('id_fakultas', $id);
+        return ProgramStudi::where('id_fakultas', $id)->get();
     }
 
     public function showKeminatanById($id)
     {
-        return Keminatan::where('id_program_studi', $id);;
+        return Keminatan::where('id_program_studi', $id)->get();;
     }
 }
