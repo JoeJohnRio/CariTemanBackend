@@ -11,12 +11,6 @@ use App\Keminatan;
 
 class FakultasController extends Controller
 {
-    public function __construct()
-    {
-        config()->set('auth.defaults.guard', 'mahasiswa');
-        $this->middleware('jwt.verify');
-    }
-
     public function index()
     {
         return Fakultas::all();
