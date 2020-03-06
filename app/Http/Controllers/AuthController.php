@@ -12,6 +12,16 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
+    public function cekAkun(request $request){
+        if(Mahasiswa::Where('email', '=', $request->email)->first()!=null){
+            return "Akun sudah terdaftar";
+        }else if(Mahasiswa::Where('nim', '=', $request->nim)->first()!=null){
+            return "Akun sudah terdaftar";
+        }else{
+            return "Akun belum terdaftar";
+        }
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');

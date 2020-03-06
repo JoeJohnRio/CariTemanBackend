@@ -27,6 +27,7 @@ Route::get('mahasiswa/{id}', 'MahasiswaController@mahasiswaKe');
 //Auth Controller
 Route::post('register', 'AuthController@register');
 Route::post('login', 'AuthController@login');
+Route::post('cekakun', 'AuthController@cekAkun');
 // Route::get('mahasiswa', 'MahasiswaController@mahasiswa');
 Route::get('test', 'AuthController@test');
 

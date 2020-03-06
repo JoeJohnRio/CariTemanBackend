@@ -23,6 +23,6 @@ class FakultasController extends Controller
 
     public function showKeminatanById($id)
     {
-        return Keminatan::where('id_program_studi', $id)->get();;
+        return Keminatan::where('id_program_studi', $id)->get();
     }
 }
