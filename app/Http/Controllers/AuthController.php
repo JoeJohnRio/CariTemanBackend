@@ -34,6 +34,10 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:mahasiswa',
             'nim' => 'required|string|max:15|unique:mahasiswa',
             'password' => 'required|string|min:6|confirmed',
+            'jenis_kelamin' => 'required|boolean',
+            'id_fakultas' => 'required|integer',
+            'id_program_studi' => 'required|integer',
+            'id_keminatan' => 'integer',
             'foto_ktm' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'foto_profil' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'preferensi' => 'required|integer',
@@ -52,6 +56,9 @@ class AuthController extends Controller
             'foto_ktm' => $request->file('foto_ktm'),
             'jenis_kelamin' => $request->get('jenis_kelamin'),
             'preferensi' => $request->get('preferensi'),
+            'id_fakultas' => $request->get('id_fakultas'),
+            'id_program_studi' => $request->get('id_program_studi'),
+            'id_keminatan' => $request->get('id_keminatan'),
             'tahun_mulai' => $request->get('tahun_mulai')
         ]);
 

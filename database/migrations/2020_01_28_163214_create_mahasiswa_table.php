@@ -29,7 +29,7 @@ class CreateMahasiswaTable extends Migration
             $table->foreign('id_fakultas')->references('id')->on('fakultas');
             $table->unsignedBigInteger('id_program_studi');
             $table->foreign('id_program_studi')->references('id')->on('program_studi');
-            $table->unsignedBigInteger('id_keminatan');
+            $table->unsignedBigInteger('id_keminatan')->nullable()->unsigned();
             $table->foreign('id_keminatan')->references('id')->on('keminatan');
             $table->timestamps();
         });
