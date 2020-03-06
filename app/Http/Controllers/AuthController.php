@@ -48,7 +48,7 @@ class AuthController extends Controller
             'id_fakultas' => 'required|integer',
             'id_program_studi' => 'required|integer',
             'id_keminatan' => 'integer',
-            'foto_ktm' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto_ktm' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'foto_profil' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'preferensi' => 'required|integer',
             'tahun_mulai' => 'required|integer'
