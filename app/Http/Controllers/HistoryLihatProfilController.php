@@ -21,21 +21,21 @@ class HistoryLihatProfilController extends Controller
 
     public function showHistoryLihatProfilLomba(){
         $history = HistoryLihatProfil::with('mahasiswa_two_lomba')->where('id_mahasiswa_one', auth()->user()->id)->
-        orderBy('created_at','desc')->get()->where('mahasiswa_two_lomba', '!=', NULL);
+        orderBy('created_at','desc')->get();
 
         return $this->paginate($history, $perPage = 10, $page = null, $options = []);
     }
     
     public function showHistoryLihatProfilDashboardLomba(){
         $history = HistoryLihatProfil::with('mahasiswa_two_lomba')->where('id_mahasiswa_one', auth()->user()->id)->
-        orderBy('created_at','desc')->get()->where('mahasiswa_two_lomba', '!=', NULL)->take(5);
+        orderBy('created_at','desc')->get();
 
         return $history;
     }
 
     public function showHistoryLihatProfilPkl(){
         $history = HistoryLihatProfil::with('mahasiswa_two_pkl')->where('id_mahasiswa_one', auth()->user()->id)->
-        orderBy('created_at','desc')->get()->where('mahasiswa_two_pkl', '!=', NULL);
+        orderBy('created_at','desc')->get();
 
         return $this->paginate($history, $perPage = 10, $page = null, $options = []);
     }
@@ -43,7 +43,7 @@ class HistoryLihatProfilController extends Controller
     public function showHistoryLihatProfilDashboardPkl()
     {
         $history = HistoryLihatProfil::with('mahasiswa_two_pkl')->where('id_mahasiswa_one', auth()->user()->id)->
-        orderBy('created_at','desc')->get()->where('mahasiswa_two_pkl', '!=', NULL)->take(5);
+        orderBy('created_at','desc')->get();
 
         return $history;
     }
