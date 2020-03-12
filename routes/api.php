@@ -74,6 +74,12 @@ Route::put('pengalaman/organisasi/{id}', 'PengalamanController@modifyPengalamanO
 //Search
 Route::post('search/mahasiswa/pkl', 'SearchController@searchMahasiswa');
 
+//Rekomendasi
+Route::get('rekomendasi/show', 'RekomendasiController@showRekomendasiMahasiswa');
+Route::post('rekomendasi/sethidden', 'RekomendasiController@setRekomendasiHiddenTrue');
+Route::post('rekomendasi/save', 'RekomendasiController@saveRekomendasiMahasiswa');
+Route::get('rekomendasi/count', 'RekomendasiController@countBanyakRekomendasi');
+
 //Kelompok
 Route::get('kelompok/show', 'KelompokController@showKelompok');
 Route::post('kelompok/invite', 'KelompokController@inviteAnggota');

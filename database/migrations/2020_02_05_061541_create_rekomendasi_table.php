@@ -17,6 +17,7 @@ class CreateRekomendasiTable extends Migration
             $table->bigIncrements('id');
             $table->integer('jumlah_rating');
             $table->string('deskripsi');
+            $table->boolean('is_hidden');
             $table->unsignedBigInteger('id_pengirim');
             $table->foreign('id_pengirim')->references('id')->on('mahasiswa');
             $table->unsignedBigInteger('id_penerima');

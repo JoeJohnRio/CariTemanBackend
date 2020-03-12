@@ -9,7 +9,11 @@ class Rekomendasi extends Model
 {
     protected $table = 'rekomendasi';
 
-    protected $fillable = ['jumlah_rating', 'deskripsi', 'id_pengirim', 'id_penerima'];
+    protected $fillable = ['jumlah_rating', 'deskripsi', 'is_hidden', 'id_pengirim', 'id_penerima'];
+
+    public function data_pengirim(){
+        return $this->belongsTo('App\Mahasiswa', 'id_pengirim')->where('preferensi', 0);
+    }
 
     public function getJWTIdentifier()
     {
