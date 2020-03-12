@@ -30,4 +30,14 @@ class Mahasiswa extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims(){
         return [];
     }
+    
+    public function pengalaman_lomba()
+    {
+        return $this->hasMany('App\PengalamanLomba', 'id_mahasiswa');
+    }
+
+    public function pengalaman_organisasi()
+    {
+        return $this->hasMany('App\PengalamanOrganisasi', 'id_mahasiswa');
+    }
 }

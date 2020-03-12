@@ -17,6 +17,7 @@ class CreatePengalamanOrganisasi extends Migration
             $table->bigIncrements('id');
             $table->string('nama_organisasi');
             $table->string('deskripsi');
+            $table->string('gambar');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->unsignedBigInteger('id_mahasiswa');

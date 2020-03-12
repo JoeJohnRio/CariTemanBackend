@@ -10,14 +10,13 @@ class PengalamanLomba extends Model
     protected $table = 'pengalaman_lomba';
 
     protected $fillable = [
-        'nama_kompetisi', 'deskripsi', 'tanggal', 'id_mahasiswa'
+        'nama_kompetisi', 'deskripsi', 'tanggal', 'id_mahasiswa', 'gambar'
     ];
 
     public function relation_bidang_kerja(){
         return $this->hasMany('App\RelationBidangKerja', 'id_mahasiswa', 'id_mahasiswa');
     }
-    // ->where('id_mahasiswa', auth()->user()->id)
-
+    
     public function getJWTIdentifier()
     {
         return $this->getKey();

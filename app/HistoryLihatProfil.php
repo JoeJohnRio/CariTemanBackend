@@ -14,9 +14,11 @@ class HistoryLihatProfil extends Model
     public function mahasiswa_two_pkl(){
         return $this->belongsTo('App\Mahasiswa', 'id_mahasiswa_two')->where('preferensi', 0);
     }
+
     public function mahasiswa_two_lomba(){
         return $this->belongsTo('App\Mahasiswa', 'id_mahasiswa_two')->where('preferensi', 1);
     }
+    
     public function tempat_pkl(){
         return $this->belongsTo('App\TempatPkl', 'tempat_pkl');
     }

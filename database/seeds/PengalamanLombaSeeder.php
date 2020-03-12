@@ -12,7 +12,6 @@ class PengalamanLombaSeeder extends Seeder
      */
     public function run()
     {
-        
         $faker = Faker::create('id_ID');
         
         $mydate = '23-01-2016';
@@ -23,6 +22,7 @@ class PengalamanLombaSeeder extends Seeder
                 'deskripsi' => "deskripsi $i",
                 'tanggal' =>  date('Y-m-d', strtotime($mydate.' + '.$i.' days')),
     			'id_mahasiswa' => $faker->numberBetween(1,25),
+    			'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg",
     		]);
     	}
     }

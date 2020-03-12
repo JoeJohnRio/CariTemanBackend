@@ -17,6 +17,7 @@ class CreatePengalamanLombaTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama_kompetisi');
             $table->string('deskripsi');
+            $table->string('gambar');
             $table->unsignedBigInteger('id_mahasiswa');
             $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa');
             $table->date('tanggal');
