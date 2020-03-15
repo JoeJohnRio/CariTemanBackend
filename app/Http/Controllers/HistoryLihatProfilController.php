@@ -38,7 +38,7 @@ class HistoryLihatProfilController extends Controller
     }
 
     public function showHistoryLihatProfilPkl(){
-        $history = HistoryLihatProfil::with('mahasiswa_two_lomba.count_pengalaman')->
+        $history = HistoryLihatProfil::with('mahasiswa_two_pkl.count_pengalaman')->
         with('mahasiswa_two_pkl.pengalaman_lomba')->
         with('mahasiswa_two_pkl.pengalaman_organisasi')->where('id_mahasiswa_one', auth()->user()->id)->
         orderBy('created_at','desc')->get();
@@ -48,7 +48,7 @@ class HistoryLihatProfilController extends Controller
     
     public function showHistoryLihatProfilDashboardPkl()
     {
-        $history = HistoryLihatProfil::with('mahasiswa_two_lomba.count_pengalaman')->
+        $history = HistoryLihatProfil::with('mahasiswa_two_pkl.count_pengalaman')->
         with('mahasiswa_two_pkl.pengalaman_lomba')->
         with('mahasiswa_two_pkl.pengalaman_organisasi')->where('id_mahasiswa_one', auth()->user()->id)->
         orderBy('created_at','desc')->get();
