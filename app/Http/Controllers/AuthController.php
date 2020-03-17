@@ -48,8 +48,8 @@ class AuthController extends Controller
             'id_fakultas' => 'required|integer',
             'id_program_studi' => 'required|integer',
             'id_keminatan' => 'integer',
-            'foto_ktm' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'foto_profil' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto_ktm' => 'required|string',
+            'foto_profil' => 'required|string',
             'preferensi' => 'required|integer',
             'tahun_mulai' => 'required|integer'
         ]);
@@ -63,7 +63,8 @@ class AuthController extends Controller
             'email' => $request->get('email'),
             'nim' => $request->get('nim'),
             'password' => Hash::make($request->get('password')),
-            'foto_ktm' => $request->file('foto_ktm'),
+            'foto_ktm' => $request->get('foto_ktm'),
+            'foto_profil' => $request->get('foto_profil'),
             'jenis_kelamin' => $request->get('jenis_kelamin'),
             'preferensi' => $request->get('preferensi'),
             'id_fakultas' => $request->get('id_fakultas'),
