@@ -20,7 +20,7 @@ class HistoryLihatProfilController extends Controller
     }
 
     public function showHistoryLihatProfilLomba(){
-        $history = HistoryLihatProfil::with('mahasiswa_two_lomba.count_pengalaman')->
+        $history = HistoryLihatProfil::with('mahasiswa_two_lomba.count_rekomendasi')->
         with('mahasiswa_two_lomba.pengalaman_lomba')->
         with('mahasiswa_two_lomba.pengalaman_organisasi')->where('id_mahasiswa_one', auth()->user()->id)->
         orderBy('created_at','desc')->paginate(10);
@@ -29,7 +29,7 @@ class HistoryLihatProfilController extends Controller
     }
     
     public function showHistoryLihatProfilDashboardLomba(){
-        $history = HistoryLihatProfil::with('mahasiswa_two_lomba.count_pengalaman')->
+        $history = HistoryLihatProfil::with('mahasiswa_two_lomba.count_rekomendasi')->
         with('mahasiswa_two_lomba.pengalaman_lomba')->
         with('mahasiswa_two_lomba.pengalaman_organisasi')->where('id_mahasiswa_one', auth()->user()->id)->
         orderBy('created_at','desc')->get();
@@ -38,9 +38,9 @@ class HistoryLihatProfilController extends Controller
     }
 
     public function showHistoryLihatProfilPkl(){
-        $history = HistoryLihatProfil::with('mahasiswa_two_pkl.count_pengalaman')->
+        $history = HistoryLihatProfil::with('mahasiswa_two_pkl.count_rekomendasi')->
         with('mahasiswa_two_pkl.pengalaman_lomba')->
-        with('mahasiswa_two_pkl.pengalaman_organisasi')->where('id_mahasiswa_one', auth()->user()->id)->
+        with('mahasiswa_two_pkl.pengalaman_organisasi.bidang_kerja')->where('id_mahasiswa_one', auth()->user()->id)->
         orderBy('created_at','desc')->get();
 
         return $this->paginate($history, $perPage = 10, $page = null, $options = []);
@@ -48,9 +48,9 @@ class HistoryLihatProfilController extends Controller
     
     public function showHistoryLihatProfilDashboardPkl()
     {
-        $history = HistoryLihatProfil::with('mahasiswa_two_pkl.count_pengalaman')->
+        $history = HistoryLihatProfil::with('mahasiswa_two_pkl.count_rekomendasi')->
         with('mahasiswa_two_pkl.pengalaman_lomba')->
-        with('mahasiswa_two_pkl.pengalaman_organisasi')->where('id_mahasiswa_one', auth()->user()->id)->
+        with('mahasiswa_two_pkl.pengalaman_organisasi.bidang_kerja')->where('id_mahasiswa_one', auth()->user()->id)->
         orderBy('created_at','desc')->get();
 
         return $history;

@@ -16,15 +16,9 @@ class RelationBidangKerjaSeeder extends Seeder
 
         for($i = 1; $i <= 25; $i++){
     		DB::table('relation_bidang_kerja')->insert([
-    			'id_mahasiswa' => $faker->numberBetween(1,2),
-    			'id_bidang_kerja' => $faker->numberBetween(1, 2),
+    			'id_mahasiswa' => $faker->numberBetween(1,50),
+    			'id_bidang_kerja' => $faker->numberBetween(1, 50),
     		]);
         }
-        for($i = 1; $i <= 25; $i++){
-    		DB::table('relation_bidang_kerja')->insert([
-    			'id_tempat_pkl' => $faker->numberBetween(1,2),
-    			'id_bidang_kerja' => $faker->numberBetween(1, 2),
-    		]);
-    	}
     }
 }

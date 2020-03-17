@@ -36,7 +36,7 @@ class Mahasiswa extends Authenticatable implements JWTSubject
         return $this->hasMany('App\PengalamanLomba', 'id_mahasiswa');
     }
     
-    public function count_pengalaman()
+    public function count_rekomendasi()
     {
         return $this->hasMany('App\Rekomendasi', 'id_penerima');
     }
