@@ -16,14 +16,14 @@ class PengalamanOrganisasiSeeder extends Seeder
         
         $mydate = '23-01-2016';
 
-        for($i = 1; $i <= 25; $i++){
+        for($i = 1; $i <= 100; $i++){
     		DB::table('pengalaman_organisasi')->insert([
     			'nama_organisasi' => "organisasi $i",
                 'deskripsi' => "deskripsi $i",
                 'tanggal_mulai' =>  date('Y-m-d', strtotime($mydate.' + '.$i.' days')),
                 'tanggal_selesai' =>  date('Y-m-d', strtotime($mydate.' + '.($i+30).' days')),
-    			'id_mahasiswa' => $faker->numberBetween(1,4),
-    			'id_bidang_kerja' => $faker->numberBetween(1,4),
+    			'id_mahasiswa' => $faker->numberBetween(1,50),
+    			'id_bidang_kerja' => $faker->numberBetween(1,50),
     			'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg"
     		]);
     	}
