@@ -1,6 +1,7 @@
 <?php
 
 use App\RelationBidangKerja;
+use App\UlasanTempatPkl;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,5 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RelationBidangKerjaSeeder::class);
         $this->call(KelompokSeeder::class);
         $this->call(RekomendasiSeeder::class);
+        $this->call(UlasanTempatPklSeeder::class);
     }
 }
