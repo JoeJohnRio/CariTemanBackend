@@ -35,9 +35,9 @@ class HistoryLihatTempatPklController extends Controller
     }
 
     public function showHistoryLihatTempatPkl(){
-        $history = HistoryLihatTempatPkl::with('tempat_pkl', 'tempat_pkl.bidang_kerja',
-         'tempat_pkl.lokasi_pkl', 'tempat_pkl.count_ulasan_tempat_pkl')->where('id_mahasiswa', auth()->user()->id)->
-        orderBy('created_at','desc')->get();
+        $history = HistoryLihatTempatPkl::with('tempat_pkl', 'tempat_pkl.relation_tempat_pkl', 
+        'tempat_pkl.bidang_kerja', 'tempat_pkl.lokasi_pkl', 'tempat_pkl.count_ulasan_tempat_pkl')->
+        where('id_mahasiswa', auth()->user()->id)->orderBy('created_at','desc')->get();
 
         return $this->paginate($history, $perPage = 10, $page = null, $options = []);
     }

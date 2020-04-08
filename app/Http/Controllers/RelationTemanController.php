@@ -17,7 +17,7 @@ class RelationTemanController extends Controller
 
     public function showFriend($id)
     {
-        return RelationTeman::where('id_mahasiswa_one', $id)->where('status', 1)->get();
+        return RelationTeman::where('id_mahasiswa_one', $id)->where('status_pertemanan', 1)->get();
     }
 
     public function addFriend($id_one, $id_two)

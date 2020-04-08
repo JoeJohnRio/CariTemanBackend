@@ -24,6 +24,11 @@ class TempatPkl extends Model
         return $this->hasMany('App\UlasanTempatPkl', 'id_tempat_pkl');
     }
 
+    public function relation_tempat_pkl()
+    {
+        return $this->hasMany('App\RelationTempatPkl', 'id_tempat_pkl');
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
