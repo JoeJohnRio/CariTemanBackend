@@ -30,10 +30,14 @@ class AuthController extends Controller
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 400);
             }
+            $mahasiswa = Mahasiswa::Where('email', $request->email)->value('is_verified'); 
+            if($mahasiswa == 0){
+                return response()->json(['error' => 'belum diverifikasi'], 400);
+            }
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-
+        
         return response()->json(compact('token'));
     }
 
@@ -70,7 +74,8 @@ class AuthController extends Controller
             'id_fakultas' => $request->get('id_fakultas'),
             'id_program_studi' => $request->get('id_program_studi'),
             'id_keminatan' => $request->get('id_keminatan'),
-            'tahun_mulai' => $request->get('tahun_mulai')
+            'tahun_mulai' => $request->get('tahun_mulai'),
+            'is_verified' => false
         ]);
 
         $token = JWTAuth::fromUser($user);
