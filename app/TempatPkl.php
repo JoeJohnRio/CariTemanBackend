@@ -9,14 +9,14 @@ class TempatPkl extends Model
 {
     protected $table = 'tempat_pkl';
 
-    protected $fillable = ['nama_perusahaan', 'gambar', 'id_bidang_kerja', 'id_lokasi_pkl'];
+    protected $fillable = ['nama_perusahaan', 'gambar', 'id_relation_bidang_kerja', 'id_lokasi_pkl'];
     
     public function lokasi_pkl(){
         return $this->belongsTo('App\LokasiPkl', 'id_lokasi_pkl');
     }
     
-    public function bidang_kerja(){
-        return $this->belongsTo('App\BidangKerja', 'id_bidang_kerja');
+    public function relation_bidang_kerja(){
+        return $this->hasMany('App\RelationBidangKerja', 'id_tempat_pkl');
     }
 
     public function count_ulasan_tempat_pkl()

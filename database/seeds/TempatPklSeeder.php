@@ -24,7 +24,7 @@ class TempatPklSeeder extends Seeder
     			'nama_perusahaan' => "Tempat Pkl $i",
                 'id_lokasi_pkl' => mt_rand(1,50),
                 'gambar' => $gambar_url[mt_rand(0,5)],
-    			'id_bidang_kerja' => mt_rand(1,50), //secret
+    			'id_relation_bidang_kerja' => mt_rand(1,25), //secret
     		]);
     	}
     }
