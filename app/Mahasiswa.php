@@ -43,11 +43,11 @@ class Mahasiswa extends Authenticatable implements JWTSubject
 
     public function pengalaman_lomba()
     {
-        return $this->hasOne('App\PengalamanLomba', 'id_mahasiswa');
+        return $this->hasMany('App\PengalamanLomba', 'id_mahasiswa');
     }
 
     public function pengalaman_organisasi()
     {
-        return $this->hasOne('App\PengalamanOrganisasi', 'id_mahasiswa');
+        return $this->hasMany('App\PengalamanOrganisasi', 'id_mahasiswa');
     }
 }
