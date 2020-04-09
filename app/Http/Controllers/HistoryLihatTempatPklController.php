@@ -27,16 +27,16 @@ class HistoryLihatTempatPklController extends Controller
     }
 
     public function showHistoryLihatDashboardTempatPkl(){
-        $history = HistoryLihatTempatPkl::with('tempat_pkl', 'tempat_pkl.bidang_kerja',
-         'tempat_pkl.lokasi_pkl', 'tempat_pkl.count_ulasan_tempat_pkl')->where('id_mahasiswa', auth()->user()->id)->
-        orderBy('created_at','desc')->get()->take(5);
+        $history = HistoryLihatTempatPkl::with('tempat_pkl.lokasi_pkl', 
+        'tempat_pkl.relation_bidang_kerja.bidang_kerja', 'tempat_pkl.count_ulasan_tempat_pkl')->where('id_mahasiswa', auth()->user()->id)->
+        orderBy('created_at','desc')->orderBy('created_at','desc')->get()->take(5);
 
         return $history;
     }
 
     public function showHistoryLihatTempatPkl(){
-        $history = HistoryLihatTempatPkl::with('tempat_pkl', 'tempat_pkl.relation_tempat_pkl', 
-        'tempat_pkl.relation_bidang_kerja.bidang_kerja', 'tempat_pkl.lokasi_pkl', 'tempat_pkl.count_ulasan_tempat_pkl')->
+        $history = HistoryLihatTempatPkl::with('tempat_pkl.lokasi_pkl', 
+        'tempat_pkl.relation_bidang_kerja.bidang_kerja', 'tempat_pkl.relation_tempat_pkl', 'tempat_pkl.count_ulasan_tempat_pkl')->
         where('id_mahasiswa', auth()->user()->id)->orderBy('created_at','desc');
 
         return $history->paginate(20);
