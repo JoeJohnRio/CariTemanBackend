@@ -62,7 +62,6 @@ class RelationTemanController extends Controller
             $relation->is_favorite = 1;
             $relation->save();
         }
-        return RelationTeman::where('id_mahasiswa_one', $id_one)->where('id_mahasiswa_two', $id_two)
-            ->where('is_favorite', 1)->Get();
+        return RelationTeman::where('id_mahasiswa_one', $id_one)->where('id_mahasiswa_two', $id_two)->first();
     }
 }
