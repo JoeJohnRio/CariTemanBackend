@@ -35,12 +35,20 @@ class RelationTemanController extends Controller
         )->Get();
     }
 
-    public function showFavoriteFriend($id)
+    public function showFavoriteFriendPkl($id)
     {
-        return RelationTeman::with('mahasiswa.count_rekomendasi', 
-        'mahasiswa.pengalaman_lomba', 'mahasiswa.pengalaman_organisasi.bidang_kerja')->
-        where('id_mahasiswa_one', $id)->where('is_favorite', 1)->Get();
+        return RelationTeman::with('mahasiswa_two_pkl.count_rekomendasi', 
+        'mahasiswa_two_pkl.pengalaman_lomba', 'mahasiswa_two_pkl.pengalaman_organisasi.bidang_kerja')->
+        where('id_mahasiswa_one', $id)->where('is_favorite', 1)->paginate(20);
     }
+
+    public function showFavoriteFriendLomba($id)
+    {
+        return RelationTeman::with('mahasiswa_two_lomba.count_rekomendasi', 
+        'mahasiswa_two_lomba.pengalaman_lomba', 'mahasiswa_two_lomba.pengalaman_organisasi.bidang_kerja')->
+        where('id_mahasiswa_one', $id)->where('is_favorite', 1)->paginate(20);
+    }
+
 
     public function toogleFavoriteFriend($id_two)
     {
