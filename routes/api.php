@@ -37,8 +37,8 @@ Route::get('user', 'AuthController@getUserenticatedUser')->middleware('jwt.verif
 
 //RelationTeman Controller
 Route::get('relationteman/{id}', 'RelationTemanController@showFriend')->middleware('jwt.verify');
-Route::get('relationteman/favorite/pkl/{id}', 'RelationTemanController@showFavoriteFriendPkl');
-Route::get('relationteman/favorite/lomba/{id}', 'RelationTemanController@showFavoriteFriendLomba');
+Route::get('relationteman/favorite/pkl', 'RelationTemanController@showFavoriteFriendPkl');
+Route::get('relationteman/favorite/lomba', 'RelationTemanController@showFavoriteFriendLomba');
 Route::put('relationteman/favorite/toggle/{id_two}', 'RelationTemanController@toogleFavoriteFriend');
 Route::post('relationteman/friend/{id_one}/add/{id_two}', 'RelationTemanController@addFriend');
 
