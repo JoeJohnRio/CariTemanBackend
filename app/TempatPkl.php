@@ -26,7 +26,7 @@ class TempatPkl extends Model
 
     public function relation_tempat_pkl()
     {
-        return $this->hasMany('App\RelationTempatPkl', 'id_tempat_pkl');
+        return $this->hasOne('App\RelationTempatPkl', 'id_tempat_pkl');
     }
 
     public function getJWTIdentifier()

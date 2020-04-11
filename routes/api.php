@@ -35,7 +35,7 @@ Route::get('test', 'AuthController@test');
 Route::get('mahasiswaall', 'MahasiswaController@mahasiswaAuth')->middleware('jwt.verify');
 Route::get('user', 'AuthController@getUserenticatedUser')->middleware('jwt.verify');
 
-//Relationship Controller
+//RelationTeman Controller
 Route::get('relationteman/{id}', 'RelationTemanController@showFriend')->middleware('jwt.verify');
 Route::get('relationteman/favorite/{id}', 'RelationTemanController@showFavoriteFriend');
 Route::put('relationteman/favorite/toggle/{id_two}', 'RelationTemanController@toogleFavoriteFriend');
