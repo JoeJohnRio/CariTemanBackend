@@ -18,7 +18,7 @@ class RelationTempatPklController extends Controller
     public function showFavoriteTempatPkl(){
         return RelationTempatPkl::with('tempat_pkl.lokasi_pkl', 
         'tempat_pkl.relation_bidang_kerja.bidang_kerja', 'tempat_pkl.count_ulasan_tempat_pkl')->
-        where('is_favorite', 1)->get();
+        where('is_favorite', 1)->paginate(20);
     }
 
     public function toggleFavoriteTempatPkl($id_tempat_pkl)
