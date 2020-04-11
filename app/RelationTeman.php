@@ -11,6 +11,10 @@ class RelationTeman extends Model
 
     protected $fillable = ['is_favorite', 'id_mahasiswa_one', 'id_mahasiswa_two', 'status'];
 
+    public function mahasiswa(){
+        return $this->belongsTo('App\Mahasiswa', 'id_mahasiswa_one');
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

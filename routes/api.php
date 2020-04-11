@@ -41,6 +41,11 @@ Route::get('relationteman/favorite/{id}', 'RelationTemanController@showFavoriteF
 Route::put('relationteman/favorite/toggle/{id_two}', 'RelationTemanController@toogleFavoriteFriend');
 Route::post('relationteman/friend/{id_one}/add/{id_two}', 'RelationTemanController@addFriend');
 
+//RelationTempatPkl
+Route::post('relationtempatpkl/favorite/toogle/{id}', 'RelationTempatPklController@toggleFavoriteTempatPkl');
+Route::get('relationtempatpkl/favorite', 'RelationTempatPklController@showFavoriteTempatPkl');
+
+
 //Fakultas Controller
 Route::get('fakultas', 'FakultasController@index');
 Route::get('fakultas/programstudi/{id}', 'FakultasController@showProgramStudiById');

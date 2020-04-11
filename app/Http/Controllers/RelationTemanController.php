@@ -37,7 +37,9 @@ class RelationTemanController extends Controller
 
     public function showFavoriteFriend($id)
     {
-        return RelationTeman::where('id_mahasiswa_one', $id)->where('is_favorite', 1)->Get();
+        return RelationTeman::with('mahasiswa.count_rekomendasi', 
+        'mahasiswa.pengalaman_lomba', 'mahasiswa.pengalaman_organisasi.bidang_kerja')->
+        where('id_mahasiswa_one', $id)->where('is_favorite', 1)->Get();
     }
 
     public function toogleFavoriteFriend($id_two)
