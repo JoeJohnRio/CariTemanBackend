@@ -42,7 +42,7 @@ Route::put('relationteman/favorite/toggle/{id_two}', 'RelationTemanController@to
 Route::post('relationteman/friend/{id_one}/add/{id_two}', 'RelationTemanController@addFriend');
 
 //RelationTempatPkl
-Route::post('relationtempatpkl/favorite/toogle/{id}', 'RelationTempatPklController@toggleFavoriteTempatPkl');
+Route::put('relationtempatpkl/favorite/toogle/{id}', 'RelationTempatPklController@toggleFavoriteTempatPkl');
 Route::get('relationtempatpkl/favorite', 'RelationTempatPklController@showFavoriteTempatPkl');
 
 
