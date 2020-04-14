@@ -46,7 +46,7 @@ class PengalamanController extends Controller
         return response()->json(
             ['rekomendasi' => $rekomendasi,
             'pengalaman' => 
-            ['pengalaman_Lomba' => $pengalamanLomba,
+            ['pengalaman_lomba' => $pengalamanLomba,
             'pengalaman_organisasi' => $pengalamanOrganisasi]
             ]);
     }
