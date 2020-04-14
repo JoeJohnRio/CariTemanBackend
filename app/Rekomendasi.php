@@ -15,6 +15,10 @@ class Rekomendasi extends Model
         return $this->belongsTo('App\Mahasiswa', 'id_pengirim')->where('preferensi', 0);
     }
 
+    public function data_mahasiswa(){
+        return $this->belongsTo('App\Mahasiswa', 'id_pengirim');
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

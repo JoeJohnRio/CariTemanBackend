@@ -7,6 +7,7 @@ use Illuminate\Http\request;
 use App\PengalamanLomba;
 use App\PengalamanOrganisasi;
 use App\Rekomendasi;
+use App\Mahasiswa;
 
 
 class PengalamanController extends Controller
@@ -36,11 +37,16 @@ class PengalamanController extends Controller
         $pengalamanOrganisasi = PengalamanOrganisasi::with('relation_bidang_kerja.bidang_kerja')
         ->where('id_mahasiswa', $id)->orderBy('tanggal_mulai','desc')->get();
 
-        $rekomendasi = Rekomendasi::where('id_penerima', $id)->get();
+        $rekomendasi = Rekomendasi::with('data_mahasiswa')->where('id_penerima', $id)->get();
         
+        // return Mahasiswa::where('id', $rekomendasi->id_pengirim)->first();
+        
+        //nama, rating, isi rekomendasi, gambar
+
         return response()->json(
             ['rekomendasi' => $rekomendasi,
-            'pengalaman' => ['pengalaman_Lomba' => $pengalamanLomba,
+            'pengalaman' => 
+            ['pengalaman_Lomba' => $pengalamanLomba,
             'pengalaman_organisasi' => $pengalamanOrganisasi]
             ]);
     }
