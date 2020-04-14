@@ -91,7 +91,7 @@ Route::get('ulasantempatpkl/show', 'UlasanTempatPklController@showUlasanTempatPk
 Route::get('rekomendasi/show', 'RekomendasiController@showRekomendasiMahasiswa');
 Route::post('rekomendasi/sethidden', 'RekomendasiController@setRekomendasiHiddenTrue');
 Route::post('rekomendasi/save', 'RekomendasiController@saveRekomendasiMahasiswa');
-Route::get('rekomendasi/count/{id}', 'RekomendasiController@countBanyakRekomendasi');
+Route::get('rekomendasi/profil/{id}', 'RekomendasiController@profilInfoOthers');
 
 //Kelompok
 Route::get('kelompok/show', 'KelompokController@showKelompok');
