@@ -54,22 +54,33 @@ class RekomendasiController extends Controller
     }
 
     public function profilInfoOthers($id){
-        $teman = Mahasiswa::where('id', $id)->first();
+        $teman = Mahasiswa::where('id', $id);
+
+        if(is_null(RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->
+        where('id_mahasiswa_two', $id)->first())){
+            $relation = new RelationTeman();
+            $relation->id_mahasiswa_one = auth()->user()->id;
+            $relation->id_mahasiswa_two = $id;
+            $relation->is_favorite = 0;
+            $relation->status = 0;
+            $relation->save();
+        }
+
         $relasiTeman = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->
-        where('id_mahasiswa_two', $id)->first();
+        where('id_mahasiswa_two', $id);
 
         return response()->json(
             ['name' => $teman->value('name'),
             'tahun_mulai' => $teman->value('tahun_mulai'),
             'foto_profil' => $teman->value('foto_profil'),
             'status' => $relasiTeman->value('status'),
-            'is_favorite' => $relasiTeman->count('is_favorite'),
+            'is_favorite' => $relasiTeman->value('is_favorite'),
             'jumlah_teman' => RelationTeman::where('id_mahasiswa_one', $id)->count(),
             'jumlah_rekomendasi' => Rekomendasi::where('id_penerima', $id)->count(),
             'jumlah_kelompok' => RelationKelompok::where('id_mahasiswa', $id)->count(),
-            'fakultas' => Fakultas::where('id', $teman->id_fakultas)->value('name'),
-            'program_studi' => ProgramStudi::where('id', $teman->id_program_studi)->value('name'),
-            'keminatan' => Keminatan::where('id', $teman->id_keminatan)->value('name')
+            'fakultas' => Fakultas::where('id', Mahasiswa::where('id', $id)->pluck('id_fakultas'))->value('name'),
+            'program_studi' => ProgramStudi::where('id', Mahasiswa::where('id', $id)->pluck('id_program_studi'))->value('name'),
+            'keminatan' => Keminatan::where('id', Mahasiswa::where('id', $id)->pluck('id_keminatan'))->value('name')
             ]
         );
     }
