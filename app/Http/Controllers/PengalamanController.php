@@ -28,6 +28,16 @@ class PengalamanController extends Controller
         return $pengalaman;
     }
 
+    public function getPengalamanLombaDanOrganisasi($id){
+        $pengalamanLomba = PengalamanLomba::with('relation_bidang_kerja.bidang_kerja')
+        ->where('id_mahasiswa', $id)->orderBy('tanggal','desc')->get();
+        
+        $pengalamanOrganisasi = PengalamanOrganisasi::with('relation_bidang_kerja.bidang_kerja')
+        ->where('id_mahasiswa', $id)->orderBy('tanggal_mulai','desc')->get();
+
+        return $pengalamanOrganisasi->merge($pengalamanLomba);
+    }
+
     public function savePengalamanLomba(request $request){
         $pengalaman = new PengalamanLomba();
 

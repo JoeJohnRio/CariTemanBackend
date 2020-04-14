@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Rekomendasi;
+use App\RelationTeman;
+use App\RelationKelompok;
 
 class RekomendasiController extends Controller
 {
@@ -47,7 +49,11 @@ class RekomendasiController extends Controller
         $rekomendasi->save();
     }
 
-    public function countBanyakRekomendasi(){
-        return Rekomendasi::where('id_penerima', auth()->user()->id)->count();
+    public function countBanyakRekomendasi($id){
+        return response()->json(
+            ['jumlah_teman' => RelationTeman::where('id_mahasiswa_one', $id)->count(),
+            'jumlah_rekomendasi' => Rekomendasi::where('id_penerima', $id)->count(),
+            'jumlah_kelompok' => RelationKelompok::where('id_mahasiswa', $id)->count()]
+        );
     }
 }

@@ -41,16 +41,17 @@ Route::get('relationteman/favorite/pkl', 'RelationTemanController@showFavoriteFr
 Route::get('relationteman/favorite/lomba', 'RelationTemanController@showFavoriteFriendLomba');
 Route::put('relationteman/favorite/toggle/{id_two}', 'RelationTemanController@toogleFavoriteFriend');
 Route::post('relationteman/friend/{id_one}/add/{id_two}', 'RelationTemanController@addFriend');
+Route::get('relationteman/friend/{id_two}', 'RelationTemanController@getRelationTeman');
 
 //RelationTempatPkl
 Route::put('relationtempatpkl/favorite/toogle/{id}', 'RelationTempatPklController@toggleFavoriteTempatPkl');
 Route::get('relationtempatpkl/favorite', 'RelationTempatPklController@showFavoriteTempatPkl');
 
-
 //Fakultas Controller
 Route::get('fakultas', 'FakultasController@index');
 Route::get('fakultas/programstudi/{id}', 'FakultasController@showProgramStudiById');
 Route::get('fakultas/programstudi/keminatan/{id}', 'FakultasController@showKeminatanById');
+Route::get('fakultas/showall/{id}', 'FakultasController@showFakultasProdiKeminatan');
 
 //HistoryLihatProfilController
 Route::get('history/lihatprofil/lomba', 'HistoryLihatProfilController@showHistoryLihatProfilLomba');
@@ -76,6 +77,7 @@ Route::put('pengalaman/lomba/{id}', 'PengalamanController@modifyPengalamanLomba'
 Route::get('pengalaman/organisasi', 'PengalamanController@getPengalamanOrganisasi');
 Route::post('pengalaman/organisasi', 'PengalamanController@savePengalamanOrganisasi');
 Route::put('pengalaman/organisasi/{id}', 'PengalamanController@modifyPengalamanOrganisasi');
+Route::get('pengalaman/both/{id}', 'PengalamanController@getPengalamanLombaDanOrganisasi');
 
 //Search
 Route::post('search/mahasiswa/pkl', 'SearchController@searchMahasiswa');
@@ -89,7 +91,7 @@ Route::get('ulasantempatpkl/show', 'UlasanTempatPklController@showUlasanTempatPk
 Route::get('rekomendasi/show', 'RekomendasiController@showRekomendasiMahasiswa');
 Route::post('rekomendasi/sethidden', 'RekomendasiController@setRekomendasiHiddenTrue');
 Route::post('rekomendasi/save', 'RekomendasiController@saveRekomendasiMahasiswa');
-Route::get('rekomendasi/count', 'RekomendasiController@countBanyakRekomendasi');
+Route::get('rekomendasi/count/{id}', 'RekomendasiController@countBanyakRekomendasi');
 
 //Kelompok
 Route::get('kelompok/show', 'KelompokController@showKelompok');

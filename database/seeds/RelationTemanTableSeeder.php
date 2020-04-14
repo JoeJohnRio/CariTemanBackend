@@ -11,7 +11,7 @@ class RelationTemanTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 2; $i <= 50; $i++){
+        for($i = 2; $i <= 25; $i++){
     		DB::table('relation_teman')->insert([
                 'is_favorite' => mt_rand(0,1),
                 'id_mahasiswa_one' => '1',

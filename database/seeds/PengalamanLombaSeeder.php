@@ -22,7 +22,7 @@ class PengalamanLombaSeeder extends Seeder
                 'deskripsi' => "deskripsi $i",
                 'tanggal' =>  date('Y-m-d', strtotime($mydate.' + '.$i.' days')),
     			'id_mahasiswa' => $faker->numberBetween(1,50),
-    			'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg",
+                'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg",
     		]);
     	}
     }

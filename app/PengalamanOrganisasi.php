@@ -12,10 +12,10 @@ class PengalamanOrganisasi extends Model
     protected $fillable = ['nama_organisasi', 'deskripsi', 
     'tanggal_mulai', 'tanggal_selesai', 'id_mahasiswa', 'id_bidang_kerja', 'gambar'];
 
-    // public function relation_bidang_kerja()
-    // {
-    //     return $this->hasMany('App\RelationBidangKerja', 'id_mahasiswa');
-    // }
+    public function relation_bidang_kerja()
+    {
+        return $this->hasMany('App\RelationBidangKerja', 'id_mahasiswa');
+    }
 
     public function bidang_kerja(){
         return $this->belongsTo('App\BidangKerja', 'id_bidang_kerja');

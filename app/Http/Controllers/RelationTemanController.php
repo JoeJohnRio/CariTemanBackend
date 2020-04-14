@@ -49,6 +49,24 @@ class RelationTemanController extends Controller
         where('id_mahasiswa_one', auth()->user()->id)->where('is_favorite', 1)->paginate(20);
     }
 
+    public function getRelationTeman($id_two){
+        $relationMahasiswa = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->
+        where('id_mahasiswa_two', $id_two)->get();
+
+        if($relationMahasiswa->isEmpty()){
+            $relation = new RelationTeman();
+            $relation->id_mahasiswa_one = auth()->user()->id;
+            $relation->id_mahasiswa_two = $id_two;
+            $relation->is_favorite = 0;
+            $relation->status = 0;
+            $relation->save();
+            
+            return RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->
+            where('id_mahasiswa_two', $id_two)->get();
+        }
+
+        return $relationMahasiswa;
+    }
 
     public function toogleFavoriteFriend($id_two)
     {
@@ -70,6 +88,7 @@ class RelationTemanController extends Controller
             $relation->id_mahasiswa_one = auth()->user()->id;
             $relation->id_mahasiswa_two = $id_two;
             $relation->is_favorite = 1;
+            $relation->status = 0;
             $relation->save();
         }
         return RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->where('id_mahasiswa_two', $id_two)->first();
