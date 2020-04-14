@@ -7,6 +7,9 @@ use App\Rekomendasi;
 use App\RelationTeman;
 use App\RelationKelompok;
 use App\Mahasiswa;
+use App\Fakultas;
+use App\ProgramStudi;
+use App\Keminatan;
 
 class RekomendasiController extends Controller
 {
@@ -63,7 +66,11 @@ class RekomendasiController extends Controller
             'is_favorite' => $relasiTeman->count('is_favorite'),
             'jumlah_teman' => RelationTeman::where('id_mahasiswa_one', $id)->count(),
             'jumlah_rekomendasi' => Rekomendasi::where('id_penerima', $id)->count(),
-            'jumlah_kelompok' => RelationKelompok::where('id_mahasiswa', $id)->count()]
+            'jumlah_kelompok' => RelationKelompok::where('id_mahasiswa', $id)->count(),
+            'fakultas' => Fakultas::where('id', $teman->id_fakultas)->value('name'),
+            'program_studi' => ProgramStudi::where('id', $teman->id_program_studi)->value('name'),
+            'keminatan' => Keminatan::where('id', $teman->id_keminatan)->value('name')
+            ]
         );
     }
 }
