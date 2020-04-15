@@ -14,7 +14,7 @@ class PengalamanOrganisasi extends Model
 
     public function relation_bidang_kerja()
     {
-        return $this->hasMany('App\RelationBidangKerja', 'id_mahasiswa');
+        return $this->hasOne('App\RelationBidangKerja', 'id_mahasiswa');
     }
 
     public function bidang_kerja(){
