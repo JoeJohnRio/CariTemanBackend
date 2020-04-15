@@ -38,14 +38,16 @@ class RelationTemanController extends Controller
     public function showFavoriteFriendPkl()
     {
         return RelationTeman::with('mahasiswa_two_pkl.count_rekomendasi', 
-        'mahasiswa_two_pkl.pengalaman_lomba', 'mahasiswa_two_pkl.pengalaman_organisasi.bidang_kerja')->
+        'mahasiswa_two_pkl.pengalaman_lomba', 
+        'mahasiswa_two_pkl.pengalaman_organisasi.relation_bidang_kerja.bidang_kerja')->
         where('id_mahasiswa_one', auth()->user()->id)->where('is_favorite', 1)->paginate(20);
     }
 
     public function showFavoriteFriendLomba()
     {
         return RelationTeman::with('mahasiswa_two_lomba.count_rekomendasi', 
-        'mahasiswa_two_lomba.pengalaman_lomba', 'mahasiswa_two_lomba.pengalaman_organisasi.bidang_kerja')->
+        'mahasiswa_two_lomba.pengalaman_lomba', 
+        'mahasiswa_two_lomba.pengalaman_organisasi.relation_bidang_kerja.bidang_kerja')->
         where('id_mahasiswa_one', auth()->user()->id)->where('is_favorite', 1)->paginate(20);
     }
 
