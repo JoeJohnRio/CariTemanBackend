@@ -21,7 +21,8 @@ class HistoryLihatProfilController extends Controller
 
     public function showHistoryLihatProfilLomba(){
         $history = HistoryLihatProfil::with('mahasiswa_two_lomba.count_rekomendasi', 
-        'mahasiswa_two_lomba.pengalaman_lomba', 'mahasiswa_two_lomba.pengalaman_organisasi.bidang_kerja',
+        'mahasiswa_two_lomba.pengalaman_lomba', 
+        'mahasiswa_two_lomba.pengalaman_organisasi.relation_bidang_kerja.bidang_kerja',
         'mahasiswa_two_lomba.relation_teman')->where('id_mahasiswa_one', auth()->user()->id)->
         orderBy('created_at','desc')->paginate(20);
 
@@ -39,7 +40,8 @@ class HistoryLihatProfilController extends Controller
 
     public function showHistoryLihatProfilPkl(){
         $history = HistoryLihatProfil::with('mahasiswa_two_pkl.count_rekomendasi', 
-        'mahasiswa_two_pkl.pengalaman_lomba', 'mahasiswa_two_pkl.pengalaman_organisasi.bidang_kerja',
+        'mahasiswa_two_pkl.pengalaman_lomba', 
+        'mahasiswa_two_pkl.pengalaman_organisasi.relation_bidang_kerja.bidang_kerja',
         'mahasiswa_two_pkl.relation_teman')->where('id_mahasiswa_one', auth()->user()->id)->
         orderBy('created_at','desc')->paginate(20);
 
@@ -50,7 +52,8 @@ class HistoryLihatProfilController extends Controller
     {
         $history = HistoryLihatProfil::with('mahasiswa_two_pkl.count_rekomendasi')->
         with('mahasiswa_two_pkl.pengalaman_lomba')->
-        with('mahasiswa_two_pkl.pengalaman_organisasi.bidang_kerja')->where('id_mahasiswa_one', auth()->user()->id)->
+        with('mahasiswa_two_pkl.pengalaman_organisasi.relation_bidang_kerja.bidang_kerja')->
+        where('id_mahasiswa_one', auth()->user()->id)->
         orderBy('created_at','desc')->get();
 
         return $history;
