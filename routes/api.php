@@ -78,6 +78,7 @@ Route::get('pengalaman/organisasi', 'PengalamanController@getPengalamanOrganisas
 Route::post('pengalaman/organisasi', 'PengalamanController@savePengalamanOrganisasi');
 Route::put('pengalaman/organisasi/{id}', 'PengalamanController@modifyPengalamanOrganisasi');
 Route::get('pengalaman/both/{id}', 'PengalamanController@getPengalamanLombaDanOrganisasi');
+Route::post('user/edit_pass', 'FakultasController@tugas');
 
 //Search
 Route::post('search/mahasiswa/pkl', 'SearchController@searchMahasiswa');

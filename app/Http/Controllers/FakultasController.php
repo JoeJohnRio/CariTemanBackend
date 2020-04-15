@@ -36,4 +36,21 @@ class FakultasController extends Controller
             'keminatan' => Keminatan::where('id', $mahasiswa->id_keminatan)->pluck('name')]
         );
     }
+
+    public function tugas(request $request){
+        if($request->password_baru == $request->confirm_password_baru){
+            return response()->json(
+                ['status' => 200,
+                'message' => "Password berhasil diubah",
+                'data' => [
+                    'id' => $request->id,
+                    "password_lama" => $request->password_lama,
+                    "password_baru" => $request->password_baru,
+                    "confirm_password_baru" => $request->confirm_password_baru,
+                    "password" => $request->password_baru
+                ]]
+            ); 
+        }
+        return "salah";
+    }
 }
