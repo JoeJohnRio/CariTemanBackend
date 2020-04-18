@@ -51,12 +51,12 @@ class PengalamanController extends Controller
             ]);
     }
 
-    public function getPengalamanLombaDanOrganisasi($id){
+    public function getPengalamanLombaDanOrganisasi(){
         $pengalamanLomba = PengalamanLomba::with('relation_bidang_kerja.bidang_kerja')
-        ->where('id_mahasiswa', $id)->orderBy('tanggal','desc')->get();
+        ->where('id_mahasiswa', auth()->user()->id)->orderBy('tanggal','desc')->get();
         
         $pengalamanOrganisasi = PengalamanOrganisasi::with('relation_bidang_kerja.bidang_kerja')
-        ->where('id_mahasiswa', $id)->orderBy('tanggal_mulai','desc')->get();
+        ->where('id_mahasiswa', auth()->user()->id)->orderBy('tanggal_mulai','desc')->get();
 
         return response()->json(
             ['pengalaman_lomba' => $pengalamanLomba,
