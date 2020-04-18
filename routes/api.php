@@ -77,7 +77,8 @@ Route::put('pengalaman/lomba/{id}', 'PengalamanController@modifyPengalamanLomba'
 Route::get('pengalaman/organisasi', 'PengalamanController@getPengalamanOrganisasi');
 Route::post('pengalaman/organisasi', 'PengalamanController@savePengalamanOrganisasi');
 Route::put('pengalaman/organisasi/{id}', 'PengalamanController@modifyPengalamanOrganisasi');
-Route::get('pengalaman/both/{id}', 'PengalamanController@getPengalamanLombaDanOrganisasi');
+Route::get('pengalaman/bothwithrekomendasi/{id}', 'PengalamanController@getPengalamanLombaDanOrganisasiDanRekomendasi');
+Route::get('pengalaman/both', 'PengalamanController@getPengalamanLombaDanOrganisasi');
 Route::post('user/edit_pass', 'FakultasController@tugas');
 
 //Search
