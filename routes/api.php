@@ -106,6 +106,9 @@ Route::post('kelompok/confirm', 'KelompokController@confirmAnggotaKelompok');
 Route::post('kelompok/delete', 'KelompokController@deleteAnggota');
 Route::post('kelompok/updateinfo', 'KelompokController@updateKelompokInfo');
 
+//BidangKerja
+Route::get('bidangkerja/search/{namaBidangKerja}', 'BidangKerjaController@showSearchBidangKerja');
+
 //Chat
 Route::post('chat/', 'ChatController@store')->name('chat.store');;
 Route::post('chat/join', 'ChatController@join')->name('chat.join');;
