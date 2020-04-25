@@ -108,6 +108,7 @@ Route::post('kelompok/updateinfo', 'KelompokController@updateKelompokInfo');
 
 //BidangKerja
 Route::get('bidangkerja/search/{namaBidangKerja}', 'BidangKerjaController@showSearchBidangKerja');
+Route::post('bidangkerja/make/{namaBidangKerja}', 'BidangKerjaController@makeBidangKerja');
 
 //Chat
 Route::post('chat/', 'ChatController@store')->name('chat.store');;

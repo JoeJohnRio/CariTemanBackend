@@ -20,4 +20,12 @@ class BidangKerjaController extends Controller
         return BidangKerja::where('nama_bidang_kerja', $namaBidangKerja)
         ->orWhere('nama_bidang_kerja', 'like', '%' .  $namaBidangKerja . '%')->get();
     }
+
+    public function makeBidangKerja($namaBidangKerja){
+        $bidangKerjaMake = new BidangKerja();
+        $bidangKerjaMake->nama_bidang_kerja = $namaBidangKerja;
+        $bidangKerjaMake->save();
+
+        return "Bidang kerja sudah dibuat";
+    }
 }
