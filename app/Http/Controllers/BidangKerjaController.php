@@ -26,6 +26,6 @@ class BidangKerjaController extends Controller
         $bidangKerjaMake->nama_bidang_kerja = $namaBidangKerja;
         $bidangKerjaMake->save();
 
-        return BidangKerja::where('nama_bidang_kerja', $namaBidangKerja)->get();
+        return BidangKerja::where('nama_bidang_kerja', $namaBidangKerja)->first();
     }
 }
