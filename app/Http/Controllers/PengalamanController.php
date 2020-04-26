@@ -100,14 +100,14 @@ class PengalamanController extends Controller
         $pengalaman->save();
 
         if($request->id_bidang_kerja==0){
-            return "Pengalaman lomba sudah diubah";    
+            return $pengalaman;    
         }
         $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_lomba', $request->id_pengalaman_lomba)->first();
         $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja; 
         $relationBidangKerja->id_mahasiswa = auth()->user()->id; 
         $relationBidangKerja->save();
         
-        return "Pengalaman lomba sudah diubah";
+        return $pengalaman;
     }
 
     public function modifyPengalamanOrganisasi(request $request){
@@ -119,16 +119,16 @@ class PengalamanController extends Controller
         $pengalaman->tanggal_mulai = $request->tanggal_mulai;
         $pengalaman->tanggal_selesai = $request->tanggal_selesai;
         $pengalaman->save();
-        
+
         if($request->id_bidang_kerja==0){
-            return "Pengalaman lomba sudah diubah";    
+            return $pengalaman;    
         }
         $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_organisasi', $request->id_pengalaman_organisasi)->first();
         $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja;
         $relationBidangKerja->id_mahasiswa = auth()->user()->id; 
         $relationBidangKerja->save();
 
-        return "Pengalaman organisasi sudah diubah";
+        return $pengalaman;
     }
 
     public function deletePengalamanOrganisasi(request $request, $id){
