@@ -103,6 +103,10 @@ class PengalamanController extends Controller
             return $pengalaman;    
         }
         $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_lomba', $request->id_pengalaman_lomba)->first();
+        if($relationBidangKerja == null){
+            $relationBidangKerja = new RelationBidangKerja;
+            $relationBidangKerja->id_pengalaman_lomba = $request->id_pengalaman_lomba;
+        }
         $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja; 
         $relationBidangKerja->id_mahasiswa = auth()->user()->id; 
         $relationBidangKerja->save();
@@ -124,6 +128,10 @@ class PengalamanController extends Controller
             return $pengalaman;    
         }
         $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_organisasi', $request->id_pengalaman_organisasi)->first();
+        if($relationBidangKerja == null){
+            $relationBidangKerja = new RelationBidangKerja;
+            $relationBidangKerja->id_pengalaman_organisasi = $request->id_pengalaman_organisasi;
+        }
         $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja;
         $relationBidangKerja->id_mahasiswa = auth()->user()->id; 
         $relationBidangKerja->save();
