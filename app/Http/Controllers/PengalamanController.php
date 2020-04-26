@@ -7,7 +7,7 @@ use Illuminate\Http\request;
 use App\PengalamanLomba;
 use App\PengalamanOrganisasi;
 use App\Rekomendasi;
-use App\Mahasiswa;
+use App\RelationBidangKerja;
 
 
 class PengalamanController extends Controller
@@ -18,17 +18,17 @@ class PengalamanController extends Controller
         $this->middleware('jwt.verify');
     }
 
-    public function getPengalamanLomba(){
-        $pengalaman = PengalamanLomba::with('relation_bidang_kerja', 'relation_bidang_kerja.bidang_kerja')
-        ->where('id_mahasiswa', auth()->user()->id)->orderBy('tanggal','desc')->get();
-        return $pengalaman;
-    }
+    // public function getPengalamanLomba(){
+    //     $pengalaman = PengalamanLomba::with('relation_bidang_kerja', 'relation_bidang_kerja.bidang_kerja')
+    //     ->where('id_mahasiswa', auth()->user()->id)->orderBy('tanggal','desc')->get();
+    //     return $pengalaman;
+    // }
 
-    public function getPengalamanOrganisasi(){
-        $pengalaman = PengalamanOrganisasi::with('relation_bidang_kerja', 'relation_bidang_kerja.bidang_kerja')
-        ->where('id_mahasiswa', auth()->user()->id)->orderBy('tanggal_mulai','desc')->get();
-        return $pengalaman;
-    }
+    // public function getPengalamanOrganisasi(){
+    //     $pengalaman = PengalamanOrganisasi::with('relation_bidang_kerja', 'relation_bidang_kerja.bidang_kerja')
+    //     ->where('id_mahasiswa', auth()->user()->id)->orderBy('tanggal_mulai','desc')->get();
+    //     return $pengalaman;
+    // }
 
     public function getPengalamanLombaDanOrganisasiDanRekomendasi($id){
         $pengalamanLomba = PengalamanLomba::with('relation_bidang_kerja.bidang_kerja')
@@ -90,8 +90,8 @@ class PengalamanController extends Controller
         return "Pengalaman organisasi sudah ditambahkan";
     }
 
-    public function modifyPengalamanLomba(request $request, $id){
-        $pengalaman = PengalamanLomba::find($id);
+    public function modifyPengalamanLomba(request $request){
+        $pengalaman = PengalamanLomba::find($request->id_pengalaman_lomba);
 
         $pengalaman->nama_kompetisi = $request->nama_kompetisi;
         $pengalaman->deskripsi = $request->deskripsi;
@@ -99,19 +99,28 @@ class PengalamanController extends Controller
         $pengalaman->tanggal = $request->tanggal;
         $pengalaman->save();
 
+        $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_lomba', $request->id_pengalaman_lomba)->first();
+        $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja; 
+        $relationBidangKerja->id_mahasiswa = auth()->user()->id; 
+        $relationBidangKerja->save();
+        
         return "Pengalaman lomba sudah diubah";
     }
 
-    public function modifyPengalamanOrganisasi(request $request, $id){
-        $pengalaman = PengalamanOrganisasi::find($id);
+    public function modifyPengalamanOrganisasi(request $request){
+        $pengalaman = PengalamanOrganisasi::find($request->id_pengalaman_organisasi);
 
         $pengalaman->nama_organisasi = $request->nama_organisasi;
         $pengalaman->deskripsi = $request->deskripsi;
         $pengalaman->gambar = $request->gambar;
         $pengalaman->tanggal_mulai = $request->tanggal_mulai;
         $pengalaman->tanggal_selesai = $request->tanggal_selesai;
-        $pengalaman->id_bidang_kerja = $request->id_bidang_kerja;
         $pengalaman->save();
+
+        $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_organisasi', $request->id_pengalaman_organisasi)->first();
+        $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja;
+        $relationBidangKerja->id_mahasiswa = auth()->user()->id; 
+        $relationBidangKerja->save();
 
         return "Pengalaman organisasi sudah diubah";
     }

@@ -16,6 +16,32 @@ class PengalamanLombaSeeder extends Seeder
         
         $mydate = '23-01-2016';
 
+        DB::table('pengalaman_lomba')->insert([
+            'nama_kompetisi' => "kompetisi master",
+            'deskripsi' => "deskripsi master",
+            'tanggal' =>  date('Y-m-d', strtotime($mydate)),
+            'id_mahasiswa' => 1,
+            'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg",
+        ]);
+
+        DB::table('pengalaman_lomba')->insert([
+            'nama_kompetisi' => "kompetisi master2",
+            'deskripsi' => "deskripsi master2",
+            'tanggal' =>  date('Y-m-d', strtotime($mydate)),
+            'id_mahasiswa' => 1,
+            'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg",
+        ]);
+
+
+        DB::table('pengalaman_lomba')->insert([
+            'nama_kompetisi' => "kompetisi master3",
+            'deskripsi' => "deskripsi master3",
+            'tanggal' =>  date('Y-m-d', strtotime($mydate)),
+            'id_mahasiswa' => 1,
+            'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg",
+        ]);
+
+
         for($i = 1; $i <= 100; $i++){
     		DB::table('pengalaman_lomba')->insert([
     			'nama_kompetisi' => "kompetisi $i",

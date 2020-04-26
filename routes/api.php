@@ -72,12 +72,12 @@ Route::get('tempatpkl/', 'TempatPklController@getTempatPkl');
 
 //Pengalaman
 Route::get('pengalaman/lomba', 'PengalamanController@getPengalamanLomba');
-Route::post('pengalaman/lomba/', 'PengalamanController@savePengalamanLomba');
-Route::put('pengalaman/lomba/{id}', 'PengalamanController@modifyPengalamanLomba');
-Route::post('pengalaman/lomba/delete/{id}', 'PengalamanController@deletePengalamanLomba');
 Route::get('pengalaman/organisasi', 'PengalamanController@getPengalamanOrganisasi');
+Route::post('pengalaman/lomba/', 'PengalamanController@savePengalamanLomba');
 Route::post('pengalaman/organisasi', 'PengalamanController@savePengalamanOrganisasi');
-Route::put('pengalaman/organisasi/{id}', 'PengalamanController@modifyPengalamanOrganisasi');
+Route::put('pengalaman/lomba/modify', 'PengalamanController@modifyPengalamanLomba');
+Route::put('pengalaman/organisasi/modify', 'PengalamanController@modifyPengalamanOrganisasi');
+Route::post('pengalaman/lomba/delete/{id}', 'PengalamanController@deletePengalamanLomba');
 Route::post('pengalaman/organisasi/delete/{id}', 'PengalamanController@deletePengalamanOrganisasi');
 Route::get('pengalaman/bothwithrekomendasi/{id}', 'PengalamanController@getPengalamanLombaDanOrganisasiDanRekomendasi');
 Route::get('pengalaman/both', 'PengalamanController@getPengalamanLombaDanOrganisasi');

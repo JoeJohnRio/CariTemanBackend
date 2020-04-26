@@ -20,6 +20,10 @@ class CreateRelationBidangKerja extends Migration
             $table->foreign('id_bidang_kerja')->references('id')->on('bidang_kerja');
             $table->unsignedBigInteger('id_tempat_pkl')->nullable();
             $table->foreign('id_tempat_pkl')->references('id')->on('tempat_pkl');
+            $table->unsignedBigInteger('id_pengalaman_lomba')->nullable();
+            $table->foreign('id_pengalaman_lomba')->references('id')->on('pengalaman_lomba');
+            $table->unsignedBigInteger('id_pengalaman_organisasi')->nullable();
+            $table->foreign('id_pengalaman_organisasi')->references('id')->on('pengalaman_organisasi');
             $table->timestamps();
         });
     }

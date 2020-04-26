@@ -24,6 +24,16 @@ class RelationBidangKerjaSeeder extends Seeder
             'id_tempat_pkl' => $faker->numberBetween(1,25),
             'id_bidang_kerja' => $faker->numberBetween(1, 25),
           ]);
+          
+          DB::table('relation_bidang_kerja')->insert([
+            'id_pengalaman_lomba' => $faker->numberBetween(1,25),
+            'id_bidang_kerja' => $faker->numberBetween(1, 25),
+          ]);
+
+          DB::table('relation_bidang_kerja')->insert([
+            'id_pengalaman_organisasi' => $faker->numberBetween(1,25),
+            'id_bidang_kerja' => $faker->numberBetween(1, 25),
+          ]);
         }
     }
 }
