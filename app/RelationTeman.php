@@ -20,7 +20,7 @@ class RelationTeman extends Model
     }
 
     public function mahasiswa(){
-        return $this->belongsTo('App\Mahasiswa', 'id_mahasiswa_two')->select('id', 'name');
+        return $this->belongsTo('App\Mahasiswa', 'id_mahasiswa_two')->select('id', 'name', 'foto_profil');
     }
 
     public function getJWTIdentifier()
