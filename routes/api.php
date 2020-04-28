@@ -36,12 +36,13 @@ Route::get('mahasiswaall', 'MahasiswaController@mahasiswaAuth')->middleware('jwt
 Route::get('user', 'AuthController@getUserenticatedUser')->middleware('jwt.verify');
 
 //RelationTeman Controller
-Route::get('relationteman/{id}', 'RelationTemanController@showFriend')->middleware('jwt.verify');
+// Route::get('relationteman/{id}', 'RelationTemanController@showFriend')->middleware('jwt.verify');
 Route::get('relationteman/favorite/pkl', 'RelationTemanController@showFavoriteFriendPkl');
 Route::get('relationteman/favorite/lomba', 'RelationTemanController@showFavoriteFriendLomba');
 Route::put('relationteman/favorite/toggle/{id_two}', 'RelationTemanController@toogleFavoriteFriend');
 Route::post('relationteman/friend/{id_one}/add/{id_two}', 'RelationTemanController@addFriend');
 Route::get('relationteman/friend/{id_two}', 'RelationTemanController@getRelationTeman');
+Route::get('relationteman/showfriendnama', 'RelationTemanController@showFriendNameOnly');
 
 //RelationTempatPkl
 Route::put('relationtempatpkl/favorite/toogle/{id}', 'RelationTempatPklController@toggleFavoriteTempatPkl');

@@ -34,10 +34,20 @@ class KelompokController extends Controller
 
     public function makeKelompok(request $request){
         $kelompok = new Kelompok;
+        return $request->nama_kelompok;
         $kelompok->nama_kelompok = $request->nama_kelompok;
         $kelompok->jumlah_anggota = $request->jumlah_anggota;
         $kelompok->tipe_kelompok = $request->tipe_kelompok;
+        $kelompok->foto_kelompok = $request->foto_kelompok;
         $kelompok->save();
+
+        foreach ($request->calon_anggotas as $calon_anggota) {
+            $anggota = new RelationKelompok;
+            $anggota->id_kelompok = $calon_anggota->id_kelompok;
+            $anggota->id_mahasiswa = $calon_anggota->id_mahasiswa;
+            $anggota->status = 0;
+            $anggota->save();
+            }
 
         return "kelompok sudah terbuat";
     }

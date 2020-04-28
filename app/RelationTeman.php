@@ -19,6 +19,10 @@ class RelationTeman extends Model
         return $this->belongsTo('App\Mahasiswa', 'id_mahasiswa_two')->where('preferensi', 1);
     }
 
+    public function mahasiswa(){
+        return $this->belongsTo('App\Mahasiswa', 'id_mahasiswa_two')->select('id', 'name');
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
