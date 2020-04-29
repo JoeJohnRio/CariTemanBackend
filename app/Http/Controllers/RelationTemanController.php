@@ -22,8 +22,8 @@ class RelationTemanController extends Controller
 
     public function showFriendNameOnly(){
         $mahasiswa = RelationTeman::with("mahasiswa")->where('id_mahasiswa_one', auth()->user()->id)->where('status', 1)->get();
+        
         return $mahasiswa->pluck('mahasiswa');
-
     }
 
     public function addFriend($id_one, $id_two)
