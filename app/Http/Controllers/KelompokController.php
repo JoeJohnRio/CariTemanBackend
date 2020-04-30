@@ -40,6 +40,8 @@ class KelompokController extends Controller
         $kelompok->foto_kelompok = $request->foto_kelompok;
         $kelompok->save();
 
+        return $request->calon_anggotas;
+
         foreach ($request->calon_anggotas as $calon_anggota) {
             $anggota = new RelationKelompok;
             $anggota->id_kelompok = $kelompok->id;
@@ -48,7 +50,6 @@ class KelompokController extends Controller
             $anggota->save();
             }
 
-        return $request->calon_anggotas;
     }
 
     public function confirmAnggotaKelompok(request $request){
