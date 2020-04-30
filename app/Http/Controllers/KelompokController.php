@@ -42,7 +42,7 @@ class KelompokController extends Controller
 
         foreach ($request->calon_anggotas as $calon_anggota) {
             $anggota = new RelationKelompok;
-            return $calon_anggota->id_mahasiswa;
+            return $calon_anggota;
             $anggota->id_kelompok = $kelompok->id;
             $anggota->id_mahasiswa = $calon_anggota->id_mahasiswa;
             $anggota->status = 0;
