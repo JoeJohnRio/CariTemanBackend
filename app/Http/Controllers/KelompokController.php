@@ -40,15 +40,9 @@ class KelompokController extends Controller
         $kelompok->foto_kelompok = $request->foto_kelompok;
         $kelompok->save();
 
-        $s=0;
-        foreach ($request->calon_anggotas as $p) {
-            $s += 1;
-            }
-
-            return $s;
-
         foreach ($request->calon_anggotas as $calon_anggota) {
             $anggota = new RelationKelompok;
+            return $calon_anggota->id_mahasiswa;
             $anggota->id_kelompok = $kelompok->id;
             $anggota->id_mahasiswa = $calon_anggota->id_mahasiswa;
             $anggota->status = 0;
