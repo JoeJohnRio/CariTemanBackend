@@ -47,6 +47,8 @@ class KelompokController extends Controller
             $anggota->status = 0;
             $anggota->save();
             }
+
+            return $kelompok;
     }
 
     public function confirmAnggotaKelompok(request $request){
