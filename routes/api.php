@@ -103,6 +103,7 @@ Route::get('kelompok/show', 'KelompokController@showKelompok');
 Route::get('kelompok/anggotakelompok/{id_kelompok}', 'KelompokController@getAnggotaKelompok');
 Route::post('kelompok/invite', 'KelompokController@inviteAnggota');
 Route::post('kelompok/make', 'KelompokController@makeKelompok');
+Route::post('kelompok/addfriend', 'KelompokController@addFriendToKelompok');
 Route::post('kelompok/pending', 'KelompokController@showPendingMember');
 Route::post('kelompok/confirm', 'KelompokController@confirmAnggotaKelompok');
 Route::post('kelompok/delete', 'KelompokController@deleteAnggota');

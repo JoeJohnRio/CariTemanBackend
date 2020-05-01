@@ -58,6 +58,18 @@ class KelompokController extends Controller
         return $kelompok;
     }
 
+    public function addFriendToKelompok(request $request){
+        $anggota = new RelationKelompok;
+        foreach ($request->calon_anggotas as $calon_anggota) {
+            $anggota->id_kelompok = $request->id_kelompok;
+            $anggota->id_mahasiswa = $calon_anggota['id_mahasiswa'];
+            $anggota->status = 0;
+            $anggota->save();
+            }
+
+        return $anggota;
+    }
+
     public function getAnggotaKelompok($id_kelompok){
         $anggotaKelompok = RelationKelompok::where('id_kelompok', $id_kelompok)->where('status', 1)->get();
 
