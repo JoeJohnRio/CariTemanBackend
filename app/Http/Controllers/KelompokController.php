@@ -59,7 +59,7 @@ class KelompokController extends Controller
     }
 
     public function getAnggotaKelompok($id_kelompok){
-        $anggotaKelompok = RelationKelompok::where('id_kelompok', $id_kelompok)->get();
+        $anggotaKelompok = RelationKelompok::where('id_kelompok', $id_kelompok)->where('status', 1)->get();
 
         $all = collect();
         $mahasiswa = new Mahasiswa();
