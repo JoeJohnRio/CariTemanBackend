@@ -7,6 +7,7 @@ use Illuminate\Http\request;
 use App\Mahasiswa;
 use App\Kelompok;
 use App\RelationKelompok;
+use App\RelationTeman;
 use App\Fakultas;
 use Auth;
 
@@ -83,6 +84,20 @@ class KelompokController extends Controller
         }
 
         return $all;
+    }
+
+    public function showFriendNotAddedYet($id_kelompok){
+        $mahasiswas = RelationTeman::with("mahasiswa")->where('id_mahasiswa_one', auth()->user()->id)->where('status', 1)->get()->pluck('mahasiswa');
+        
+        $mahasiswaNotAdded = collect();
+        foreach($mahasiswas as $mahasiswa){
+            $checkRelation = RelationKelompok::where('id_kelompok', $id_kelompok)->where('id_mahasiswa', $mahasiswa->id)->first();
+            if($checkRelation==null){
+                $mahasiswaNotAdded->add($mahasiswa);
+            }
+        }
+
+        return $mahasiswaNotAdded;
     }
 
     public function confirmAnggotaKelompok(request $request){

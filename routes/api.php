@@ -108,6 +108,7 @@ Route::post('kelompok/pending', 'KelompokController@showPendingMember');
 Route::post('kelompok/confirm', 'KelompokController@confirmAnggotaKelompok');
 Route::post('kelompok/delete', 'KelompokController@deleteAnggota');
 Route::post('kelompok/updateinfo', 'KelompokController@updateKelompokInfo');
+Route::get('kelompok/showfriendnotadded/{id_kelompok}', 'KelompokController@showFriendNotAddedYet');
 
 //BidangKerja
 Route::get('bidangkerja/search/{namaBidangKerja}', 'BidangKerjaController@showSearchBidangKerja');
