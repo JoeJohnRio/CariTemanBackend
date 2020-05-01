@@ -7,6 +7,7 @@ use Illuminate\Http\request;
 use App\Mahasiswa;
 use App\Kelompok;
 use App\RelationKelompok;
+use App\Fakultas;
 use Auth;
 
 
@@ -55,6 +56,21 @@ class KelompokController extends Controller
             }
 
         return $kelompok;
+    }
+
+    public function getAnggotaKelompok($id_kelompok){
+        $anggotaKelompok = RelationKelompok::where('id_kelompok', $id_kelompok)->get();
+
+        $all = collect();
+        $mahasiswa = new Mahasiswa();
+        foreach( $anggotaKelompok as $anggota){
+            $mahasiswa = Mahasiswa::select('id', 'foto_profil', 'name')->find($anggota->id_mahasiswa);
+            $fakultas = Fakultas::select('name')->find(Mahasiswa::find($anggota->id_mahasiswa)->id_fakultas);
+            $mahasiswa->setAttribute('nama_fakultas', $fakultas->name);
+            $all->add($mahasiswa);
+        }
+
+        return $all;
     }
 
     public function confirmAnggotaKelompok(request $request){

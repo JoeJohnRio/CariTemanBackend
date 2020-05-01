@@ -100,6 +100,7 @@ Route::get('rekomendasi/profil/{id}', 'RekomendasiController@profilInfoOthers');
 
 //Kelompok
 Route::get('kelompok/show', 'KelompokController@showKelompok');
+Route::get('kelompok/anggotakelompok/{id_kelompok}', 'KelompokController@getAnggotaKelompok');
 Route::post('kelompok/invite', 'KelompokController@inviteAnggota');
 Route::post('kelompok/make', 'KelompokController@makeKelompok');
 Route::post('kelompok/pending', 'KelompokController@showPendingMember');
