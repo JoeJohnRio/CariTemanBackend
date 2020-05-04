@@ -49,29 +49,29 @@ class PengalamanLombaSeeder extends Seeder
         "Student competition", 
         "Stock Market Learning");
 
+        
         DB::table('pengalaman_lomba')->insert([
-            'nama_kompetisi' => "kompetisi master",
-            'deskripsi' => "deskripsi master",
-            'tanggal' =>  date('Y-m-d', strtotime($mydate)),
+            'nama_kompetisi' => $contohKompetisi[$faker->numberBetween(0,14)],
+            'deskripsi' => "Pernah memenangkan " .$contohKompetisi[$faker->numberBetween(0,14)]. "",
+            'tanggal' =>  date('Y-m-d', strtotime($mydate.' + '.(1).' days')),
             'id_mahasiswa' => 1,
-            'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg",
+            'gambar' => $fotoKompetisi[$faker->numberBetween(0,15)],
         ]);
 
         DB::table('pengalaman_lomba')->insert([
-            'nama_kompetisi' => "kompetisi master2",
-            'deskripsi' => "deskripsi master2",
-            'tanggal' =>  date('Y-m-d', strtotime($mydate)),
+            'nama_kompetisi' => $contohKompetisi[$faker->numberBetween(0,14)],
+            'deskripsi' => "Pernah memenangkan " .$contohKompetisi[$faker->numberBetween(0,14)]. "",
+            'tanggal' =>  date('Y-m-d', strtotime($mydate.' + '.(1).' days')),
             'id_mahasiswa' => 1,
-            'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg",
+            'gambar' => $fotoKompetisi[$faker->numberBetween(0,15)],
         ]);
 
-
         DB::table('pengalaman_lomba')->insert([
-            'nama_kompetisi' => "kompetisi master3",
-            'deskripsi' => "deskripsi master3",
-            'tanggal' =>  date('Y-m-d', strtotime($mydate)),
+            'nama_kompetisi' => $contohKompetisi[$faker->numberBetween(0,14)],
+            'deskripsi' => "Pernah memenangkan " .$contohKompetisi[$faker->numberBetween(0,14)]. "",
+            'tanggal' =>  date('Y-m-d', strtotime($mydate.' + '.(1).' days')),
             'id_mahasiswa' => 1,
-            'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg",
+            'gambar' => $fotoKompetisi[$faker->numberBetween(0,15)],
         ]);
 
 

@@ -47,30 +47,30 @@ class PengalamanOrganisasiSeeder extends Seeder
         "Klub Mode UB");
 
         DB::table('pengalaman_organisasi')->insert([
-            'nama_organisasi' => "organisasi master",
-            'deskripsi' => "deskripsi master",
-            'tanggal_mulai' =>  date('Y-m-d', strtotime($mydate)),
-            'tanggal_selesai' =>  date('Y-m-d', strtotime($mydate)),
-    		'id_mahasiswa' => 1,
-            'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg"
+            'nama_organisasi' => $contohOrganisasi[$faker->numberBetween(0,19)],
+            'deskripsi' => "Berpengalaman di " .$contohOrganisasi[$faker->numberBetween(0,19)]. "",
+            'tanggal_mulai' =>  date('Y-m-d', strtotime($mydate.' + '.(3).' days')),
+            'tanggal_selesai' =>  date('Y-m-d', strtotime($mydate.' + '.(30).' days')),
+            'id_mahasiswa' => 1,
+            'gambar' => $fotoOrganisasi[$faker->numberBetween(0,8)]
         ]);
 
         DB::table('pengalaman_organisasi')->insert([
-            'nama_organisasi' => "organisasi master2",
-            'deskripsi' => "deskripsi master2",
-            'tanggal_mulai' =>  date('Y-m-d', strtotime($mydate)),
-            'tanggal_selesai' =>  date('Y-m-d', strtotime($mydate)),
-    		'id_mahasiswa' => 1,
-            'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg"
+            'nama_organisasi' => $contohOrganisasi[$faker->numberBetween(0,19)],
+            'deskripsi' => "Berpengalaman di " .$contohOrganisasi[$faker->numberBetween(0,19)]. "",
+            'tanggal_mulai' =>  date('Y-m-d', strtotime($mydate.' + '.(3).' days')),
+            'tanggal_selesai' =>  date('Y-m-d', strtotime($mydate.' + '.(30).' days')),
+            'id_mahasiswa' => 1,
+            'gambar' => $fotoOrganisasi[$faker->numberBetween(0,8)]
         ]);
 
         DB::table('pengalaman_organisasi')->insert([
-            'nama_organisasi' => "organisasi master3",
-            'deskripsi' => "deskripsi master3",
-            'tanggal_mulai' =>  date('Y-m-d', strtotime($mydate)),
-            'tanggal_selesai' =>  date('Y-m-d', strtotime($mydate)),
-    		'id_mahasiswa' => 1,
-            'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg"
+            'nama_organisasi' => $contohOrganisasi[$faker->numberBetween(0,19)],
+            'deskripsi' => "Berpengalaman di " .$contohOrganisasi[$faker->numberBetween(0,19)]. "",
+            'tanggal_mulai' =>  date('Y-m-d', strtotime($mydate.' + '.(3).' days')),
+            'tanggal_selesai' =>  date('Y-m-d', strtotime($mydate.' + '.(30).' days')),
+            'id_mahasiswa' => 1,
+            'gambar' => $fotoOrganisasi[$faker->numberBetween(0,8)]
         ]);
 
         for($i = 1; $i <= 25; $i++){
