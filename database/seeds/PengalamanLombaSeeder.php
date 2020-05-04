@@ -75,10 +75,10 @@ class PengalamanLombaSeeder extends Seeder
         ]);
 
 
-        for($i = 1; $i <= 100; $i++){
+        for($i = 1; $i <= 25; $i++){
     		DB::table('pengalaman_lomba')->insert([
     			'nama_kompetisi' => $contohKompetisi[$faker->numberBetween(0,14)],
-                'deskripsi' => "Pernah memenangkan " .$fotoKompetisi[$faker->numberBetween(0,14)]. "",
+                'deskripsi' => "Pernah memenangkan " .$contohKompetisi[$faker->numberBetween(0,14)]. "",
                 'tanggal' =>  date('Y-m-d', strtotime($mydate.' + '.$i.' days')),
     			'id_mahasiswa' => $faker->numberBetween(1,50),
                 'gambar' => $fotoKompetisi[$faker->numberBetween(0,15)],

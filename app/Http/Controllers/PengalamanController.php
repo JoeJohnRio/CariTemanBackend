@@ -93,6 +93,10 @@ class PengalamanController extends Controller
     public function modifyPengalamanLomba(request $request){
         $pengalaman = PengalamanLomba::find($request->id_pengalaman_lomba);
 
+        if($pengalaman == null){
+            $pengalaman = new PengalamanLomba;
+        }
+
         $pengalaman->nama_kompetisi = $request->nama_kompetisi;
         $pengalaman->deskripsi = $request->deskripsi;
         $pengalaman->gambar = $request->gambar;
@@ -116,6 +120,10 @@ class PengalamanController extends Controller
 
     public function modifyPengalamanOrganisasi(request $request){
         $pengalaman = PengalamanOrganisasi::find($request->id_pengalaman_organisasi);
+
+        if($pengalaman == null){
+            $pengalaman = new PengalamanOrganisasi;
+        }
 
         $pengalaman->nama_organisasi = $request->nama_organisasi;
         $pengalaman->deskripsi = $request->deskripsi;

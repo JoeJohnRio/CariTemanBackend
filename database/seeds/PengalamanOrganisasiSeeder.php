@@ -73,14 +73,14 @@ class PengalamanOrganisasiSeeder extends Seeder
             'gambar' => "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg"
         ]);
 
-        for($i = 1; $i <= 100; $i++){
+        for($i = 1; $i <= 25; $i++){
     		DB::table('pengalaman_organisasi')->insert([
     			'nama_organisasi' => $contohOrganisasi[$faker->numberBetween(0,19)],
                 'deskripsi' => "Berpengalaman di " .$contohOrganisasi[$faker->numberBetween(0,19)]. "",
                 'tanggal_mulai' =>  date('Y-m-d', strtotime($mydate.' + '.$i.' days')),
                 'tanggal_selesai' =>  date('Y-m-d', strtotime($mydate.' + '.($i+30).' days')),
     			'id_mahasiswa' => $faker->numberBetween(1,50),
-    			'gambar' => $contohOrganisasi[$faker->numberBetween(0,8)]
+    			'gambar' => $fotoOrganisasi[$faker->numberBetween(0,8)]
     		]);
     	}
     }
