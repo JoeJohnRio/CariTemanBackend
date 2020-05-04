@@ -60,11 +60,13 @@ Route::get('history/lihatprofil/pkl', 'HistoryLihatProfilController@showHistoryL
 Route::get('history/lihatprofil/dashboard/pkl/', 'HistoryLihatProfilController@showHistoryLihatProfilDashboardPkl');
 Route::get('history/lihatprofil/dashboard/lomba/', 'HistoryLihatProfilController@showHistoryLihatProfilDashboardLomba');
 Route::get('history/lihatprofil/save/{id}', 'HistoryLihatProfilController@saveHistoryLihatProfil');
+Route::post('history/newprofilclick/{id_mahasiswa}', 'HistoryLihatProfilController@addHistoryProfilClicked');
 
 //HistoryLihatTempatPklController
 Route::get('history/lihattempatpkl/dashboard', 'HistoryLihatTempatPklController@showHistoryLihatDashboardTempatPkl');
 Route::get('history/lihattempatpkl/', 'HistoryLihatTempatPklController@showHistoryLihatTempatPkl');
 Route::get('history/lihattempatpkl/save/{id}', 'HistoryLihatTempatPklController@saveHistoryLihatProfil');
+Route::get('history/newtempatpklclick/{id_tempat_pkl}', 'HistoryLihatTempatPklController@addHistoryTempatPklClicked');
 
 //TempatPkl
 Route::get('tempatpkl/bidangkerja', 'TempatPklController@getBidangKerja');
@@ -108,6 +110,7 @@ Route::post('kelompok/pending', 'KelompokController@showPendingMember');
 Route::post('kelompok/confirm', 'KelompokController@confirmAnggotaKelompok');
 Route::post('kelompok/delete', 'KelompokController@deleteAnggota');
 Route::post('kelompok/updateinfo', 'KelompokController@updateKelompokInfo');
+Route::post('kelompok/removeanggota', 'KelompokController@removeAnggotaKelompok');
 Route::get('kelompok/showfriendnotadded/{id_kelompok}', 'KelompokController@showFriendNotAddedYet');
 
 //BidangKerja

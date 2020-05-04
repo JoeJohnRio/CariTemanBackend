@@ -19,6 +19,13 @@ class HistoryLihatTempatPklController extends Controller
         $this->middleware('jwt.verify');
     }
 
+    public function addHistoryTempatPklClicked($id_tempat_pkl){
+        $history = new HistoryLihatTempatPkl();
+        $history->id_mahasiswa = auth()->user()->id;
+        $history->id_tempat_pkl = $id_tempat_pkl;
+        $history->save();
+    }
+
     public function saveHistoryLihatProfil($id_tempat_pkl){
         $history = new HistoryLihatTempatPkl();
         $history->id_mahasiswa = auth()->user()->id;

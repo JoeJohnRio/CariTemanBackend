@@ -69,7 +69,7 @@ class PengalamanController extends Controller
 
         $pengalaman->nama_kompetisi = $request->nama_kompetisi;
         $pengalaman->deskripsi = $request->deskripsi;
-        $pengalaman->id_mahasiswa = $request->id_mahasiswa;
+        $pengalaman->id_mahasiswa = auth()->user()->id;
         $pengalaman->tanggal = $request->tanggal;
         $pengalaman->save();
 
@@ -83,7 +83,7 @@ class PengalamanController extends Controller
         $pengalaman->deskripsi = $request->deskripsi;
         $pengalaman->tanggal_mulai = $request->tanggal_mulai;
         $pengalaman->tanggal_selesai = $request->tanggal_selesai;
-        $pengalaman->id_mahasiswa = $request->id_mahasiswa;
+        $pengalaman->id_mahasiswa = auth()->user()->id;
         $pengalaman->id_bidang_kerja = $request->id_bidang_kerja;
         $pengalaman->save();
 

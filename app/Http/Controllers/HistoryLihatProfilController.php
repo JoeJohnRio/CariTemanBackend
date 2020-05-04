@@ -19,6 +19,13 @@ class HistoryLihatProfilController extends Controller
         $this->middleware('jwt.verify');
     }
 
+    public function addHistoryProfilClicked($id_mahasiswa){
+        $history = new HistoryLihatProfil();
+        $history->id_mahasiswa_one = auth()->user()->id;
+        $history->id_mahasiswa_two = $id_mahasiswa;
+        $history->save();
+    }
+
     public function showHistoryLihatProfilLomba(){
         $history = HistoryLihatProfil::with('mahasiswa_two_lomba.count_rekomendasi', 
         'mahasiswa_two_lomba.pengalaman_lomba', 

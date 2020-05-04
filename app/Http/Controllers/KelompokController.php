@@ -71,6 +71,26 @@ class KelompokController extends Controller
         return $anggota;
     }
 
+    public function removeAnggotaKelompok(request $request){
+        $relationKelompok = RelationKelompok::where('id_kelompok', $request->id_kelompok)->where('id_mahasiswa', $request->id_mahasiswa)->get();
+        foreach($relationKelompok as $relation){
+            $relation->delete();
+        }
+        
+        $anggotaKelompok = RelationKelompok::where('id_kelompok', $request->id_kelompok)->where('status', 1)->get();
+
+        $all = collect();
+        $mahasiswa = new Mahasiswa();
+        foreach( $anggotaKelompok as $anggota){
+            $mahasiswa = Mahasiswa::select('id', 'foto_profil', 'name')->find($anggota->id_mahasiswa);
+            $fakultas = Fakultas::select('name')->find(Mahasiswa::find($anggota->id_mahasiswa)->id_fakultas);
+            $mahasiswa->setAttribute('nama_fakultas', $fakultas->name);
+            $all->add($mahasiswa);
+        }
+
+        return $all;
+    }
+
     public function getAnggotaKelompok($id_kelompok){
         $anggotaKelompok = RelationKelompok::where('id_kelompok', $id_kelompok)->where('status', 1)->get();
 
