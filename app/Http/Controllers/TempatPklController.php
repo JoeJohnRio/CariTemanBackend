@@ -24,13 +24,7 @@ class TempatPklController extends Controller
     public function getLokasiPkl(){
         return LokasiPkl::all();
     }
-    // HistoryLihatTempatPkl::with('tempat_pkl', 'tempat_pkl.bidang_kerja')->where('id_mahasiswa', auth()->user()->id)->
-    // orderBy('created_at','desc')->get()->take(5);
     public function getTempatPkl(){
         return TempatPkl::with('relation_bidang_kerja.bidang_kerja', 'lokasi_pkl')->get();
     }
-
-    
-
-    
 }

@@ -87,7 +87,10 @@ Route::get('pengalaman/both', 'PengalamanController@getPengalamanLombaDanOrganis
 Route::post('user/edit_pass', 'FakultasController@tugas');
 
 //Search
-Route::post('search/mahasiswa/pkl', 'SearchController@searchMahasiswa');
+Route::post('search/mahasiswa/', 'SearchController@searchMahasiswa');
+Route::post('search/tempatpkl/', 'SearchController@searchTempatPkl');
+Route::post('search/add/', 'SearchController@addSearchHistory');
+Route::get('search/show/', 'SearchController@showSearchHistory');
 
 //UlasanTempatPkl
 Route::post('ulasantempatpkl/save', 'UlasanTempatPklController@saveUlasanTempatPkl');

@@ -4,11 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RelationTempatPkl extends Model
+class Skillhobi extends Model
 {
-    protected $table = 'relation_tempat_pkl';
+    protected $table = 'skillhobi';
 
-    protected $fillable = ['is_favorite', 'id_mahasiswa', 'id_tempat_pkl'];
+    protected $fillable = [
+        'nama_skillhobi'
+    ];
 
     public function getJWTIdentifier()
     {

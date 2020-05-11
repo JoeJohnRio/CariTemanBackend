@@ -30,5 +30,9 @@ class DatabaseSeeder extends Seeder
         $this->call(RekomendasiSeeder::class);
         $this->call(UlasanTempatPklSeeder::class);
         $this->call(RelationTempatPklSeeder::class);
+        $this->call(SkillhobiSeeder::class);
+        $this->call(RelationSkillhobiSeeder::class);
+        $this->call(RelationLokasiPklSeeder::class);
+        $this->call(SearchHistorySeeder::class);
     }
 }
