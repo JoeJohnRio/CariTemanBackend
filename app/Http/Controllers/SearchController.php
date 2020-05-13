@@ -39,12 +39,17 @@ class SearchController extends Controller
             $preferensi = 0;
         }
 
+        $searchHistory = new SearchHistory();
+        $searchHistory->name = $request->keyword;
+        $searchHistory->search_type = $request->preferensi;
+        $searchHistory->save();
+
         $keyword = $request->keyword;
             $user = Mahasiswa::with('pengalaman_lomba', 
             'pengalaman_organisasi.relation_bidang_kerja.bidang_kerja',
             'relation_teman')->
             where('is_verified',1)->where('preferensi', $preferensi)->where('name', 'like', "%".$keyword."%");    
-    
+        
         if ($request->jenis_kelamin != null) {
             $user->where('jenis_kelamin', $request->input('jenis_kelamin'));
         }
@@ -85,9 +90,14 @@ class SearchController extends Controller
 
         public function searchTempatPkl(request $request){
             $keyword = $request->keyword;
-                $tempat_pkl = TempatPkl::where('nama_perusahaan', 'like', "%".$keyword."%");    
+            $tempat_pkl = TempatPkl::where('nama_perusahaan', 'like', "%".$keyword."%");    
                 
-                $all = collect();
+            $all = collect();
+
+            $searchHistory = new SearchHistory();
+            $searchHistory->name = $request->keyword;
+            $searchHistory->search_type = 2;
+            $searchHistory->save();
                 
             if ($request->id_lokasi_pkl != null) {
                 $tempat_pkl = $tempat_pkl->where('id_lokasi_pkl', $request->input('id_lokasi_pkl'));
