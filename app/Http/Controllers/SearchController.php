@@ -42,6 +42,7 @@ class SearchController extends Controller
         $searchHistory = new SearchHistory();
         $searchHistory->name = $request->keyword;
         $searchHistory->search_type = $request->preferensi;
+        $searchHistory->id_owner_history = auth()->user()->id;
         $searchHistory->save();
 
         $keyword = $request->keyword;
@@ -97,6 +98,7 @@ class SearchController extends Controller
             $searchHistory = new SearchHistory();
             $searchHistory->name = $request->keyword;
             $searchHistory->search_type = 2;
+            $searchHistory->id_owner_history = auth()->user()->id;
             $searchHistory->save();
                 
             if ($request->id_lokasi_pkl != null) {
