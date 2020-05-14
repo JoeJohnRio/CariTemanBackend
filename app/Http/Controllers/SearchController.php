@@ -39,12 +39,14 @@ class SearchController extends Controller
             $preferensi = 0;
         }
 
-        $searchHistory = new SearchHistory();
-        $searchHistory->name = $request->keyword;
-        $searchHistory->search_type = $request->preferensi;
-        $searchHistory->id_owner_history = auth()->user()->id;
-        $searchHistory->save();
-
+        if($request->keyword != null){
+            $searchHistory = new SearchHistory();
+            $searchHistory->name = $request->keyword;
+            $searchHistory->search_type = $request->preferensi;
+            $searchHistory->id_owner_history = auth()->user()->id;
+            $searchHistory->save();        
+        }
+        
         $keyword = $request->keyword;
             $user = Mahasiswa::with('pengalaman_lomba', 
             'pengalaman_organisasi.relation_bidang_kerja.bidang_kerja',
