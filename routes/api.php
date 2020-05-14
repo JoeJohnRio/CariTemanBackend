@@ -120,6 +120,10 @@ Route::get('kelompok/showfriendnotadded/{id_kelompok}', 'KelompokController@show
 Route::get('bidangkerja/search/{namaBidangKerja}', 'BidangKerjaController@showSearchBidangKerja');
 Route::post('bidangkerja/make/{namaBidangKerja}', 'BidangKerjaController@makeBidangKerja');
 
+//Skillhobi
+Route::get('skillhobi/search/{namaSkillhobi}', 'SkillHobiController@showSearchSkillhobi');
+Route::post('skillhobi/make/{namaSkillhobi}', 'SkillHobiController@makeSkillhobi');
+
 //Chat
 Route::post('chat/', 'ChatController@store')->name('chat.store');;
 Route::post('chat/join', 'ChatController@join')->name('chat.join');;
