@@ -84,4 +84,21 @@ class RekomendasiController extends Controller
             ]
         );
     }
+
+    public function profilInfoOthersItself(){
+        $teman = Mahasiswa::where('id', auth()->user()->id);
+
+        return response()->json(
+            ['name' => $teman->value('name'),
+            'tahun_mulai' => $teman->value('tahun_mulai'),
+            'foto_profil' => $teman->value('foto_profil'),
+            'jumlah_teman' => RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->count(),
+            'jumlah_rekomendasi' => Rekomendasi::where('id_penerima', auth()->user()->id)->count(),
+            'jumlah_kelompok' => RelationKelompok::where('id_mahasiswa', auth()->user()->id)->count(),
+            'fakultas' => Fakultas::where('id', Mahasiswa::where('id', auth()->user()->id)->pluck('id_fakultas'))->value('name'),
+            'program_studi' => ProgramStudi::where('id', Mahasiswa::where('id', auth()->user()->id)->pluck('id_program_studi'))->value('name'),
+            'keminatan' => Keminatan::where('id', Mahasiswa::where('id', auth()->user()->id)->pluck('id_keminatan'))->value('name')
+            ]
+        );
+    }
 }

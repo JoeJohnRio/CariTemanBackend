@@ -51,6 +51,27 @@ class PengalamanController extends Controller
             ]);
     }
 
+    public function getPengalamanLombaDanOrganisasiDanRekomendasiItself(){
+        $pengalamanLomba = PengalamanLomba::with('relation_bidang_kerja.bidang_kerja')
+        ->where('id_mahasiswa', auth()->user()->id)->orderBy('tanggal','desc')->get();
+        
+        $pengalamanOrganisasi = PengalamanOrganisasi::with('relation_bidang_kerja.bidang_kerja')
+        ->where('id_mahasiswa', auth()->user()->id)->orderBy('tanggal_mulai','desc')->get();
+
+        $rekomendasi = Rekomendasi::with('data_mahasiswa')->where('id_penerima', auth()->user()->id)->get();
+        
+        // return Mahasiswa::where('id', $rekomendasi->id_pengirim)->first();
+        
+        //nama, rating, isi rekomendasi, gambar
+
+        return response()->json(
+            ['rekomendasi' => $rekomendasi,
+            'pengalaman' => 
+            ['pengalaman_lomba' => $pengalamanLomba,
+            'pengalaman_organisasi' => $pengalamanOrganisasi]
+            ]);
+    }
+
     public function getPengalamanLombaDanOrganisasi(){
         $pengalamanLomba = PengalamanLomba::with('relation_bidang_kerja.bidang_kerja')
         ->where('id_mahasiswa', auth()->user()->id)->orderBy('tanggal','desc')->get();

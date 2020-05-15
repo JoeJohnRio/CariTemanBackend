@@ -83,6 +83,7 @@ Route::put('pengalaman/organisasi/modify', 'PengalamanController@modifyPengalama
 Route::post('pengalaman/lomba/delete/{id}', 'PengalamanController@deletePengalamanLomba');
 Route::post('pengalaman/organisasi/delete/{id}', 'PengalamanController@deletePengalamanOrganisasi');
 Route::get('pengalaman/bothwithrekomendasi/{id}', 'PengalamanController@getPengalamanLombaDanOrganisasiDanRekomendasi');
+Route::get('pengalaman/bothwithrekomendasi/itself', 'PengalamanController@getPengalamanLombaDanOrganisasiDanRekomendasiItself');
 Route::get('pengalaman/both', 'PengalamanController@getPengalamanLombaDanOrganisasi');
 Route::post('user/edit_pass', 'FakultasController@tugas');
 
@@ -102,6 +103,7 @@ Route::get('rekomendasi/show', 'RekomendasiController@showRekomendasiMahasiswa')
 Route::post('rekomendasi/sethidden', 'RekomendasiController@setRekomendasiHiddenTrue');
 Route::post('rekomendasi/save', 'RekomendasiController@saveRekomendasiMahasiswa');
 Route::get('rekomendasi/profil/{id}', 'RekomendasiController@profilInfoOthers');
+Route::get('rekomendasi/profil/itself', 'RekomendasiController@profilInfoOthersItself');
 
 //Kelompok
 Route::get('kelompok/show', 'KelompokController@showKelompok');
