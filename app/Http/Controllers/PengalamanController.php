@@ -168,17 +168,17 @@ class PengalamanController extends Controller
         return $pengalaman;
     }
 
-    public function deletePengalamanOrganisasi(request $request, $id){
+    public function deletePengalamanOrganisasi($id){
         $pengalaman = PengalamanOrganisasi::find($id);
         $pengalaman->delete();
 
-        return "Pengalaman organisasi sudah dihapus";
+        return PengalamanOrganisasi::find($id);
     }
 
-    public function deletePengalamanLomba(request $request, $id){
+    public function deletePengalamanLomba($id){
         $pengalaman = PengalamanLomba::find($id);
         $pengalaman->delete();
 
-        return "Pengalaman lomba sudah dihapus";
+        return PengalamanLomba::find($id);
     }
 }
