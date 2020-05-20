@@ -169,13 +169,19 @@ class PengalamanController extends Controller
     }
 
     public function deletePengalamanOrganisasi($id){
+        $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_organisasi', $id)->first();
+        $relationBidangKerja->delete();
+
         $pengalaman = PengalamanOrganisasi::find($id);
         $pengalaman->delete();
-
+        
         return PengalamanOrganisasi::find($id);
     }
 
     public function deletePengalamanLomba($id){
+        $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_lomba', $id)->first();
+        $relationBidangKerja->delete();
+
         $pengalaman = PengalamanLomba::find($id);
         $pengalaman->delete();
 
