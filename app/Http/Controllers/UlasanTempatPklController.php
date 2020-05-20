@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\HistoryLihatTempatPkl;
 use App\UlasanTempatPkl;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Collection;
-use Illuminate\Pagination\LengthAwarePaginator;
+use App\Mahasiswa;
 
 class UlasanTempatPklController extends Controller
 {
@@ -32,10 +29,19 @@ class UlasanTempatPklController extends Controller
         return "Ulasan ditambahkan";
     }
 
-    public function showUlasanTempatPkl(){
-        $history = UlasanTempatPkl::where('id_tempat_pkl', auth()->user()->id)->
-        orderBy('created_at','desc')->get()->take(5);
+    public function showUlasanTempatPkl($id){
+        $allUlasan = UlasanTempatPkl::where('id_tempat_pkl', $id)->get();
 
-        return $history;
+        $all = collect();
+
+        foreach ($allUlasan as $one_ulasan) {
+            $mahasiswa= Mahasiswa::where('id', $one_ulasan->id_pengirim)->first();
+            $ulasanTempatPkl = new Mahasiswa();
+            $ulasanTempatPkl->nama_pengirim = $mahasiswa->name;
+            $ulasanTempatPkl->gambar_pengirim = $mahasiswa->foto_profil;
+            $ulasanTempatPkl->isi_ulasan = $one_ulasan->ulasan;
+            $all->add($ulasanTempatPkl);
+        }
+        return $all;
     }
 }

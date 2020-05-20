@@ -72,6 +72,7 @@ Route::get('history/newtempatpklclick/{id_tempat_pkl}', 'HistoryLihatTempatPklCo
 Route::get('tempatpkl/bidangkerja', 'TempatPklController@getBidangKerja');
 Route::get('tempatpkl/lokasipkl', 'TempatPklController@getLokasiPkl');
 Route::get('tempatpkl/', 'TempatPklController@getTempatPkl');
+Route::get('tempatpkl/profile/{id}', 'TempatPklController@showTempatPklProfile');
 
 //Pengalaman
 Route::get('pengalaman/lomba', 'PengalamanController@getPengalamanLomba');
@@ -95,7 +96,7 @@ Route::get('search/show/', 'SearchController@showSearchHistory');
 
 //UlasanTempatPkl
 Route::post('ulasantempatpkl/save', 'UlasanTempatPklController@saveUlasanTempatPkl');
-Route::get('ulasantempatpkl/show', 'UlasanTempatPklController@showUlasanTempatPkl');
+Route::get('ulasantempatpkl/show/{id}', 'UlasanTempatPklController@showUlasanTempatPkl');
 
 
 //Rekomendasi

@@ -17,6 +17,7 @@ class CreateTempatPkl extends Migration
             $table->bigIncrements('id');
             $table->string('nama_perusahaan');
             $table->string('gambar');
+            $table->integer('phone_number');
             $table->unsignedBigInteger('id_lokasi_pkl');
             $table->foreign('id_lokasi_pkl')->references('id')->on('lokasi_pkl');
             $table->unsignedBigInteger('id_relation_bidang_kerja');

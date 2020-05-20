@@ -9,7 +9,7 @@ class TempatPkl extends Model
 {
     protected $table = 'tempat_pkl';
 
-    protected $fillable = ['nama_perusahaan', 'gambar', 'id_relation_bidang_kerja', 'id_lokasi_pkl'];
+    protected $fillable = ['nama_perusahaan', 'gambar', 'id_relation_bidang_kerja', 'id_lokasi_pkl', 'phone_numbe'];
     
     public function lokasi_pkl(){
         return $this->belongsTo('App\LokasiPkl', 'id_lokasi_pkl');
