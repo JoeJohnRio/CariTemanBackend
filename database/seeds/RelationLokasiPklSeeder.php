@@ -11,7 +11,7 @@ class RelationLokasiPklSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 1; $i <= 25; $i++){
+        for($i = 1; $i <= 50; $i++){
         DB::table('relation_lokasi_pkl')->insert([
             'id_tempat_pkl' => $i,
             'id_lokasi_pkl' => mt_rand(1,25),
