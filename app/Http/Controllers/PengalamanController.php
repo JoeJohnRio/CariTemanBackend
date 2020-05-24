@@ -92,9 +92,11 @@ class PengalamanController extends Controller
         $pengalaman->deskripsi = $request->deskripsi;
         $pengalaman->id_mahasiswa = auth()->user()->id;
         $pengalaman->tanggal = $request->tanggal;
+        $pengalaman->gambar = $request->gambar;
         $pengalaman->save();
 
-        return "Pengalaman lomba sudah ditambahkan";
+        // return response()->json(
+        //     ['pengalaman_lomba' => $pengalamanLomba,
     }
     
     public function savePengalamanOrganisasi(request $request){
@@ -112,59 +114,73 @@ class PengalamanController extends Controller
     }
 
     public function modifyPengalamanLomba(request $request){
-        $pengalaman = PengalamanLomba::find($request->id_pengalaman_lomba);
 
-        if($pengalaman == null){
+        if($request->id_pengalaman_lomba == 0){
             $pengalaman = new PengalamanLomba;
-        }
-
-        $pengalaman->nama_kompetisi = $request->nama_kompetisi;
-        $pengalaman->deskripsi = $request->deskripsi;
-        $pengalaman->gambar = $request->gambar;
-        $pengalaman->tanggal = $request->tanggal;
-        $pengalaman->save();
-
-        if($request->id_bidang_kerja==0){
-            return $pengalaman;    
-        }
-        $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_lomba', $request->id_pengalaman_lomba)->first();
-        if($relationBidangKerja == null){
+            
+            $pengalaman->id_mahasiswa = auth()->user()->id;
+            $pengalaman->nama_kompetisi = $request->nama_kompetisi;
+            $pengalaman->deskripsi = $request->deskripsi;
+            $pengalaman->gambar = $request->gambar;
+            $pengalaman->tanggal = $request->tanggal;
+            $pengalaman->save();
+            
             $relationBidangKerja = new RelationBidangKerja;
-            $relationBidangKerja->id_pengalaman_lomba = $request->id_pengalaman_lomba;
+            $relationBidangKerja->id_pengalaman_lomba = $pengalaman->id;
+            $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja; 
+            $relationBidangKerja->id_mahasiswa = auth()->user()->id; 
+            $relationBidangKerja->save();
+        }else{
+            $pengalaman = PengalamanLomba::find($request->id_pengalaman_lomba);
+            
+            $pengalaman->id_mahasiswa = auth()->user()->id;
+            $pengalaman->nama_kompetisi = $request->nama_kompetisi;
+            $pengalaman->deskripsi = $request->deskripsi;
+            $pengalaman->gambar = $request->gambar;
+            $pengalaman->tanggal = $request->tanggal;
+            $pengalaman->save();
+            
+            $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_lomba', $request->id_pengalaman_lomba)->first();
+            $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja; 
+            $relationBidangKerja->save();
         }
-        $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja; 
-        $relationBidangKerja->id_mahasiswa = auth()->user()->id; 
-        $relationBidangKerja->save();
         
         return $pengalaman;
     }
 
     public function modifyPengalamanOrganisasi(request $request){
-        $pengalaman = PengalamanOrganisasi::find($request->id_pengalaman_organisasi);
-
-        if($pengalaman == null){
+        if($request->id_pengalaman_organisasi == 0){
             $pengalaman = new PengalamanOrganisasi;
-        }
-
-        $pengalaman->nama_organisasi = $request->nama_organisasi;
-        $pengalaman->deskripsi = $request->deskripsi;
-        $pengalaman->gambar = $request->gambar;
-        $pengalaman->tanggal_mulai = $request->tanggal_mulai;
-        $pengalaman->tanggal_selesai = $request->tanggal_selesai;
-        $pengalaman->save();
-
-        if($request->id_bidang_kerja==0){
-            return $pengalaman;    
-        }
-        $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_organisasi', $request->id_pengalaman_organisasi)->first();
-        if($relationBidangKerja == null){
+            
+            $pengalaman->id_mahasiswa = auth()->user()->id;
+            $pengalaman->nama_organisasi = $request->nama_organisasi;
+            $pengalaman->deskripsi = $request->deskripsi;
+            $pengalaman->gambar = $request->gambar;
+            $pengalaman->tanggal_mulai = $request->tanggal_mulai;
+            $pengalaman->tanggal_selesai = $request->tanggal_selesai;
+            $pengalaman->save();
+            
             $relationBidangKerja = new RelationBidangKerja;
-            $relationBidangKerja->id_pengalaman_organisasi = $request->id_pengalaman_organisasi;
+            $relationBidangKerja->id_pengalaman_organisasi = $pengalaman->id;
+            $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja; 
+            $relationBidangKerja->id_mahasiswa = auth()->user()->id; 
+            $relationBidangKerja->save();
+        }else{
+            $pengalaman = PengalamanOrganisasi::find($request->id_pengalaman_organisasi);
+            
+            $pengalaman->id_mahasiswa = auth()->user()->id;
+            $pengalaman->nama_organisasi = $request->nama_organisasi;
+            $pengalaman->deskripsi = $request->deskripsi;
+            $pengalaman->gambar = $request->gambar;
+            $pengalaman->tanggal_mulai = $request->tanggal_mulai;
+            $pengalaman->tanggal_selesai = $request->tanggal_selesai;
+            $pengalaman->save();
+            
+            $relationBidangKerja = RelationBidangKerja::where('id_pengalaman_organisasi', $request->id_pengalaman_organisasi)->first();
+            $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja; 
+            $relationBidangKerja->save();
         }
-        $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja;
-        $relationBidangKerja->id_mahasiswa = auth()->user()->id; 
-        $relationBidangKerja->save();
-
+        
         return $pengalaman;
     }
 
