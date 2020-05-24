@@ -52,13 +52,13 @@ class MahasiswaController extends Controller
     public function checkIfUserExist(request $request){
         $mahasiswaEmail = Mahasiswa::where('email', $request->email)->first();
         if($mahasiswaEmail != null){
-           return $mahasiswaEmail;
+            return response()->json(['message' => "Mahasiswa sudah terdaftar"]);
         }
         $mahasiswaNim = Mahasiswa::where('nim', $request->nim)->first();
         if($mahasiswaNim != null){
-            return $mahasiswaNim;
+            return response()->json(['message' => "Mahasiswa sudah terdaftar"]);
         }
-        return $mahasiswaEmail;
+        return response()->json(['message' => "Mahasiswa belum terdaftar"]);
     }
 
     public function update(request $request, $id)
