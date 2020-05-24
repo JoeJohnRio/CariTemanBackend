@@ -58,6 +58,7 @@ class MahasiswaController extends Controller
         if($mahasiswaNim != null){
             return $mahasiswaNim;
         }
+        return $mahasiswaEmail;
     }
 
     public function update(request $request, $id)
