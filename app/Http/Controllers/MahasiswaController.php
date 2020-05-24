@@ -10,11 +10,6 @@ use Auth;
 
 class MahasiswaController extends Controller
 {
-    public function __construct(){
-        config()->set( 'auth.defaults.guard', 'mahasiswa');
-        $this->middleware('jwt.verify');
-    }
-
     public function index()
     {
         return Mahasiswa::all();
@@ -52,6 +47,17 @@ class MahasiswaController extends Controller
         $mahasiswa->delete();
 
         return "Data berhasil dihapus";
+    }
+
+    public function checkIfUserExist(request $request){
+        $mahasiswaEmail = Mahasiswa::where('email', $request->email)->first();
+        if($mahasiswaEmail != null){
+           return $mahasiswaEmail;
+        }
+        $mahasiswaNim = Mahasiswa::where('nim', $request->nim)->first();
+        if($mahasiswaNim != null){
+            return $mahasiswaNim;
+        }
     }
 
     public function update(request $request, $id)

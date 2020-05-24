@@ -21,7 +21,7 @@ class MahasiswaSeeder extends Seeder
         $url_5 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSD4tQJq72G0VXnSnJYZXpM9G4bCdbidx_aEtsPrecpJrW2j9vt&usqp=CAU";
         $url_6 = "https://i.guim.co.uk/img/media/bccce509e3af0813718958350d95ce33bb2d7379/0_495_4871_4888/master/4871.jpg?width=445&quality=85&auto=format&fit=max&s=e47ecdbe10e239bc8c597f172eb06fe4";
 		$url_7 = "https://akcdn.detik.net.id/community/media/visual/2019/05/21/209b6455-ba3f-4072-b7b4-7b65f8099d63_169.jpeg?w=600&q=90";
-		$url_8 = "https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5e76988cd8e1ae0007b723e9%2F0x0.jpg%3Fbackground%3D000000%26cropX1%3D841%26cropX2%3D2671%26cropY1%3D35%26cropY2%3D1866";
+		$url_8 = "https://awsimages.detik.net.id/community/media/visual/2019/05/23/e77d04d3-64be-4678-974a-0e5bb3f851c7_169.jpeg?w=600&q=60";
 		$url_9 = "https://awsimages.detik.net.id/visual/2018/02/26/519841ea-640c-4e57-ad5c-4c1cb06151cd_169.jpeg?w=650";
 		$url_10 = "https://akcdn.detik.net.id/community/media/visual/2019/04/06/fb8a3b99-ebb2-4e6d-9109-6aa3b84dd165_169.jpeg?w=700&q=90";
 		$url_11 = "https://asset.kompas.com/crops/L549LokkgzgFCsE--ChsWxoYDyQ=/0x12:676x463/750x500/data/photo/2017/06/17/257176401.jpg";

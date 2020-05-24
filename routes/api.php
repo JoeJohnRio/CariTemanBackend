@@ -34,6 +34,7 @@ Route::get('test', 'AuthController@test');
 //Mahasiswa Controller
 Route::get('mahasiswaall', 'MahasiswaController@mahasiswaAuth')->middleware('jwt.verify');
 Route::get('user', 'AuthController@getUserenticatedUser')->middleware('jwt.verify');
+Route::post('mahasiswa/checkexist', 'MahasiswaController@checkIfUserExist');
 
 //RelationTeman Controller
 // Route::get('relationteman/{id}', 'RelationTemanController@showFriend')->middleware('jwt.verify');
