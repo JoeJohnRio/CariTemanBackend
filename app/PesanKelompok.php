@@ -3,13 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Pesan extends Model
+class PesanKelompok extends Model
 {
-    protected $table = 'pesan';
+    protected $table = 'pesan_kelompok';
 
-    protected $fillable = ['isi_pesan', 'id_mahasiswa_pengirim', 'id_mahasiswa_penerima'];
+    protected $fillable = ['isi_pesan', 'id_mahasiswa_pengirim', 'id_kelompok'];
 
     public function getJWTIdentifier()
     {

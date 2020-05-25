@@ -129,6 +129,8 @@ Route::get('skillhobi/search/{namaSkillhobi}', 'SkillHobiController@showSearchSk
 Route::post('skillhobi/make/{namaSkillhobi}', 'SkillHobiController@makeSkillhobi');
 
 //Chat
+Route::post('pesankelompok/send', 'ChatController@sendMessageKelompok');
+Route::post('pesankelompok/show', 'ChatController@showMessageKelompok');
 Route::post('chat/', 'ChatController@store')->name('chat.store');;
 Route::post('chat/join', 'ChatController@join')->name('chat.join');;
 

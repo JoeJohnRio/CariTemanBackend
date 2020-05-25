@@ -34,5 +34,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RelationSkillhobiSeeder::class);
         $this->call(RelationLokasiPklSeeder::class);
         $this->call(SearchHistorySeeder::class);
+        $this->call(PesanKelompokSeeder::class);
+        $this->call(PesanSeeder::class);
     }
 }

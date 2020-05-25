@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePesanTable extends Migration
+class CreatePesanKelompokTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreatePesanTable extends Migration
      */
     public function up()
     {
-        Schema::create('pesan', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('pesan_kelompok', function (Blueprint $table) {
+            $table->bigIncrements('id');            
             $table->string('isi_pesan');
             $table->unsignedBigInteger('id_mahasiswa_pengirim');
             $table->foreign('id_mahasiswa_pengirim')->references('id')->on('mahasiswa');
-            $table->unsignedBigInteger('id_mahasiswa_penerima');
-            $table->foreign('id_mahasiswa_penerima')->references('id')->on('mahasiswa');
+            $table->unsignedBigInteger('id_kelompok');
+            $table->foreign('id_kelompok')->references('id')->on('kelompok');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreatePesanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pesan_table');
+        Schema::dropIfExists('pesan_kelompok');
     }
 }
