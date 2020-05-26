@@ -131,6 +131,8 @@ Route::post('skillhobi/make/{namaSkillhobi}', 'SkillHobiController@makeSkillhobi
 //Chat
 Route::post('pesankelompok/send', 'ChatController@sendMessageKelompok');
 Route::post('pesankelompok/show', 'ChatController@showMessageKelompok');
+Route::post('pesanuser/send', 'ChatController@sendMessageUser');
+Route::post('pesanuser/show', 'ChatController@showMessageUser');
 Route::post('chat/', 'ChatController@store')->name('chat.store');;
 Route::post('chat/join', 'ChatController@join')->name('chat.join');;
 
