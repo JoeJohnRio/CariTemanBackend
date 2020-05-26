@@ -41,9 +41,13 @@ Route::post('mahasiswa/checkexist', 'MahasiswaController@checkIfUserExist');
 Route::get('relationteman/favorite/pkl', 'RelationTemanController@showFavoriteFriendPkl');
 Route::get('relationteman/favorite/lomba', 'RelationTemanController@showFavoriteFriendLomba');
 Route::put('relationteman/favorite/toggle/{id_two}', 'RelationTemanController@toogleFavoriteFriend');
-Route::post('relationteman/friend/{id_one}/add/{id_two}', 'RelationTemanController@addFriend');
+Route::post('relationteman/addfriend', 'RelationTemanController@addFriend');
+Route::post('relationteman/confirm', 'RelationTemanController@confirmFriend');
 Route::get('relationteman/friend/{id_two}', 'RelationTemanController@getRelationTeman');
 Route::get('relationteman/showfriendnama', 'RelationTemanController@showFriendNameOnly');
+
+//Notifikasi
+Route::get('notifikasi/show', 'NotifikasiController@showNotifikasi');
 
 //RelationTempatPkl
 Route::put('relationtempatpkl/favorite/toogle/{id}', 'RelationTempatPklController@toggleFavoriteTempatPkl');

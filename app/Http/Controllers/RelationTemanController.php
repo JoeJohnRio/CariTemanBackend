@@ -6,6 +6,7 @@ use Illuminate\Http\Controllers;
 use Illuminate\Http\request;
 use App\RelationTeman;
 use App\Mahasiswa;
+use App\Notifikasi;
 
 class RelationTemanController extends Controller
 {
@@ -26,20 +27,56 @@ class RelationTemanController extends Controller
         return $mahasiswa->pluck('mahasiswa');
     }
 
-    public function addFriend($id_one, $id_two)
+    public function addFriend(request $request)
     {
-        $relation = new RelationTeman();
-        $relation->id_mahasiswa_one = $id_one;
-        $relation->id_mahasiswa_two = $id_two;
-        $relation->status = 2;
-        $relation->save();
-
-        return RelationTeman::where('id_mahasiswa_one', $id_one)->where(
-            [
-                ['status', '>=', '1']
-            ]
-        )->Get();
+        $relationFirst = new RelationTeman();
+        $relationFirst->id_mahasiswa_one = auth()->user()->id;
+        $relationFirst->id_mahasiswa_two = $request->id_mahasiswa_two;
+        $relationFirst->status = 2;
+        $relationFirst->save();
+        
+        $relationSecond = new RelationTeman();
+        $relationSecond->id_mahasiswa_one = $request->id_mahasiswa_two;
+        $relationSecond->id_mahasiswa_two = auth()->user()->id;
+        $relationSecond->status = 2;
+        $relationSecond->save();
+        
+        $notifikasi = new Notifikasi();
+        $notifikasi->notifikasi_type = 1;
+        $notifikasi->id_mahasiswa_pengirim = auth()->user()->id;
+        $notifikasi->id_mahasiswa_penerima = $request->id_mahasiswa_two;
+        $notifikasi->save();
+    
+        return response()->json(['message' => 'Menunggu persetujuan pertemanan']);
     }
+
+    public function confirmFriend(request $request){
+        $relationFirst = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->where('id_mahasiswa_two', $request->id_mahasiswa_two)->first();;
+        $relationFirst->status = $request->status;
+        $relationFirst->save();
+        
+        $relationFirst = RelationTeman::where('id_mahasiswa_two', auth()->user()->id)->where('id_mahasiswa_one', $request->id_mahasiswa_two)->first();
+        $relationFirst->status = $request->status;
+        $relationFirst->save();
+
+        $notifikasi = new Notifikasi();
+        if($request->status == 0){
+            $notifikasi->notifikasi_type = 3;
+        }else if ($request->status == 1){
+            $notifikasi->notifikasi_type = 2;
+        }
+        $notifikasi->id_mahasiswa_pengirim = auth()->user()->id;
+        $notifikasi->id_mahasiswa_penerima = $request->id_mahasiswa_two;
+        $notifikasi->save();
+
+        $notifikasiIsRead = Notifikasi::where('id_mahasiswa_pengirim', $request->id_mahasiswa_two)->where('id_mahasiswa_penerima', auth()->user()->id)->
+        where('notifikasi_type',1)->first();
+        $notifikasiIsRead->is_read = 1;
+        $notifikasiIsRead->save();    
+        
+        return response()->json(['message' => 'Sudah terkirim']);
+    }
+
 
     public function showFavoriteFriendPkl()
     {

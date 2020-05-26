@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SearchHistorySeeder::class);
         $this->call(PesanKelompokSeeder::class);
         $this->call(PesanSeeder::class);
+        $this->call(NotifikasiSeeder::class);
     }
 }

@@ -10,6 +10,7 @@ use App\Mahasiswa;
 use App\Fakultas;
 use App\ProgramStudi;
 use App\Keminatan;
+use \stdClass;
 
 class RekomendasiController extends Controller
 {
@@ -55,19 +56,21 @@ class RekomendasiController extends Controller
 
     public function profilInfoOthers($id){
         $teman = Mahasiswa::where('id', $id);
-
-        if(is_null(RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->
-        where('id_mahasiswa_two', $id)->first())){
-            $relation = new RelationTeman();
-            $relation->id_mahasiswa_one = auth()->user()->id;
-            $relation->id_mahasiswa_two = $id;
-            $relation->is_favorite = 0;
-            $relation->status = 0;
-            $relation->save();
+        $relasiTeman = new stdClass();
+            
+        if(is_null(RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->where('id_mahasiswa_two', $id)->first())){
+            $relasiTeman->status = 0;
+            $relasiTeman->is_favorite = 0;
+			// $relation = new RelationTeman();
+            // $relation->id_mahasiswa_one = auth()->user()->id;
+            // $relation->id_mahasiswa_two = $id;
+            // $relation->is_favorite = 0;
+            // $relation->status = 0;
+            // $relation->save();
+        }else{
+            $relasiTeman = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->
+            where('id_mahasiswa_two', $id);
         }
-
-        $relasiTeman = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->
-        where('id_mahasiswa_two', $id);
 
         return response()->json(
             ['name' => $teman->value('name'),
@@ -75,7 +78,7 @@ class RekomendasiController extends Controller
             'foto_profil' => $teman->value('foto_profil'),
             'status' => $relasiTeman->value('status'),
             'is_favorite' => $relasiTeman->value('is_favorite'),
-            'jumlah_teman' => RelationTeman::where('id_mahasiswa_one', $id)->count(),
+            'jumlah_teman' => RelationTeman::where('id_mahasiswa_one', $id)->where('status', 1)->count(),
             'jumlah_rekomendasi' => Rekomendasi::where('id_penerima', $id)->count(),
             'jumlah_kelompok' => RelationKelompok::where('id_mahasiswa', $id)->count(),
             'fakultas' => Fakultas::where('id', Mahasiswa::where('id', $id)->pluck('id_fakultas'))->value('name'),
