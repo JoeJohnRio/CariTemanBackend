@@ -78,11 +78,7 @@ class ChatController extends Controller
 			$x = new stdClass();
 			$x->id = $pesan->id;
 			$x->isi_pesan = $pesan->isi_pesan;
-			if($pesan->id_mahasiswa_penerima == auth()->user()->id){
-				$x->isPengirim = 1;
-			}else{
-				$x->isPengirim = 0;
-			}
+			$x->isPengirim = 0;
 			$x->mahasiswa = Mahasiswa::find($pesan->id_mahasiswa_pengirim);
 			$all->add($x);
 		}
@@ -91,11 +87,7 @@ class ChatController extends Controller
 			$x = new stdClass();
 			$x->id = $pesan->id;
 			$x->isi_pesan = $pesan->isi_pesan;
-			if($pesan->id_mahasiswa_pengirim == auth()->user()->id){
-				$x->isPengirim = 1;
-			}else{
-				$x->isPengirim = 0;
-			}
+			$x->isPengirim = 1;
 			$x->mahasiswa = Mahasiswa::find($pesan->id_mahasiswa_penerima);
 			$all->add($x);
 		}
