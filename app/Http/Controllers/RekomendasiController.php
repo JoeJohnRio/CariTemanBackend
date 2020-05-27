@@ -57,29 +57,27 @@ class RekomendasiController extends Controller
     public function profilInfoOthers($id){
         $teman = Mahasiswa::where('id', $id);
         $relasiTeman = new stdClass();
-            
-        $relasiMeToHim = new RelationTeman();
-        $relasiMeToHim = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->where('id_mahasiswa_two', $id)->first();
-        
-        $relasiHimToMe = RelationTeman::where('id_mahasiswa_one', $id)->where('id_mahasiswa_two', auth()->user()->id)->first();
-        
-        if($relasiMeToHim == null && $relasiHimToMe == null){
+        if($id == auth()->user()->id){
             $relasiTeman->status = 0;
             $relasiTeman->is_favorite = 0;
-			// $relation = new RelationTeman();
-            // $relation->id_mahasiswa_one = auth()->user()->id;
-            // $relation->id_mahasiswa_two = $id;
-            // $relation->is_favorite = 0;
-            // $relation->status = 0;
-            // $relation->save();
         }else{
-            if($relasiMeToHim != null){
-                $relasiTeman = $relasiMeToHim;
-                if($relasiTeman->status == 2){
-                    $relasiTeman->status = 3;
+            $relasiMeToHim = new RelationTeman();
+            $relasiMeToHim = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->where('id_mahasiswa_two', $id)->first();
+            
+            $relasiHimToMe = RelationTeman::where('id_mahasiswa_one', $id)->where('id_mahasiswa_two', auth()->user()->id)->first();
+            
+            if($relasiMeToHim == null && $relasiHimToMe == null){
+                $relasiTeman->status = 0;
+                $relasiTeman->is_favorite = 0;
+            }else{
+                if($relasiMeToHim != null){
+                    $relasiTeman = $relasiMeToHim;
+                    if($relasiTeman->status == 2){
+                        $relasiTeman->status = 3;
+                    }
+                }else if($relasiHimToMe != null){
+                    $relasiTeman = $relasiHimToMe;
                 }
-            }else if($relasiHimToMe != null){
-                $relasiTeman = $relasiHimToMe;
             }
         }
 
