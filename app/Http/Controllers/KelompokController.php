@@ -9,6 +9,7 @@ use App\Kelompok;
 use App\RelationKelompok;
 use App\RelationTeman;
 use App\Fakultas;
+use App\Notifikasi;
 use Auth;
 
 
@@ -54,6 +55,13 @@ class KelompokController extends Controller
             $anggota->id_mahasiswa = $calon_anggota['id_mahasiswa'];
             $anggota->status = 0;
             $anggota->save();
+
+            $notifikasi = new Notifikasi();
+            $notifikasi->notifikasi_type = 4;
+            $notifikasi->id_mahasiswa_pengirim = auth()->user()->id;
+            $notifikasi->id_mahasiswa_penerima = $calon_anggota['id_mahasiswa'];
+            $notifikasi->id_kelompok = $kelompok->id;
+            $notifikasi->save();
             }
 
         return $kelompok;
@@ -121,16 +129,32 @@ class KelompokController extends Controller
     }
 
     public function confirmAnggotaKelompok(request $request){
-        $anggota = RelationKelompok::where('id_kelompok', $request->id_kelompok)->
-        where('id_mahasiswa', auth()->user()->id)->first();
-        $anggota->status = 1;
-        $anggota->save();
+        
+        $notifikasi = new Notifikasi();
+        if($request->status == 0){
+            $anggota = RelationKelompok::where('id_kelompok', $request->id_kelompok)->
+            where('id_mahasiswa', auth()->user()->id)->first();
+            $notifikasi->notifikasi_type = 5;
+            if($anggota != null){
+                $anggota->delete();
+            }
+        }else if($request->status == 1){
+            $anggota = RelationKelompok::where('id_kelompok', $request->id_kelompok)->
+            where('id_mahasiswa', auth()->user()->id)->first();
+            $anggota->status = 1;
+            $anggota->save();
+            $notifikasi->notifikasi_type = 6;
+        }
 
-        $kelompok = Kelompok::find($request->id_kelompok);
-        $kelompok->jumlah_anggota = $kelompok->jumlah_anggota + 1;
-        $kelompok->save();
+        $ketuaKelompok = RelationKelompok::where('id_kelompok', $request->id_kelompok)->
+            where('status', 1)->first();
+        
+        $notifikasi->id_mahasiswa_pengirim = auth()->user()->id;
+        $notifikasi->id_mahasiswa_penerima = $ketuaKelompok->id_mahasiswa;
+        $notifikasi->id_kelompok = $request->id_kelompok;
+        $notifikasi->save();
 
-        return "Anda sudah masuk dalam kelompok";
+        return "Sudah terkonfimasi";
     }
 
     public function updateKelompokInfo(request $request){
