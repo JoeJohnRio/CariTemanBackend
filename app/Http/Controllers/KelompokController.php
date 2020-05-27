@@ -74,6 +74,13 @@ class KelompokController extends Controller
             $anggota->id_mahasiswa = $calon_anggota['id_mahasiswa'];
             $anggota->status = 0;
             $anggota->save();
+
+            $notifikasi = new Notifikasi();
+            $notifikasi->notifikasi_type = 4;
+            $notifikasi->id_mahasiswa_pengirim = auth()->user()->id;
+            $notifikasi->id_mahasiswa_penerima = $calon_anggota['id_mahasiswa'];
+            $notifikasi->id_kelompok = $request->id_kelompok;
+            $notifikasi->save();
             }
 
         return $anggota;
