@@ -58,7 +58,7 @@ class RekomendasiController extends Controller
         $teman = Mahasiswa::where('id', $id);
         $relasiTeman = new stdClass();
         if($id == auth()->user()->id){
-            $relasiTeman->status = 0;
+            $relasiTeman->status = -1;
             $relasiTeman->is_favorite = 0;
         }else{
             $relasiMeToHim = new RelationTeman();
