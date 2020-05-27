@@ -58,7 +58,12 @@ class RekomendasiController extends Controller
         $teman = Mahasiswa::where('id', $id);
         $relasiTeman = new stdClass();
             
-        if(is_null(RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->where('id_mahasiswa_two', $id)->first())){
+        $relasiMeToHim = new RelationTeman();
+        $relasiMeToHim = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->where('id_mahasiswa_two', $id)->first();
+        
+        $relasiHimToMe = RelationTeman::where('id_mahasiswa_one', $id)->where('id_mahasiswa_two', auth()->user()->id)->first();
+        
+        if($relasiMeToHim == null && $relasiHimToMe == null){
             $relasiTeman->status = 0;
             $relasiTeman->is_favorite = 0;
 			// $relation = new RelationTeman();
@@ -68,16 +73,22 @@ class RekomendasiController extends Controller
             // $relation->status = 0;
             // $relation->save();
         }else{
-            $relasiTeman = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->
-            where('id_mahasiswa_two', $id);
+            if($relasiMeToHim != null){
+                $relasiTeman = $relasiMeToHim;
+                if($relasiTeman->status == 2){
+                    $relasiTeman->status = 3;
+                }
+            }else if($relasiHimToMe != null){
+                $relasiTeman = $relasiHimToMe;
+            }
         }
 
         return response()->json(
             ['name' => $teman->value('name'),
             'tahun_mulai' => $teman->value('tahun_mulai'),
             'foto_profil' => $teman->value('foto_profil'),
-            'status' => $relasiTeman->value('status'),
-            'is_favorite' => $relasiTeman->value('is_favorite'),
+            'status' => $relasiTeman->status,
+            'is_favorite' => $relasiTeman->is_favorite,
             'jumlah_teman' => RelationTeman::where('id_mahasiswa_one', $id)->where('status', 1)->count(),
             'jumlah_rekomendasi' => Rekomendasi::where('id_penerima', $id)->count(),
             'jumlah_kelompok' => RelationKelompok::where('id_mahasiswa', $id)->count(),

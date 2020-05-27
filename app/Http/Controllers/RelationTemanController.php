@@ -35,11 +35,11 @@ class RelationTemanController extends Controller
         $relationFirst->status = 2;
         $relationFirst->save();
         
-        $relationSecond = new RelationTeman();
-        $relationSecond->id_mahasiswa_one = $request->id_mahasiswa_two;
-        $relationSecond->id_mahasiswa_two = auth()->user()->id;
-        $relationSecond->status = 2;
-        $relationSecond->save();
+        // $relationSecond = new RelationTeman();
+        // $relationSecond->id_mahasiswa_one = $request->id_mahasiswa_two;
+        // $relationSecond->id_mahasiswa_two = auth()->user()->id;
+        // $relationSecond->status = 2;
+        // $relationSecond->save();
         
         $notifikasi = new Notifikasi();
         $notifikasi->notifikasi_type = 1;
@@ -51,11 +51,11 @@ class RelationTemanController extends Controller
     }
 
     public function confirmFriend(request $request){
-        $relationFirst = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->where('id_mahasiswa_two', $request->id_mahasiswa_two)->first();;
-        $relationFirst->status = $request->status;
-        $relationFirst->save();
+        // $relationFirst = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->where('id_mahasiswa_two', $request->id_mahasiswa_two)->first();;
+        // $relationFirst->status = $request->status;
+        // $relationFirst->save();
         
-        $relationFirst = RelationTeman::where('id_mahasiswa_two', auth()->user()->id)->where('id_mahasiswa_one', $request->id_mahasiswa_two)->first();
+        $relationFirst = RelationTeman::where('id_mahasiswa_two', auth()->user()->id)->where('id_mahasiswa_one', $request->id_mahasiswa_two)->where('status', 2)->first();
         $relationFirst->status = $request->status;
         $relationFirst->save();
 
