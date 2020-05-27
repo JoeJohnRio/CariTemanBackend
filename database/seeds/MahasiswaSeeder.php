@@ -40,6 +40,7 @@ class MahasiswaSeeder extends Seeder
 			[
 				'name' => 'joel',
     			'email' => 'joel@joel.joel',
+				'is_verified' => true,
     			'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', //secret
 				'foto_ktm' => 'https://wallpapercave.com/wp/DTvUQor.jpg',
 				'foto_profil' => 'https://media-exp1.licdn.com/dms/image/C5103AQHszi6WjYJl5A/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=MOSjbQRA54Gk7_a4R36wGHI4AP5LCTsqSKmgJvUAE0k',
@@ -52,10 +53,35 @@ class MahasiswaSeeder extends Seeder
     			'nim' => 165150201111157,
 			]]);
 
+			DB::table('admin')->insert([
+				[
+					'email' => 'admin@cariteman.com',
+					'password' => '$2y$10$kvXDF5RhCiZvo/SHLqLVrOCA.U1lA8n/d8hnXzhmKhl1JCy4cL2T2' //adminadmin
+				]]);
+
     	for($i = 1; $i <= 50; $i++){
     		DB::table('mahasiswa')->insert([
     			'name' => $faker->name,
+				'email' => $faker->unique()->safeEmail,
+				'is_verified' => true,
+    			'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', //secret
+				'foto_ktm' => $foto_ktm[mt_rand(0,5)],
+				'foto_profil' => $foto_profil[mt_rand(0,10)],
+				'jenis_kelamin' => $faker->numberBetween(0,1),
+				'id_fakultas' => $faker->numberBetween(1,5),
+				'id_program_studi' => $faker->numberBetween(1,11),
+				'id_keminatan' => $faker->numberBetween(1,12),
+				'preferensi' => $faker->numberBetween(0,1),
+    			'tahun_mulai' => $faker->numberBetween(2016,2020),
+    			'nim' => $faker->numberBetween(165150201111000, 165150201111200),
+    		]);
+		}
+		
+		for($i = 1; $i <= 25; $i++){
+    		DB::table('mahasiswa')->insert([
+    			'name' => $faker->name,
     			'email' => $faker->unique()->safeEmail,
+				'is_verified' => false,
     			'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', //secret
 				'foto_ktm' => $foto_ktm[mt_rand(0,5)],
 				'foto_profil' => $foto_profil[mt_rand(0,10)],

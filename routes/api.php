@@ -140,9 +140,12 @@ Route::post('pesanuser/show', 'ChatController@showMessageUser');
 Route::post('chat/', 'ChatController@store')->name('chat.store');;
 Route::post('chat/join', 'ChatController@join')->name('chat.join');;
 
+//Admin
 Route::post('admin/login', 'Admin\AuthController@login');
 Route::post('admin/register', 'Admin\AuthController@register');
 Route::get('admin/test', 'Admin\AuthController@test');
+Route::post('admin/mahasiswa', 'AdminController@mahasiswaNeedVerification');
+
 
 
 //List API

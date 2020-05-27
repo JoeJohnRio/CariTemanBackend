@@ -15,7 +15,7 @@ class CreateMahasiswaTable extends Migration
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('is_verified')->default(true);
+            $table->boolean('is_verified')->default(false);
             $table->string('password');
             $table->string('name');
             $table->string('email');
