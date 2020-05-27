@@ -156,6 +156,10 @@ class KelompokController extends Controller
         $ketuaKelompok = RelationKelompok::where('id_kelompok', $request->id_kelompok)->
             where('status', 1)->first();
         
+        $notifikasiOld = Notifikasi::where('id_mahasiswa_pengirim', $ketuaKelompok->id_mahasiswa)->where('id_mahasiswa_penerima', auth()->user()->id)->
+        where('id_kelompok', $request->id_kelompok)->first();
+        $notifikasiOld->delete();
+
         $notifikasi->id_mahasiswa_pengirim = auth()->user()->id;
         $notifikasi->id_mahasiswa_penerima = $ketuaKelompok->id_mahasiswa;
         $notifikasi->id_kelompok = $request->id_kelompok;
