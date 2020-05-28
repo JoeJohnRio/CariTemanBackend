@@ -55,4 +55,20 @@ class AdminController extends Controller
 
         return $newMahasiswa;
     }
+
+    public function confirmVerificationMahasiswa(request $request){
+        $mahasiswa = Mahasiswa::find($request->id);
+
+        if($request->status == 1){
+            $mahasiswa->is_verified = 1;
+            $mahasiswa->save();
+            
+            return "mahasiswa sudah terverifikasi";
+        }else{
+            $mahasiswa->delete();
+            
+            return "mahasiswa dihapus dari database";
+        }
+
+    }
 }

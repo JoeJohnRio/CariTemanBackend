@@ -146,6 +146,8 @@ Route::post('admin/register', 'Admin\AuthController@register');
 Route::get('admin/test', 'Admin\AuthController@test');
 Route::post('admin/mahasiswa', 'AdminController@mahasiswaNeedVerification');
 Route::post('admin/mahasiswa/detail', 'AdminController@mahasiswaNeedVerificationDetail');
+Route::post('admin/mahasiswa/confirm', 'AdminController@confirmVerificationMahasiswa');
+
 
 //List API
 //Login
