@@ -30,7 +30,7 @@ class MahasiswaSeeder extends Seeder
 		$url_foto_1 = "https://3.bp.blogspot.com/-aloAA-710SA/Vt7Xx-pTO7I/AAAAAAAAA34/gnruOkXcAbI/s1600/KTM%2528SHELLA%2BMAHAY%2BSAHRIANI%2529.jpg";
         $url_foto_2 = "https://alhamidiyah.ac.id/assets/cores/dev/files/images/large/STAMIDIYA_190125044205_1.jpg";
         $url_foto_3 = "https://stkipsetiabudhi.ac.id/wp-content/uploads/2019/08/NENG-ITA-LESTARI-KTM.png";
-        $url_foto_4 = "https://lh3.googleusercontent.com/proxy/99RHsePCp_8oz_3-9S450NXGzzomrl83PhrSjfc4kjSI9RplUr3jUNNFGNV4ub9uzzCbVX8LgtF_W0S7oSNNU8Fr91pMd8hO9b5vFtWgV1sd5AKEZDK4A8lM7UJWzzM2GTVJarF-s0CGUC4";
+        $url_foto_4 = "https://pbs.twimg.com/media/CLeAqukUYAA1os-.jpg";
         $url_foto_5 = "https://undiksha.ac.id/wp-content/uploads/2018/11/contoh-foto-KTM-Undiksha.jpg";
         $url_foto_6 = "https://1.bp.blogspot.com/-kDnd4KZfF2E/WR9d65Dfj2I/AAAAAAAAAdc/RryH5XtFzl8qS7Gf29dDtnWwmeqZY5sTwCLcB/s1600/img011.jpg";
         $foto_ktm = array( $url_foto_1, $url_foto_2, $url_foto_3, $url_foto_4, $url_foto_5, $url_foto_6 );
