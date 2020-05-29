@@ -35,7 +35,7 @@ class RekomendasiController extends Controller
         $rekomendasi->id_penerima = $request->id_penerima;
 
         if(Rekomendasi::where('id_pengirim', auth()->user()->id)->where('id_penerima', $request->id_penerima)->exists()){
-            return "Sudah pernah mengisi rekomendasi";
+            return response()->json(['message' => "Sudah pernah mengisi rekomendasi"]);
         }else{
             $notifikasi = new Notifikasi();
             $notifikasi->notifikasi_type = 7;
@@ -43,7 +43,7 @@ class RekomendasiController extends Controller
             $notifikasi->id_mahasiswa_penerima = $request->id_penerima;
             $notifikasi->save();
             $rekomendasi->save();
-            return "Rekomendasi ditambahkan";
+            return response()->json(['message' => "Rekomendasi ditambahkan"]);
         }
     }
 
