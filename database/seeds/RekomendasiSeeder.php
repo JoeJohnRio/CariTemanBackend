@@ -18,7 +18,7 @@ class RekomendasiSeeder extends Seeder
     			'jumlah_rating' => $faker->numberBetween(1,5),
     			'deskripsi' => "Udah bagus nih mas",
     			'is_hidden' => false,
-    			'id_pengirim' => 1,
+    			'id_pengirim' => 2,
     			'id_penerima' => $faker->numberBetween(2,50)
             ]);
             
