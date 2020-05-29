@@ -7,6 +7,7 @@ use Illuminate\Http\request;
 use App\Fakultas;
 use App\ProgramStudi;
 use App\Keminatan;
+use App\LokasiPkl;
 use App\Mahasiswa;
 
 
@@ -20,6 +21,11 @@ class FakultasController extends Controller
     public function showProgramStudiById($id)
     {
         return ProgramStudi::where('id_fakultas', $id)->get();
+    }
+
+    public function showKota()
+    {
+        return LokasiPkl::all();
     }
 
     public function showKeminatanById($id)

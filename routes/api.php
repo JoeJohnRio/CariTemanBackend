@@ -55,6 +55,7 @@ Route::get('relationtempatpkl/favorite', 'RelationTempatPklController@showFavori
 
 //Fakultas Controller
 Route::get('fakultas', 'FakultasController@index');
+Route::get('lokasipkl', 'FakultasController@showKota');
 Route::get('fakultas/programstudi/{id}', 'FakultasController@showProgramStudiById');
 Route::get('fakultas/programstudi/keminatan/{id}', 'FakultasController@showKeminatanById');
 Route::get('fakultas/showall/{id}', 'FakultasController@showFakultasProdiKeminatan');
