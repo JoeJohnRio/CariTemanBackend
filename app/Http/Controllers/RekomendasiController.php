@@ -10,6 +10,7 @@ use App\Mahasiswa;
 use App\Fakultas;
 use App\ProgramStudi;
 use App\Keminatan;
+use App\Notifikasi;
 use \stdClass;
 
 class RekomendasiController extends Controller
@@ -32,11 +33,19 @@ class RekomendasiController extends Controller
         $rekomendasi->is_hidden = false;
         $rekomendasi->id_pengirim = auth()->user()->id;
         $rekomendasi->id_penerima = $request->id_penerima;
+
+
+        $notifikasi = new Notifikasi();
+        $notifikasi->notifikasi_type = 7;
+        $notifikasi->id_mahasiswa_pengirim = auth()->user()->id;
+        $notifikasi->id_mahasiswa_penerima = $request->id_penerima;
+        $notifikasi->save();
+
         if(Rekomendasi::where('id_pengirim', auth()->user()->id)->where('id_penerima', $request->id_penerima)->exists()){
             return "Sudah pernah mengisi rekomendasi";
         }else{
             $rekomendasi->save();
-            return "Rekomendasi masuk";
+            return "Rekomendasi ditambahkan";
         }
     }
 
