@@ -78,6 +78,7 @@ Route::get('tempatpkl/bidangkerja', 'TempatPklController@getBidangKerja');
 Route::get('tempatpkl/lokasipkl', 'TempatPklController@getLokasiPkl');
 Route::get('tempatpkl/', 'TempatPklController@getTempatPkl');
 Route::get('tempatpkl/profile/{id}', 'TempatPklController@showTempatPklProfile');
+Route::post('tempatpkl/add', 'TempatPklController@addTempatPkl');
 
 //Pengalaman
 Route::get('pengalaman/lomba', 'PengalamanController@getPengalamanLomba');

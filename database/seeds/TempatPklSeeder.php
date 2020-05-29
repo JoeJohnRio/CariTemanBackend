@@ -46,7 +46,6 @@ class TempatPklSeeder extends Seeder
                 'id_lokasi_pkl' => mt_rand(1,50),
                 'phone_number'=> 55500000+mt_rand(00000, 99999),
                 'gambar' => $gambar_url[mt_rand(0,5)],
-    			'id_relation_bidang_kerja' => mt_rand(1,25), //secret
     		]);
     	}
     }

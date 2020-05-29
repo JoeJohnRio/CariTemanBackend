@@ -6,6 +6,7 @@ use Illuminate\Http\Controllers;
 use Illuminate\Http\request;
 use App\BidangKerja;
 use App\LokasiPkl;
+use App\RelationBidangKerja;
 use App\RelationLokasiPkl;
 use App\TempatPkl;
 use App\UlasanTempatPkl;
@@ -44,5 +45,23 @@ class TempatPklController extends Controller
             $tempatPklReturn->jumlah_ulasan = $jumlahUlasan;
 
         return $tempatPklReturn;
+    }
+
+    public function addTempatPkl(request $request){
+
+        $tempatPkl = new TempatPkl();
+        $tempatPkl->nama_perusahaan = $request->nama_perusahaan;
+        $tempatPkl->gambar = $request->gambar;
+        $tempatPkl->phone_number = $request->phone_number;
+        $tempatPkl->id_lokasi_pkl = $request->id_lokasi_pkl;
+
+        $tempatPkl->save();
+        
+        $relationBidangKerja = new RelationBidangKerja();
+        $relationBidangKerja->id_bidang_kerja = $request->id_bidang_kerja;
+        $relationBidangKerja->id_tempat_pkl = $tempatPkl->id;
+        $relationBidangKerja->save();
+
+        return "addTempatPkl";
     }
 }

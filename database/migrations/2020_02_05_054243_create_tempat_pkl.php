@@ -20,8 +20,6 @@ class CreateTempatPkl extends Migration
             $table->integer('phone_number');
             $table->unsignedBigInteger('id_lokasi_pkl');
             $table->foreign('id_lokasi_pkl')->references('id')->on('lokasi_pkl');
-            $table->unsignedBigInteger('id_relation_bidang_kerja');
-            $table->foreign('id_relation_bidang_kerja')->references('id')->on('bidang_kerja');
             $table->timestamps();
         });
     }
