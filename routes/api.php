@@ -129,6 +129,7 @@ Route::get('kelompok/showfriendnotadded/{id_kelompok}', 'KelompokController@show
 //BidangKerja
 Route::get('bidangkerja/search/{namaBidangKerja}', 'BidangKerjaController@showSearchBidangKerja');
 Route::post('bidangkerja/make/{namaBidangKerja}', 'BidangKerjaController@makeBidangKerja');
+Route::post('mahasiswa/changeprofilpicture', 'BidangKerjaController@changeProfilePicture');
 
 //Skillhobi
 Route::get('skillhobi/search/{namaSkillhobi}', 'SkillHobiController@showSearchSkillhobi');
