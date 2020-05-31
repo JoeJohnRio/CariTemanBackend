@@ -33,8 +33,8 @@ class RekomendasiController extends Controller
         
                 //kembalikan, jumlah rekomendasi, nama, pengalaman lomba, pengalaman organisasi, gambar pengalaman
         $all = collect();
-        if($request->type == 1 || $request->type == 2){//pkl = 1 lomba = 2
-            $mahasiswas = Mahasiswa::where('id', '!=', auth()->user()->id)->where('preferensi', $request->type-1)->get();
+        if($request->type_of_recommendation == 1 || $request->type_of_recommendation == 2){//pkl = 1 lomba = 2
+            $mahasiswas = Mahasiswa::where('id', '!=', auth()->user()->id)->where('preferensi', $request->type_of_recommendation-1)->get();
                 foreach($mahasiswas as $mahasiswa){
                     $returnObject = new stdClass();
                     $returnObject->name = $mahasiswa->name;
@@ -67,6 +67,7 @@ class RekomendasiController extends Controller
                     $jumlah_tim = RelationKelompok::where('id_mahasiswa', $mahasiswa->id)->get()->count();
                     $returnObject->jumlah_tim = RelationKelompok::where('id_mahasiswa', $mahasiswa->id)->get()->count();
                     $returnObject->pengalaman_scale = $pengalaman_scale;
+                    $returnObject->type_of_recommendation = $request->type_of_recommendation;
                     $returnObject->recommendation_scalee = $recommendation_scale;
                     $returnObject->recommendation_scale = $pengalaman_scale * 6 + $recommendation_scale * 4 + ($jumlah_tim*5*-1);
 
@@ -80,13 +81,14 @@ class RekomendasiController extends Controller
                 }
                 return $res;
 
-        }else if($request->type == 3){//tempat pkl
+        }else if($request->type_of_recommendation == 3){//tempat pkl
             //jumlah rekomendasi, nama, bidang kerja, dan kota
             $all = collect();
 
             $tempatPkls = TempatPkl::all();
             foreach($tempatPkls as $tempatPkl){
                 $returnObject = new stdClass();
+                $returnObject->type_of_recommendation = $request->type_of_recommendation;
                 $returnObject->nama_perusahaan = $tempatPkl->nama_perusahaan;
                 $returnObject->jumlah_rekomendasi = UlasanTempatPkl::where('id_tempat_pkl', $tempatPkl->id)->count();
                 $returnObject->id_bidang_kerja = RelationBidangKerja::where('id_tempat_pkl', $tempatPkl->id)->first()->id;
