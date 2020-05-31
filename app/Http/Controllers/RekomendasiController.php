@@ -54,6 +54,7 @@ class RekomendasiController extends Controller
                     
                     $pengalaman_organisasis = PengalamanOrganisasi::where('id_mahasiswa', $mahasiswa->id)->get();
                     $all_pengalaman_organisasi = collect();
+                    
                     foreach($pengalaman_organisasis as $pengalaman_organisasi){
                         $a = new stdClass();
                         $a->nama_organisasi = $pengalaman_organisasi->nama_organisasi;
@@ -62,16 +63,17 @@ class RekomendasiController extends Controller
                         $a->bidang_kerja_nama = BidangKerja::find(RelationBidangKerja::where('id_pengalaman_organisasi', $pengalaman_organisasi->id)->first()->id_bidang_kerja)->nama_bidang_kerja;
                         $all_pengalaman_organisasi->add($a);
                     }
+
                     $returnObject->pengalaman_organisasi = $all_pengalaman_organisasi;
-                    $pengalaman_scale = PengalamanOrganisasi::where('id_mahasiswa', $mahasiswa->id)->get()->count() +
+                    $jumlah_pengalaman = PengalamanOrganisasi::where('id_mahasiswa', $mahasiswa->id)->get()->count() +
                     PengalamanLomba::where('id_mahasiswa', $mahasiswa->id)->get()->count();
-                    $recommendation_scale = Rekomendasi::where('id_penerima', $mahasiswa->id)->get()->count();
+                    $jumlah_rekomendasi = Rekomendasi::where('id_penerima', $mahasiswa->id)->get()->count();
                     $jumlah_tim = RelationKelompok::where('id_mahasiswa', $mahasiswa->id)->get()->count();
                     $returnObject->jumlah_tim = RelationKelompok::where('id_mahasiswa', $mahasiswa->id)->get()->count();
-                    $returnObject->pengalaman_scale = $pengalaman_scale;
+                    $returnObject->jumlah_pengalaman = $jumlah_pengalaman;
                     $returnObject->type_of_recommendation = $request->type_of_recommendation;
-                    $returnObject->recommendation_scalee = $recommendation_scale;
-                    $returnObject->recommendation_scale = $pengalaman_scale * 6 + $recommendation_scale * 4 + ($jumlah_tim*5*-1);
+                    $returnObject->jumlah_rekomendasi = $jumlah_rekomendasi;
+                    $returnObject->recommendation_scale = $jumlah_pengalaman * 6 + $jumlah_rekomendasi * 4 + ($jumlah_tim*5*-1);
 
                     $all->add($returnObject);
                 }
