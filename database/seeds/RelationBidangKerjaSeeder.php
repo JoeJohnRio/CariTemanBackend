@@ -21,7 +21,7 @@ class RelationBidangKerjaSeeder extends Seeder
           ]);
 
           DB::table('relation_bidang_kerja')->insert([
-            'id_tempat_pkl' => $faker->numberBetween(1,25),
+            'id_tempat_pkl' => $i,
             'id_bidang_kerja' => $faker->numberBetween(1, 25),
           ]);
           

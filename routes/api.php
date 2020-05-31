@@ -112,6 +112,7 @@ Route::post('rekomendasi/sethidden', 'RekomendasiController@setRekomendasiHidden
 Route::post('rekomendasi/save', 'RekomendasiController@saveRekomendasiMahasiswa');
 Route::get('rekomendasi/profil/{id}', 'RekomendasiController@profilInfoOthers');
 Route::post('rekomendasi/profil/itself', 'RekomendasiController@profilInfoOthersItself');
+Route::post('rekomendasi/home', 'RekomendasiController@showHomeRecommendation');
 
 //Kelompok
 Route::get('kelompok/show', 'KelompokController@showKelompok');

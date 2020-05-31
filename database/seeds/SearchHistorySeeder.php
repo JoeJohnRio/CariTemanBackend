@@ -17,7 +17,7 @@ class SearchHistorySeeder extends Seeder
         DB::table('search_history')->insert([
             'name' => "test $i",
             'search_type' => mt_rand(0,2),
-            'id_tempat_pkl' => mt_rand(2,50),
+            'id_tempat_pkl' => mt_rand(1,25),
             'id_mahasiswa' => mt_rand(2,50),
             'id_owner_history' => mt_rand(1,2),
             'created_at' =>  date('Y-m-d', strtotime($mydate.' + '.$i.' days'))

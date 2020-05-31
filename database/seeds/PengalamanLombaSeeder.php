@@ -49,32 +49,6 @@ class PengalamanLombaSeeder extends Seeder
         "Student competition", 
         "Stock Market Learning");
 
-        
-        DB::table('pengalaman_lomba')->insert([
-            'nama_kompetisi' => $contohKompetisi[$faker->numberBetween(0,14)],
-            'deskripsi' => "Pernah memenangkan " .$contohKompetisi[$faker->numberBetween(0,14)]. "",
-            'tanggal' =>  date('Y-m-d', strtotime($mydate.' + '.(1).' days')),
-            'id_mahasiswa' => 1,
-            'gambar' => $fotoKompetisi[$faker->numberBetween(0,15)],
-        ]);
-
-        DB::table('pengalaman_lomba')->insert([
-            'nama_kompetisi' => $contohKompetisi[$faker->numberBetween(0,14)],
-            'deskripsi' => "Pernah memenangkan " .$contohKompetisi[$faker->numberBetween(0,14)]. "",
-            'tanggal' =>  date('Y-m-d', strtotime($mydate.' + '.(1).' days')),
-            'id_mahasiswa' => 1,
-            'gambar' => $fotoKompetisi[$faker->numberBetween(0,15)],
-        ]);
-
-        DB::table('pengalaman_lomba')->insert([
-            'nama_kompetisi' => $contohKompetisi[$faker->numberBetween(0,14)],
-            'deskripsi' => "Pernah memenangkan " .$contohKompetisi[$faker->numberBetween(0,14)]. "",
-            'tanggal' =>  date('Y-m-d', strtotime($mydate.' + '.(1).' days')),
-            'id_mahasiswa' => 1,
-            'gambar' => $fotoKompetisi[$faker->numberBetween(0,15)],
-        ]);
-
-
         for($i = 1; $i <= 25; $i++){
     		DB::table('pengalaman_lomba')->insert([
     			'nama_kompetisi' => $contohKompetisi[$faker->numberBetween(0,14)],

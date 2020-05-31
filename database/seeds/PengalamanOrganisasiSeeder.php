@@ -46,33 +46,6 @@ class PengalamanOrganisasiSeeder extends Seeder
         "Karawaitan Jawa Sekar Widya Makara",
         "Klub Mode UB");
 
-        DB::table('pengalaman_organisasi')->insert([
-            'nama_organisasi' => $contohOrganisasi[$faker->numberBetween(0,19)],
-            'deskripsi' => "Berpengalaman di " .$contohOrganisasi[$faker->numberBetween(0,19)]. "",
-            'tanggal_mulai' =>  date('Y-m-d', strtotime($mydate.' + '.(3).' days')),
-            'tanggal_selesai' =>  date('Y-m-d', strtotime($mydate.' + '.(30).' days')),
-            'id_mahasiswa' => 1,
-            'gambar' => $fotoOrganisasi[$faker->numberBetween(0,8)]
-        ]);
-
-        DB::table('pengalaman_organisasi')->insert([
-            'nama_organisasi' => $contohOrganisasi[$faker->numberBetween(0,19)],
-            'deskripsi' => "Berpengalaman di " .$contohOrganisasi[$faker->numberBetween(0,19)]. "",
-            'tanggal_mulai' =>  date('Y-m-d', strtotime($mydate.' + '.(3).' days')),
-            'tanggal_selesai' =>  date('Y-m-d', strtotime($mydate.' + '.(30).' days')),
-            'id_mahasiswa' => 1,
-            'gambar' => $fotoOrganisasi[$faker->numberBetween(0,8)]
-        ]);
-
-        DB::table('pengalaman_organisasi')->insert([
-            'nama_organisasi' => $contohOrganisasi[$faker->numberBetween(0,19)],
-            'deskripsi' => "Berpengalaman di " .$contohOrganisasi[$faker->numberBetween(0,19)]. "",
-            'tanggal_mulai' =>  date('Y-m-d', strtotime($mydate.' + '.(3).' days')),
-            'tanggal_selesai' =>  date('Y-m-d', strtotime($mydate.' + '.(30).' days')),
-            'id_mahasiswa' => 1,
-            'gambar' => $fotoOrganisasi[$faker->numberBetween(0,8)]
-        ]);
-
         for($i = 1; $i <= 25; $i++){
     		DB::table('pengalaman_organisasi')->insert([
     			'nama_organisasi' => $contohOrganisasi[$faker->numberBetween(0,19)],

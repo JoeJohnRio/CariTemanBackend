@@ -40,7 +40,7 @@ class TempatPklSeeder extends Seeder
         $url_5 = "https://s3-ap-southeast-1.amazonaws.com/assets-blog.sewakantorcbd.com/blog/wp-content/uploads/2018/12/26092710/wisma77-b-683x1024.jpg";
         $url_6 = "https://kao-h.assetsadobe3.com/is/image/content/dam/sites/kao/www-kao-com/id/id/about/outline/profile/image-01.jpg?wid=1500";
         $gambar_url = array( $url_1, $url_2, $url_3, $url_4, $url_5, $url_6 );
-        for($i = 1; $i <= 50; $i++){
+        for($i = 1; $i <= 25; $i++){
     		DB::table('tempat_pkl')->insert([
     			'nama_perusahaan' => $perusahaan[mt_rand(0,18)],
                 'id_lokasi_pkl' => mt_rand(1,50),

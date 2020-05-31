@@ -12,7 +12,7 @@ class UlasanTempatPklSeeder extends Seeder
     public function run()
     {
         for($a = 1; $a <= 3; $a++){
-        for($i = 1; $i <= 50; $i++){
+        for($i = 1; $i <= 25; $i++){
     		DB::table('ulasan_tempat_pkl')->insert([
     			'ulasan' => "Ulasan $i",
                 'id_tempat_pkl' => $i,

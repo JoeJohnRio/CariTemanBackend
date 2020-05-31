@@ -13,7 +13,7 @@ class HistoryLihatTempatPklSeeder extends Seeder
     {
         $mydate = '23-01-2016';
 
-    for($i = 1; $i <= 50; $i++){
+    for($i = 1; $i <= 25; $i++){
         DB::table('history_lihat_tempat_pkl')->insert([
             'id_mahasiswa' => 1,
             'id_tempat_pkl' => $i,

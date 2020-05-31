@@ -6,11 +6,19 @@ use Illuminate\Http\Request;
 use App\Rekomendasi;
 use App\RelationTeman;
 use App\RelationKelompok;
+use App\RelationBidangKerja;
+use App\BidangKerja;
 use App\Mahasiswa;
 use App\Fakultas;
 use App\ProgramStudi;
 use App\Keminatan;
+use App\LokasiPkl;
 use App\Notifikasi;
+use App\PengalamanLomba;
+use App\PengalamanOrganisasi;
+use App\TempatPkl;
+use App\RelationLokasiPkl;
+use App\UlasanTempatPkl;
 use \stdClass;
 
 class RekomendasiController extends Controller
@@ -19,6 +27,82 @@ class RekomendasiController extends Controller
     {
         config()->set('auth.defaults.guard', 'mahasiswa');
         $this->middleware('jwt.verify');
+    }
+
+    public function showHomeRecommendation(request $request){
+        
+                //kembalikan, jumlah rekomendasi, nama, pengalaman lomba, pengalaman organisasi, gambar pengalaman
+        $all = collect();
+        if($request->type == 1 || $request->type == 2){//pkl = 1 lomba = 2
+            $mahasiswas = Mahasiswa::where('id', '!=', auth()->user()->id)->where('preferensi', $request->type-1)->get();
+                foreach($mahasiswas as $mahasiswa){
+                    $returnObject = new stdClass();
+                    $returnObject->name = $mahasiswa->name;
+                    $pengalaman_lombas = PengalamanLomba::where('id_mahasiswa', $mahasiswa->id)->get();
+                    $all_pengalaman_lomba = collect();
+                    foreach($pengalaman_lombas as $pengalaman_lomba){
+                        $a = new stdClass();
+                        $a->nama_kompetisi = $pengalaman_lomba->nama_kompetisi;
+                        $a->gambar = $pengalaman_lomba->gambar;
+                        $a->bidang_kerja_id = RelationBidangKerja::where('id_pengalaman_lomba', $pengalaman_lomba->id)->first()->id_bidang_kerja;
+                        $a->bidang_kerja_nama = BidangKerja::find(RelationBidangKerja::where('id_pengalaman_lomba', $pengalaman_lomba->id)->first()->id_bidang_kerja)->nama_bidang_kerja;
+                        $all_pengalaman_lomba->add($a);
+                    }
+                    $returnObject->pengalaman_lomba = $all_pengalaman_lomba;
+                    
+                    $pengalaman_organisasis = PengalamanOrganisasi::where('id_mahasiswa', $mahasiswa->id)->get();
+                    $all_pengalaman_organisasi = collect();
+                    foreach($pengalaman_organisasis as $pengalaman_organisasi){
+                        $a = new stdClass();
+                        $a->nama_organisasi = $pengalaman_organisasi->nama_organisasi;
+                        $a->gambar = $pengalaman_organisasi->gambar;
+                        $a->bidang_kerja_id = RelationBidangKerja::where('id_pengalaman_organisasi', $pengalaman_organisasi->id)->first()->id_bidang_kerja;
+                        $a->bidang_kerja_nama = BidangKerja::find(RelationBidangKerja::where('id_pengalaman_organisasi', $pengalaman_organisasi->id)->first()->id_bidang_kerja)->nama_bidang_kerja;
+                        $all_pengalaman_organisasi->add($a);
+                    }
+                    $returnObject->pengalaman_organisasi = $all_pengalaman_organisasi;
+                    $pengalaman_scale = PengalamanOrganisasi::where('id_mahasiswa', $mahasiswa->id)->get()->count() +
+                    PengalamanLomba::where('id_mahasiswa', $mahasiswa->id)->get()->count();
+                    $recommendation_scale = Rekomendasi::where('id_penerima', $mahasiswa->id)->get()->count();
+                    $jumlah_tim = RelationKelompok::where('id_mahasiswa', $mahasiswa->id)->get()->count();
+                    $returnObject->jumlah_tim = RelationKelompok::where('id_mahasiswa', $mahasiswa->id)->get()->count();
+                    $returnObject->pengalaman_scale = $pengalaman_scale;
+                    $returnObject->recommendation_scalee = $recommendation_scale;
+                    $returnObject->recommendation_scale = $pengalaman_scale * 6 + $recommendation_scale * 4 + ($jumlah_tim*5*-1);
+
+                    $all->add($returnObject);
+                }
+                
+                $res = [];
+                $test = $all->sortByDesc('recommendation_scale');
+                foreach ($test  as $key => $value) {
+                    $res[] = $value;
+                }
+                return $res;
+
+        }else if($request->type == 3){//tempat pkl
+            //jumlah rekomendasi, nama, bidang kerja, dan kota
+            $all = collect();
+
+            $tempatPkls = TempatPkl::all();
+            foreach($tempatPkls as $tempatPkl){
+                $returnObject = new stdClass();
+                $returnObject->nama_perusahaan = $tempatPkl->nama_perusahaan;
+                $returnObject->jumlah_rekomendasi = UlasanTempatPkl::where('id_tempat_pkl', $tempatPkl->id)->count();
+                $returnObject->id_bidang_kerja = RelationBidangKerja::where('id_tempat_pkl', $tempatPkl->id)->first()->id;
+                $returnObject->nama_bidang_kerja = BidangKerja::find(RelationBidangKerja::where('id_tempat_pkl', $tempatPkl->id)->first()->id_bidang_kerja)->nama_bidang_kerja;
+                $returnObject->nama_kota = LokasiPkl::find(RelationLokasiPkl::where('id_tempat_pkl', $tempatPkl->id)->first()->id_lokasi_pkl)->nama_kota;
+                $all->add($returnObject);
+            }
+
+            
+            $res = [];
+            $test = $all->sortByDesc('jumlah_rekomendasi');
+            foreach ($test  as $key => $value) {
+                $res[] = $value;
+            }
+            return $res;
+        }
     }
 
     public function showRekomendasiMahasiswa(){
