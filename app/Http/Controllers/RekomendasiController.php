@@ -19,6 +19,7 @@ use App\PengalamanOrganisasi;
 use App\TempatPkl;
 use App\RelationLokasiPkl;
 use App\UlasanTempatPkl;
+use App\RelationTempatPkl;
 use \stdClass;
 
 class RekomendasiController extends Controller
@@ -39,6 +40,12 @@ class RekomendasiController extends Controller
                     $returnObject = new stdClass();
                     $returnObject->id = $mahasiswa->id;
                     $returnObject->name = $mahasiswa->name;
+                    $checkIsFavorite = RelationTeman::where('id_mahasiswa_one', auth()->user()->id)->where('id_mahasiswa_two', $mahasiswa->id)->first();
+                    if($checkIsFavorite != null){
+                        $returnObject->is_favorite = $checkIsFavorite->is_favorite;
+                    }else{
+                        $returnObject->is_favorite = 0;
+                    }
                     $returnObject->gambar = $mahasiswa->foto_profil;
                     $pengalaman_lombas = PengalamanLomba::where('id_mahasiswa', $mahasiswa->id)->get();
                     $all_pengalaman_lomba = collect();
@@ -54,7 +61,7 @@ class RekomendasiController extends Controller
                     
                     $pengalaman_organisasis = PengalamanOrganisasi::where('id_mahasiswa', $mahasiswa->id)->get();
                     $all_pengalaman_organisasi = collect();
-                    
+
                     foreach($pengalaman_organisasis as $pengalaman_organisasi){
                         $a = new stdClass();
                         $a->nama_organisasi = $pengalaman_organisasi->nama_organisasi;
@@ -94,6 +101,12 @@ class RekomendasiController extends Controller
                 $returnObject = new stdClass();
                 $returnObject->id = $tempatPkl->id;
                 $returnObject->gambar = $tempatPkl->gambar;
+                $checkIsFavorite = RelationTempatPkl::where('id_mahasiswa', auth()->user()->id)->where('id_tempat_pkl', $tempatPkl->id)->first();
+                    if($checkIsFavorite != null){
+                        $returnObject->is_favorite = $checkIsFavorite->is_favorite;
+                    }else{
+                        $returnObject->is_favorite = 0;
+                    }
                 $returnObject->type_of_recommendation = $request->type_of_recommendation;
                 $returnObject->nama_perusahaan = $tempatPkl->nama_perusahaan;
                 $returnObject->jumlah_rekomendasi = UlasanTempatPkl::where('id_tempat_pkl', $tempatPkl->id)->count();
