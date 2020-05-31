@@ -37,6 +37,7 @@ class RekomendasiController extends Controller
             $mahasiswas = Mahasiswa::where('id', '!=', auth()->user()->id)->where('preferensi', $request->type_of_recommendation-1)->get();
                 foreach($mahasiswas as $mahasiswa){
                     $returnObject = new stdClass();
+                    $returnObject->id = $mahasiswa->id;
                     $returnObject->name = $mahasiswa->name;
                     $pengalaman_lombas = PengalamanLomba::where('id_mahasiswa', $mahasiswa->id)->get();
                     $all_pengalaman_lomba = collect();
@@ -88,6 +89,7 @@ class RekomendasiController extends Controller
             $tempatPkls = TempatPkl::all();
             foreach($tempatPkls as $tempatPkl){
                 $returnObject = new stdClass();
+                $returnObject->id = $tempatPkl->id;
                 $returnObject->type_of_recommendation = $request->type_of_recommendation;
                 $returnObject->nama_perusahaan = $tempatPkl->nama_perusahaan;
                 $returnObject->jumlah_rekomendasi = UlasanTempatPkl::where('id_tempat_pkl', $tempatPkl->id)->count();
