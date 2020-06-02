@@ -153,7 +153,9 @@ class SearchController extends Controller
             foreach ($test  as $key => $value) {
                 $res[] = $value;
             }
-            return $res;
+            return response()->json(
+                ['tempat_pkl' => $res]
+            );
             }
     }
 
