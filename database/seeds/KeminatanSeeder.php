@@ -15,6 +15,30 @@ class KeminatanSeeder extends Seeder
 
         DB::table('keminatan')->insert([
             [
+                'name' => 'Tidak Memiliki Keminatan',
+                'id_program_studi' => '2'
+            ],
+            [
+                'name' => 'Tidak Memiliki Keminatan',
+                'id_program_studi' => '3'
+            ],
+            [
+                'name' => 'Tidak Memiliki Keminatan',
+                'id_program_studi' => '4'
+            ],
+            [
+                'name' => 'Tidak Memiliki Keminatan',
+                'id_program_studi' => '5'
+            ],
+            [
+                'name' => 'Tidak Memiliki Keminatan',
+                'id_program_studi' => '6'
+            ],
+            [
+                'name' => 'Tidak Memiliki Keminatan',
+                'id_program_studi' => '7'
+            ],
+            [
                 'name' => 'Rekayasa Perangkat Lunak',
                 'id_program_studi' => '1'
             ],
@@ -49,6 +73,14 @@ class KeminatanSeeder extends Seeder
             [
                 'name' => 'Hukum Ekonomi Bisnis',
                 'id_program_studi' => '8'
+            ],
+            [
+                'name' => 'Tidak Memiliki Keminatan',
+                'id_program_studi' => '9'
+            ],
+            [
+                'name' => 'Tidak Memiliki Keminatan',
+                'id_program_studi' => '10'
             ],
             [
                 'name' => 'Manajemen',
