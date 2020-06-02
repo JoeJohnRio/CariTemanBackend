@@ -63,11 +63,11 @@ class AdminController extends Controller
             $mahasiswa->is_verified = 1;
             $mahasiswa->save();
             
-            return "mahasiswa sudah terverifikasi";
+            return response()->json(['message' => 'mahasiswa sudah terverifikasi']);
         }else{
             $mahasiswa->delete();
             
-            return "mahasiswa dihapus dari database";
+            return response()->json(['message' => 'mahasiswa dihapus dari database']);
         }
 
     }
