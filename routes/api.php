@@ -65,7 +65,7 @@ Route::get('history/lihatprofil/lomba', 'HistoryLihatProfilController@showHistor
 Route::get('history/lihatprofil/pkl', 'HistoryLihatProfilController@showHistoryLihatProfilPkl');
 Route::get('history/lihatprofil/dashboard/pkl/', 'HistoryLihatProfilController@showHistoryLihatProfilDashboardPkl');
 Route::get('history/lihatprofil/dashboard/lomba/', 'HistoryLihatProfilController@showHistoryLihatProfilDashboardLomba');
-Route::get('history/lihatprofil/save/{id}', 'HistoryLihatProfilController@saveHistoryLihatProfil');
+Route::post('history/lihatprofil/save/{id}', 'HistoryLihatProfilController@saveHistoryLihatProfil');
 Route::post('history/newprofilclick/{id_mahasiswa}', 'HistoryLihatProfilController@addHistoryProfilClicked');
 
 //HistoryLihatTempatPklController
