@@ -26,9 +26,13 @@ class PengalamanLombaSeeder extends Seeder
         "https://mygaming.co.za/news/wp-content/uploads/2016/09/eSports-winner.jpg",
         "https://gamerbraves.sgp1.cdn.digitaloceanspaces.com/2019/09/PES-2019-575-SOULCALIBUR-Asia-League-.jpg",
         "https://informatika.unida.gontor.ac.id/wp-content/uploads/2019/04/image-8.png",
-        "https://i.guim.co.uk/img/media/29e2bdbd81f33a5fe1b21642ba990ab86cc54388/0_77_2297_1379/master/2297.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&s=3c8a4696a5676bb4f772f9ffb0790fd2",
+        "https://onsideview.com/wp-content/uploads/2018/10/newcastle.jpg",
         "https://api.duniagames.co.id/api/content/upload/file/19562420941575876533.jpg",
         "https://www.revivaltv.id/wp-content/uploads/2018/09/39044730_274607183332062_2481316041280454656_o.jpg",
+        "https://www.thetotallyfootballshow.com/app/uploads/2020/04/so-you-havent-got-any-football-to-watch-every-championship-playoff-final-ever-1987-2019-900x480.jpg",
+        "https://www.ncaa.com/sites/default/files/public/styles/medium_4x3/public-s3/tile-images/franchise_hero/JS3_6632_0.jpg?h=2c620b04&itok=qL_Vg_nz",
+        "https://cdn-radar.jawapos.com/uploads/radarsurabaya/news/2020/03/26/persebaya-batal-tampil-di-turnamen-asean-club-championship_m_185599.jpg",
+        "https://i2-prod.chroniclelive.co.uk/incoming/article17937396.ece/ALTERNATES/s615/0_West-Bromwich-Albion-v-Leeds-United-Sky-Bet-Championship-The-Hawthorns.jpg",
         "https://jurnalapps.co.id/assets/img/content/1558938899_pmco-2.JPG",
         "https://www.kapuaspost.co.id/wp-content/uploads/2019/09/AXIS-ML_2.jpg",
         "https://unpak.ac.id/pic/2020/gamer-telkomsel.webp");
@@ -55,7 +59,7 @@ class PengalamanLombaSeeder extends Seeder
                 'deskripsi' => "Pernah memenangkan " .$contohKompetisi[$faker->numberBetween(0,14)]. "",
                 'tanggal' =>  date('Y-m-d', strtotime($mydate.' + '.$i.' days')),
     			'id_mahasiswa' => $faker->numberBetween(1,50),
-                'gambar' => $fotoKompetisi[$faker->numberBetween(0,15)],
+                'gambar' => $fotoKompetisi[$faker->numberBetween(0,19)],
     		]);
     	}
     }

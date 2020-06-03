@@ -17,7 +17,6 @@ class RekomendasiSeeder extends Seeder
     		DB::table('rekomendasi')->insert([
     			'jumlah_rating' => $faker->numberBetween(1,5),
     			'deskripsi' => "Udah bagus nih mas",
-    			'is_hidden' => false,
     			'id_pengirim' => 2,
     			'id_penerima' => $faker->numberBetween(2,50)
             ]);
@@ -25,7 +24,6 @@ class RekomendasiSeeder extends Seeder
             DB::table('rekomendasi')->insert([
     			'jumlah_rating' => $faker->numberBetween(1,5),
     			'deskripsi' => "Udah bagus nih mas",
-    			'is_hidden' => false,
     			'id_pengirim' => $faker->numberBetween(2,50),
     			'id_penerima' => 1
     		]);

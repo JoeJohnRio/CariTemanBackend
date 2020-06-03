@@ -135,7 +135,6 @@ class RekomendasiController extends Controller
         $rekomendasi = new Rekomendasi();
         $rekomendasi->jumlah_rating = $request->jumlah_rating;
         $rekomendasi->deskripsi = $request->deskripsi;
-        $rekomendasi->is_hidden = false;
         $rekomendasi->id_pengirim = auth()->user()->id;
         $rekomendasi->id_penerima = $request->id_penerima;
 
@@ -155,14 +154,12 @@ class RekomendasiController extends Controller
     public function setRekomendasiHiddenTrue(request $request){
         // $rekomendasi = new Rekomendasi();
         $rekomendasi = Rekomendasi::where('id_pengirim', $request->id_pengirim)->where('id_penerima', auth()->user()->id)->first();
-        $rekomendasi->is_hidden = true;
         $rekomendasi->save();
     }
 
     public function setRekomendasiHiddenFalse(request $request){
         // $rekomendasi = new Rekomendasi();
         $rekomendasi = Rekomendasi::where('id_pengirim', $request->id_pengirim)->where('id_penerima', auth()->user()->id)->first();
-        $rekomendasi->is_hidden = true;
         $rekomendasi->save();
     }
 
