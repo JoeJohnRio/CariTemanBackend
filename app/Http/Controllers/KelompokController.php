@@ -86,8 +86,10 @@ class KelompokController extends Controller
     }
 
     public function addFriendToKelompok(request $request){
-        $anggota = new RelationKelompok;
+        
+        $all = collect();
         foreach ($request->calon_anggotas as $calon_anggota) {
+            $anggota = new RelationKelompok;
             $anggota->id_kelompok = $request->id_kelompok;
             $anggota->id_mahasiswa = $calon_anggota['id_mahasiswa'];
             $anggota->status = 0;
@@ -99,9 +101,10 @@ class KelompokController extends Controller
             $notifikasi->id_mahasiswa_penerima = $calon_anggota['id_mahasiswa'];
             $notifikasi->id_kelompok = $request->id_kelompok;
             $notifikasi->save();
+            $all->add($anggota);
             }
 
-        return $anggota;
+        return $all;
     }
 
     public function removeAnggotaKelompok(request $request){
