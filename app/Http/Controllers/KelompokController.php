@@ -32,7 +32,9 @@ class KelompokController extends Controller
         $anggota->status = 0;
         $anggota->save();
 
-        return "anggota sudah diinvite";
+        return response()->json(
+            ['message' => "anggota sudah diinvite"]
+        );
     }
 
     public function makeKelompok(request $request){
@@ -65,6 +67,21 @@ class KelompokController extends Controller
             }
 
         return $kelompok;
+    }
+
+    public function showMahasiswaPending($id_kelompok){
+        $anggotaPending = RelationKelompok::where('id_kelompok', $id_kelompok)->where('status', 0)->get();
+
+        $all = collect();
+        $mahasiswa = new Mahasiswa();
+        foreach( $anggotaPending as $anggota){
+            $mahasiswa = Mahasiswa::select('id', 'foto_profil', 'name')->find($anggota->id_mahasiswa);
+            $fakultas = Fakultas::select('name')->find(Mahasiswa::find($anggota->id_mahasiswa)->id_fakultas);
+            $mahasiswa->setAttribute('nama_fakultas', $fakultas->name);
+            $all->add($mahasiswa);
+        }
+
+        return $all;
     }
 
     public function addFriendToKelompok(request $request){

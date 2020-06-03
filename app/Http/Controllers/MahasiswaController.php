@@ -63,8 +63,6 @@ class MahasiswaController extends Controller
 
     public function update(request $request, $id)
     {
-
-
         $email = $request->email;
         $password = $request->password;
 

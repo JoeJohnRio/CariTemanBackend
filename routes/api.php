@@ -126,6 +126,8 @@ Route::post('kelompok/delete', 'KelompokController@deleteAnggota');
 Route::post('kelompok/updateinfo', 'KelompokController@updateKelompokInfo');
 Route::post('kelompok/removeanggota', 'KelompokController@removeAnggotaKelompok');
 Route::get('kelompok/showfriendnotadded/{id_kelompok}', 'KelompokController@showFriendNotAddedYet');
+Route::get('kelompok/showpending/{id_kelompok}', 'KelompokController@showMahasiswaPending');
+
 
 //BidangKerja
 Route::get('bidangkerja/search/{namaBidangKerja}', 'BidangKerjaController@showSearchBidangKerja');
