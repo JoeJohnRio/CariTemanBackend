@@ -116,6 +116,7 @@ Route::post('rekomendasi/home', 'RekomendasiController@showHomeRecommendation');
 
 //Kelompok
 Route::get('kelompok/show', 'KelompokController@showKelompok');
+Route::get('kelompok/show/notinvitedyet/{id_mahasiswa}', 'KelompokController@showKelompokNotInvitedYet');
 Route::get('kelompok/anggotakelompok/{id_kelompok}', 'KelompokController@getAnggotaKelompok');
 Route::post('kelompok/invite', 'KelompokController@inviteAnggota');
 Route::post('kelompok/make', 'KelompokController@makeKelompok');

@@ -26,6 +26,19 @@ class KelompokController extends Controller
         return $kelompok;
     }
 
+    public function showKelompokNotInvitedYet($id_mahasiswa){
+        $kelompok =  RelationKelompok::with('kelompok')->where('id_mahasiswa', auth()->user()->id)->get();
+
+        $all = collect();
+        foreach ($kelompok as $calon_anggota) {
+            $checkExist = RelationKelompok::where('id_mahasiswa', $id_mahasiswa)->where('id_kelompok', $calon_anggota->id_kelompok)->first();
+            if($checkExist == null){
+                $all->add($calon_anggota);
+            }
+        }
+        return $all;
+    }
+
     public function inviteAnggota(request $request){
         $anggota = new RelationKelompok;
         $anggota->id_kelompok = $request->id_kelompok;
