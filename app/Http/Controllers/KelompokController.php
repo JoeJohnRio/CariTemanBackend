@@ -10,6 +10,7 @@ use App\RelationKelompok;
 use App\RelationTeman;
 use App\Fakultas;
 use App\Notifikasi;
+use App\PesanKelompok;
 use Auth;
 
 
