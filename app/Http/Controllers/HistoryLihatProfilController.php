@@ -71,6 +71,10 @@ class HistoryLihatProfilController extends Controller
         $history->id_mahasiswa_one = auth()->user()->id;
         $history->id_mahasiswa_two = $id_mahasiswa_two;
         $history->save();
+
+        return response()->json(
+            ['message' => "masuk ke dalam history lihat profile"]
+        );
     }
 
     public function paginate($items, $perPage, $page, $options){
