@@ -29,11 +29,11 @@ class AuthController extends Controller
 
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 400);
+                return response()->json(['error' => 'invalid_credentials']);
             }
             $mahasiswa = Mahasiswa::Where('email', $request->email)->value('is_verified'); 
             if($mahasiswa == 0){
-                return response()->json(['error' => 'belum diverifikasi'], 400);
+                return response()->json(['error' => 'belum diverifikasi']);
             }
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
