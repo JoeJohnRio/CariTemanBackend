@@ -19,7 +19,7 @@ class UlasanTempatPklController extends Controller
         $ulasanCheck = UlasanTempatPkl::where('id_tempat_pkl', $request->id_tempat_pkl)
         ->where('id_pengirim', auth()->user()->id)->first();
         if($ulasanCheck != null){
-            return response()->json(['message' => "sudah pernah memasukkan"]);
+            return response()->json(['message' => "Sudah pernah memasukkan ulasan"]);
         }
         $ulasanTempatPkl->ulasan = $request->isi_ulasan;
         $ulasanTempatPkl->id_tempat_pkl = $request->id_tempat_pkl;

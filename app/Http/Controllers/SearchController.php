@@ -48,7 +48,7 @@ class SearchController extends Controller
         if($request->keyword != null){
             $searchHistory = new SearchHistory();
             $searchHistory->name = $request->keyword;
-            $searchHistory->search_type = $request->preferensi;
+            $searchHistory->search_type = $preferensi;
             $searchHistory->id_owner_history = auth()->user()->id;
             $searchHistory->save();        
         }
