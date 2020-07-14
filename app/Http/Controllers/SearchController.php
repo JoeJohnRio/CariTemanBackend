@@ -103,11 +103,13 @@ class SearchController extends Controller
                 
             $all = collect();
 
-            $searchHistory = new SearchHistory();
-            $searchHistory->name = $request->keyword;
-            $searchHistory->search_type = 2;
-            $searchHistory->id_owner_history = auth()->user()->id;
-            $searchHistory->save();
+            if($request->keyword != null){
+                $searchHistory = new SearchHistory();
+                $searchHistory->name = $request->keyword;
+                $searchHistory->search_type = 2;
+                $searchHistory->id_owner_history = auth()->user()->id;
+                $searchHistory->save();
+            }
                 
             if ($request->id_lokasi_pkl != null) {
                 $tempat_pkls = $tempat_pkls->where('id_lokasi_pkl', $request->input('id_lokasi_pkl'));
