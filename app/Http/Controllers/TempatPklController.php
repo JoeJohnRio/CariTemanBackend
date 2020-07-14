@@ -62,6 +62,12 @@ class TempatPklController extends Controller
         $relationBidangKerja->id_tempat_pkl = $tempatPkl->id;
         $relationBidangKerja->save();
 
+        $relationTempatPkl = new RelationLokasiPkl();
+        $relationTempatPkl->id_lokasi_pkl = $request->id_lokasi_pkl;
+        $relationTempatPkl->id_tempat_pkl = $tempatPkl->id;
+        $relationTempatPkl->save();
+
+
         return response()->json(
 			['message' => "Tempat Ditambah"]
 		);
